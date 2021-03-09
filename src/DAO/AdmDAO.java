@@ -15,7 +15,11 @@ public class AdmDAO {
 	}
 	
 	public String hentPassord() {
-		return em.createQuery("SELECT brukernavn FROM admin").toString();
+		return em.createQuery("SELECT passord FROM admin").toString();
+	}
+	
+	public String hentSalt() {
+		return em.createQuery("SELECT salt FROM admin").toString();
 	}
 
 //	bare raskt satt opp ikke ferdig

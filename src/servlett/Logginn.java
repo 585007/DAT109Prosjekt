@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import DAO.AdmDAO;
+import hjelpeKlasser.PassordHjelp;
+
 /**
  * Servlet implementation class Logginn
  */
@@ -16,6 +19,7 @@ public class Logginn extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 //	@EJB
+	AdmDAO admDAO;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -35,8 +39,8 @@ public class Logginn extends HttpServlet {
 		String passord = request.getParameter("passord");
 		String bruker = request.getParameter("bruker");
 
-		if (!bruker.equals(brukernavn som er i databasen)
-				|| passord sjekkes opp mot passor på databasen "må gjennom hash") {
+		if (!bruker.equals(admDAO.hentBrukernavn())
+				|| PassordHjelp.validerMedSalt(passord, admDAO.hentSalt() , admDAO.hentPassord())) {
 			String loginMessage = "Ugyldig brukernavn og/eller passord";
 			request.setAttribute("loginMessage", loginMessage);
 			request.getRequestDispatcher("WEB-INF/logginn.jsp").forward(request, response);

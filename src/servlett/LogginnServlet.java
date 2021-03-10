@@ -14,7 +14,7 @@ import DAO.AdmDAO;
 import hjelpeKlasser.PassordHjelp;
 
 @WebServlet(name = "logginn", urlPatterns = "/logginn")
-public class Logginn extends HttpServlet {
+public class LogginnServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@EJB

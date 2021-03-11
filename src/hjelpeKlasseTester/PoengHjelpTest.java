@@ -1,10 +1,12 @@
-package hjelpeKlasser;
+package hjelpeKlasseTester;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.HashMap;
 
 import org.junit.jupiter.api.Test;
+
+import hjelpeKlasser.PoengHjelp;
 
 class PoengHjelpTest {
 

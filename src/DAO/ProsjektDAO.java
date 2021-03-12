@@ -7,7 +7,7 @@ import entiteter.Prosjekt;
 
 public class ProsjektDAO {
 
-	public List<Prosjekt> getProsjekter() {
+	public static List<Prosjekt> getProsjekter() {
 		// TODO Auto-generated method stub
 		return null;
 	}

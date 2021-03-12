@@ -18,7 +18,7 @@ import hjelpeKlasser.PassordHjelp;
  * @author Svein Ove Surdal
  *
  */
-@WebServlet(name = "logginn", urlPatterns = "/logginn")
+@WebServlet(name = "Logginn", urlPatterns = "/Logginn")
 public class LogginnServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

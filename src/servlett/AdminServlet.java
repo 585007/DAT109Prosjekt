@@ -29,19 +29,7 @@ public class AdminServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if (request.getParameter("leggTil") != null) { // knapp for å gå til leggTil
-			response.sendRedirect("leggTil");
 
-		} 
-		else if (request.getParameter("prosjektListe") != null) { // knapp for å gå til prosjektListe
-			response.sendRedirect("prosjektListe");
-
-		} 
-		
-//		(request.getParameter("slett") != null) { // knapp for å gå til slett
-			response.sendRedirect("slett");
-
-//		}
 	}
 
 }

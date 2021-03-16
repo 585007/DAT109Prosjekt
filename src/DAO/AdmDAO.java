@@ -3,7 +3,11 @@ package DAO;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-
+/**
+ * adminDAO
+ * @author Svein Ove Surdal
+ *
+ */
 @Stateless
 public class AdmDAO {
 	

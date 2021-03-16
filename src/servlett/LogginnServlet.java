@@ -15,6 +15,7 @@ import hjelpeKlasser.PassordHjelp;
 
 /**
  * Innlogging med verifisering av brukernavn og passord
+ * 
  * @author Svein Ove Surdal
  *
  */
@@ -22,8 +23,8 @@ import hjelpeKlasser.PassordHjelp;
 public class LogginnServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	//@EJB
-	//AdmDAO admDAO;
+	// @EJB
+	// AdmDAO admDAO;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -42,18 +43,31 @@ public class LogginnServlet extends HttpServlet {
 
 		String passord = request.getParameter("passord");
 		String bruker = request.getParameter("bruker");
-
-//		if (!bruker.equals(admDAO.hentBrukernavn())
-//				|| PassordHjelp.validerMedSalt(passord, admDAO.hentSalt() , admDAO.hentPassord())) {
-			
-		if(false) {
+		
+		System.out.println("du skrev inn passord " + passord);
+		System.out.println("du skrev inn brukernavn " + bruker);
+		
+		String passordHardKodet = "pass";
+		String brukerHardKodet = "adm";
+		if (!bruker.equals(brukerHardKodet) || !passord.equals(passordHardKodet)) { // til bruk under test med hardkoding av passord og brukernavn
 			String loginMessage = "Ugyldig brukernavn og/eller passord";
 			request.setAttribute("loginMessage", loginMessage);
 			request.getRequestDispatcher("WEB-INF/logginn.jsp").forward(request, response);
 		} else {
-
 			response.sendRedirect("admin");
 		}
+		
+//		if (!bruker.equals(admDAO.hentBrukernavn())
+//				|| PassordHjelp.validerMedSalt(passord, admDAO.hentSalt() , admDAO.hentPassord())) {
+			
+//		if(false) {
+//			String loginMessage = "Ugyldig brukernavn og/eller passord";
+//			request.setAttribute("loginMessage", loginMessage);
+//			request.getRequestDispatcher("WEB-INF/logginn.jsp").forward(request, response);
+//		} else {
+
+//			response.sendRedirect("admin");
+//		}
 
 	}
 }

@@ -39,8 +39,6 @@ public class ProsjektListeServlet extends HttpServlet {
 			response.sendRedirect("ProsjektListe");
 		}else {
 			response.sendRedirect("logginn");
-			//Test
-			//hjelp?
 		}
 	}
 

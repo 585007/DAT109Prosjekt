@@ -7,17 +7,9 @@ import java.security.spec.InvalidKeySpecException;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 import javax.xml.bind.DatatypeConverter;
-/**
- * oppretter og sjekker passord
- * @author Svein Ove Surdal
- *
- */
+
 public class PassordHjelp {
 	
-	/**
-	 * genererer salt til passord
-	 * @return salt
-	 */
 	public synchronized static String genererTilfeldigSalt() {
 	    SecureRandom sr;
 	    byte[] salt = new byte[16];
@@ -29,12 +21,7 @@ public class PassordHjelp {
 		}
 	    return DatatypeConverter.printHexBinary(salt);
 	}
-	/**
-	 * genererer hash av passord med salt
-	 * @param passord
-	 * @param salt
-	 * @return passordhash
-	 */
+	
 	public synchronized static String hashMedSalt(String passord, String salt) { 
 		
 		char[] passchar = passord.toCharArray();
@@ -51,13 +38,6 @@ public class PassordHjelp {
 		}
 		return DatatypeConverter.printHexBinary(keyhash);
 	}
-	/**
-	 * Sjekker passord med gitt salt opp mot passordhash 
-	 * @param passord
-	 * @param salt
-	 * @param passordhash
-	 * @return true om validert ellers false
-	 */
 	public static boolean validerMedSalt(String passord, String salt, String passordhash) {
 		return passordhash.equals(hashMedSalt(passord, salt));
 	}

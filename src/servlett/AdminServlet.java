@@ -6,7 +6,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  * Har tre knapper som sender deg videre til en av tre destinasjoner legg til et posjekt, 
@@ -21,10 +20,10 @@ public class AdminServlet extends HttpServlet {
    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		HttpSession sesjon = request.getSession(false);
-		if (sesjon == null) {
-			response.sendRedirect("logginn");
-		}
+//		HttpSession sesjon = request.getSession(false);
+//		if (sesjon == null) {
+//			response.sendRedirect("logginn");
+//		}
 		
 		request.getRequestDispatcher("WEB-INF/admin.jsp").forward(request, response);
 	}

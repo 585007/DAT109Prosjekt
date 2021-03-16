@@ -10,27 +10,29 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import DAO.AdmDAO;
-import hjelpeKlasser.PassordHjelp;
+//import DAO.AdmDAO;
+//import hjelpeKlasser.PassordHjelp;
 
 /**
  * Innlogging med verifisering av brukernavn og passord
  * @author Svein Ove Surdal
- *
+ *name = "LogginnServlet", urlPatterns = 
  */
-@WebServlet(name = "logginn", urlPatterns = "/logginn")
+@WebServlet("/logginn")
 public class LogginnServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	//@EJB
 	//AdmDAO admDAO;
-
+	
+@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		request.getRequestDispatcher("WEB-INF/logginn.jsp").forward(request, response);
 	}
 
+@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -40,8 +42,8 @@ public class LogginnServlet extends HttpServlet {
 		}
 		sesjon = request.getSession(true);
 
-		String passord = request.getParameter("passord");
-		String bruker = request.getParameter("bruker");
+//		String passord = request.getParameter("passord");
+//		String bruker = request.getParameter("bruker");
 
 //		if (!bruker.equals(admDAO.hentBrukernavn())
 //				|| PassordHjelp.validerMedSalt(passord, admDAO.hentSalt() , admDAO.hentPassord())) {

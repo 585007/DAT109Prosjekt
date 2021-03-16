@@ -1,23 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+        
+    <wb-module deploy-name="dat109-prosjekt-gr5">
                 
-    
-    
-    <wb-module deploy-name="dat109ProsjektGr5">
-                                
-        
-        
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
-                                
-        
-        
-        <property name="java-output-path" value="/dat109ProsjektGr5/build/classes"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
                 
-        <property name="context-root" value="dat109ProsjektGr5"/>
-                            
-    
-    
-    </wb-module>
+        <property name="context-root" value="dat109-prosjekt-gr5"/>
+                
+        <property name="java-output-path" value="/dat109-prosjekt-gr5/build/classes"/>
             
-
-
+    </wb-module>
+    
 </project-modules>

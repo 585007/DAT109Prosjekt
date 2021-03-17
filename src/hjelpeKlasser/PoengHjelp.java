@@ -9,6 +9,15 @@ import java.util.Map;
  */
 public class PoengHjelp {
 
+	
+	
+	
+	
+	// Denne klassen er utdatert siden vi byttet vekk fra hashmap.
+	
+	
+	
+	
 	/**
 	 * @param map
 	 * @return TotalPoeng

@@ -1,5 +1,6 @@
 package entiteter;
 
+import java.awt.List;
 import java.util.HashMap;
 
 /**
@@ -11,13 +12,14 @@ public class Prosjekt {
 	// dette er bare middlertidig, endres om det trengs flere attributter
 	public int prosjektNr;
 	public String prosjektNavn;
-	public HashMap<String, Float> stemmer;
+	public Stemmer stemmer;
 
 	public Prosjekt(int prosjektNr, String prosjektNavn) {
 		super();
 		this.prosjektNr = prosjektNr;
 		this.prosjektNavn = prosjektNavn;
-		this.stemmer = new HashMap<String, Float>();
+		this.stemmer = new Stemmer();
+		
 	}
 
 	public int getProsjektNr() {
@@ -36,12 +38,14 @@ public class Prosjekt {
 		this.prosjektNavn = prosjektNavn;
 	}
 
-	public HashMap<String, Float> getStemmer() {
+	public Stemmer getStemmer() {
 		return stemmer;
 	}
 
-	public void setStemmer(HashMap<String, Float> stemmer) {
+	public void setStemmer(Stemmer stemmer) {
 		this.stemmer = stemmer;
 	}
+
+
 
 }

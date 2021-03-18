@@ -41,16 +41,22 @@ public class LogginnServlet extends HttpServlet {
 		sesjon = request.getSession(true);
 
 		String passord = request.getParameter("passord");
-		String bruker = request.getParameter("bruker");
-
-//		if (!bruker.equals(admDAO.hentBrukernavn())
-//				|| PassordHjelp.validerMedSalt(passord, admDAO.hentSalt() , admDAO.hentPassord())) {
-			
-		if(false) {
+		String brukerNavn = request.getParameter("bruker");
+		String passordHardKodet = "pass";
+		String brukernavnHardkodet = "adm";
+		if(!brukerNavn.equals(brukernavnHardkodet) || !passord.equals(passordHardKodet)) {
 			String loginMessage = "Ugyldig brukernavn og/eller passord";
 			request.setAttribute("loginMessage", loginMessage);
 			request.getRequestDispatcher("WEB-INF/logginn.jsp").forward(request, response);
-		} else {
+		}
+
+//		if (!brukerNavn.equals(admDAO.hentBrukernavn())
+//				|| PassordHjelp.validerMedSalt(passord, admDAO.hentSalt() , admDAO.hentPassord())) {
+//			String loginMessage = "Ugyldig brukernavn og/eller passord";
+//			request.setAttribute("loginMessage", loginMessage);
+//			request.getRequestDispatcher("WEB-INF/logginn.jsp").forward(request, response);
+//		} 
+		else {
 
 			response.sendRedirect("admin");
 		}

@@ -5,7 +5,10 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.HashMap;
 
 import org.junit.jupiter.api.Test;
-
+/**
+ * @author Håkon Herrevold
+ *
+ */
 class PoengHjelpTest {
 
 	PoengHjelp hjelper = new PoengHjelp();

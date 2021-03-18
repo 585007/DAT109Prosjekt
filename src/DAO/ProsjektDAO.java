@@ -3,25 +3,34 @@ package DAO;
 
 import java.util.List;
 
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import entiteter.Prosjekt;
 
+/**
+ * @author Håkon Herrevold
+ *
+ */
+@Stateless
 public class ProsjektDAO {
 
-	public static List<Prosjekt> getProsjekter() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Prosjekt getProsjekt(int prosjektID) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public void oppdater(Prosjekt pros) {
-		// TODO Auto-generated method stub
-		
+	
+	
+	@PersistenceContext(name = "ProsjektDAO")
+	private EntityManager em;
+	
+	public List<Prosjekt> hentAlleProsjekter() {
+		return em.createQuery("SELECT p from Prosjekt p", Prosjekt.class).getResultList();
 	}
 	
-	//TODO her skal det inn database greier for prosjekt.
+	public Prosjekt hentProsjekt(int prosjektID) {
+        return em.find(Prosjekt.class, prosjektID);
+    }
+
+    public synchronized void lagreNyttProsjekt(Prosjekt nyttprosjekt) {
+        em.persist(nyttprosjekt);
+    }
 
 }

@@ -1,6 +1,7 @@
 package servlett;
 
 import java.io.IOException;
+
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,15 +10,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import DAO.ProsjektDAO;
+import DAO.StemmeDAO;
 import entiteter.Prosjekt;
 import entiteter.Stemme;
 
+/**
+ * @author Håkon Herrevold
+ *
+ */
 @WebServlet("/AlternativStemmeServlet")
 public class AlternativStemmeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@EJB
-	ProsjektDAO phjelp = new ProsjektDAO();
+	StemmeDAO steDAO = new StemmeDAO();
+	@EJB
+	ProsjektDAO proDAO = new ProsjektDAO();
 
 	public AlternativStemmeServlet() {
 		super();
@@ -41,20 +49,18 @@ public class AlternativStemmeServlet extends HttpServlet {
 		String prosjektIDStr = request.getParameter("prosjektID"); // denne skal komme fra en hidden i jsp formen
 		int prosjektID = Integer.parseInt(prosjektIDStr);
 
-		
-		Prosjekt pros = phjelp.getProsjekt(prosjektID);
+		Prosjekt pros = proDAO.hentProsjekt(prosjektID);
 
 		// Om det skulle skje et problem og prosjektID ikke er valid
 		if (pros == null) {
 			request.getSession().setAttribute("feil", "Prosjektet du prøver stemme på eksisterer ikke.");
 		}
-		
+
 		Stemme nyStemme = new Stemme(mobilNr, ratingVerdi, prosjektID);
 
-		// Nyeste stemme gjelder, så gamle slettes først.
-
-		// Trenger en måte å oppdatere prosjektet og dens stemmer i databasen.
-		phjelp.oppdater(pros);
+		// steDAO.fjern(mobilNr); fjerner om det allerede eksisterer stemme fra det nr
+		// Nyeste teller.
+		steDAO.lagreNyStemme(nyStemme);
 
 		response.sendRedirect("AlternativStemmeServlet");
 	}

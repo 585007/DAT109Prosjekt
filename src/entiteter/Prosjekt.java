@@ -3,6 +3,10 @@ package entiteter;
 import java.awt.List;
 import java.util.HashMap;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  * @author Håkon Herrevold
  *
@@ -10,6 +14,8 @@ import java.util.HashMap;
 public class Prosjekt {
 
 	// dette er bare middlertidig, endres om det trengs flere attributter
+	
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	public int prosjektNr;
 	public String prosjektNavn;
 	public Stemmer stemmer;

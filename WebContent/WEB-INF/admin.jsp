@@ -19,11 +19,11 @@
       </div>
     </fieldset>
   </form>
-  <form action="ProsjektListeServlet" method="post" class="pure-form pure-form-aligned">
+  <form action="prosjektListe" method="post" class="pure-form pure-form-aligned">
     <fieldset>
       <div class="pure-control-group">
         <p>
-          <button type="submit" name="ProsjektListeServlet" class="pure-button pure-button-primary" value="meldpå">Vis liste over prosjekt med poeng</button>
+          <button type="submit" name="prosjektListe" class="pure-button pure-button-primary" value="meldpå">Vis liste over prosjekt med poeng</button>
         </p>
       </div>
     </fieldset>

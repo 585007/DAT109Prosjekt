@@ -17,7 +17,7 @@ import hjelpeKlasser.GyldigSesjon;
  * @author Ruben Aadland
  *
  */
-@WebServlet(name = "ProsjektListeServlet", urlPatterns = "/ProsjektListe")
+@WebServlet(name = "ProsjektListe", urlPatterns = "/ProsjektListe")
 public class ProsjektListeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

@@ -2,7 +2,7 @@ package servlett;
 
 import java.io.IOException;
 
-import javax.ejb.EJB;
+import javax.ejb.*;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

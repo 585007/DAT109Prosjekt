@@ -10,29 +10,29 @@
 <body>
   <h2>Admin</h2>
 
-  <form action="logginn" method="post" class="pure-form pure-form-aligned">
+  <form action="leggTil" method="get" class="pure-form pure-form-aligned">
     <fieldset>
       <div class="pure-control-group">
         <p>
-          <button type="submit" name="leggTil" class="pure-button pure-button-primary" value="meldpå">Legg til et prosjekt</button>
+          <button type="submit" name="leggTil" class="pure-button pure-button-primary">Legg til et prosjekt</button>
         </p>
       </div>
     </fieldset>
   </form>
-  <form action="prosjektListe" method="post" class="pure-form pure-form-aligned">
+  <form action="prosjektListe" method="get" class="pure-form pure-form-aligned">
     <fieldset>
       <div class="pure-control-group">
         <p>
-          <button type="submit" name="prosjektListe" class="pure-button pure-button-primary" value="meldpå">Vis liste over prosjekt med poeng</button>
+          <button type="submit" name="prosjektListe" class="pure-button pure-button-primary">Vis liste over prosjekt med poeng</button>
         </p>
       </div>
     </fieldset>
   </form>
-  <form action="slett" method="post" class="pure-form pure-form-aligned">
+  <form action="slett" method="get" class="pure-form pure-form-aligned">
     <fieldset>
       <div class="pure-control-group">
         <p>
-          <button type="submit" name="slett" class="pure-button pure-button-primary" value="meldpå">Slett prosjekt</button>
+          <button type="submit" name="slett" class="pure-button pure-button-primary">Slett prosjekt</button>
         </p>
       </div>
     </fieldset>

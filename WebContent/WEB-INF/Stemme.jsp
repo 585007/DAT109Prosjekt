@@ -14,7 +14,7 @@
     <label for="mobil">Telefonnummer:</label> <input type="text" name="tlf" />
   </div>
 
-  <p>Hvor bra fra 0-5 er prosjektet</p>
+  <p>Hvor bra fra 0-5 er prosjektet (5 best, 0 verst)</p>
 <div>
     <input type="radio" id="0" name="rating" value="0">
     <label for="0">0</label><br>

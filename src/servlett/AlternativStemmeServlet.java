@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import DAO.ProsjektDAO;
 import entiteter.Prosjekt;
+import entiteter.Stemme;
 
 @WebServlet("/AlternativStemmeServlet")
 public class AlternativStemmeServlet extends HttpServlet {
@@ -33,25 +34,24 @@ public class AlternativStemmeServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String feilmelding = "";
-
-		String mobilNr = request.getParameter("tlf");
+		String mobilNrStr = request.getParameter("tlf");
+		int mobilNr = Integer.parseInt(mobilNrStr);
 		String ratingVerdiStr = request.getParameter("rating");
-		float ratingVerdi = Float.parseFloat(ratingVerdiStr);
+		int ratingVerdi = Integer.parseInt(ratingVerdiStr);
+		String prosjektIDStr = request.getParameter("prosjektID"); // denne skal komme fra en hidden i jsp formen
+		int prosjektID = Integer.parseInt(prosjektIDStr);
 
-		String prosjektID = request.getParameter("prosjektID"); // denne skal komme fra en hidden i jsp formen
-
+		
 		Prosjekt pros = phjelp.getProsjekt(prosjektID);
 
 		// Om det skulle skje et problem og prosjektID ikke er valid
 		if (pros == null) {
-			feilmelding = "Prosjektet du prøver stemme på eksisterer ikke.";
-			request.getSession().setAttribute("feil", feilmelding);
+			request.getSession().setAttribute("feil", "Prosjektet du prøver stemme på eksisterer ikke.");
 		}
+		
+		Stemme nyStemme = new Stemme(mobilNr, ratingVerdi, prosjektID);
 
 		// Nyeste stemme gjelder, så gamle slettes først.
-		pros.getStemmer().remove(mobilNr);
-		pros.getStemmer().put(mobilNr, ratingVerdi);
 
 		// Trenger en måte å oppdatere prosjektet og dens stemmer i databasen.
 		phjelp.oppdater(pros);

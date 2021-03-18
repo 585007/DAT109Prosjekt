@@ -12,7 +12,7 @@ public class ProsjektDAO {
 		return null;
 	}
 
-	public Prosjekt getProsjekt(String prosjektID) {
+	public Prosjekt getProsjekt(int prosjektID) {
 		// TODO Auto-generated method stub
 		return null;
 	}

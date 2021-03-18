@@ -1,7 +1,10 @@
 package entiteter;
 
+import javax.persistence.Id;
+
 public class Stemme {
 	
+	@Id
 	public int tlf;
 	public int rating;
 	public int prosjektID;

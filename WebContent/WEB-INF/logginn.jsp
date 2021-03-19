@@ -16,7 +16,7 @@
   <form action="logginn" method="post" class="pure-form pure-form-aligned">
     <fieldset>
       <div class="pure-control-group">
-        <label for="mobil">Brukernavn:</label> <input type="text" name="bruker" />
+        <label for="bruker">Brukernavn:</label> <input type="text" name="bruker" />
       </div>
       <div class="pure-control-group">
         <label for="passord">Passord:</label> <input type="password" name="passord" />

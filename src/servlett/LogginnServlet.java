@@ -19,7 +19,7 @@ import javax.servlet.http.HttpSession;
  * @author Svein Ove Surdal
  *
  */
-@WebServlet(name = "logginn", urlPatterns = "/logginn")
+@WebServlet(name = "LogginnServlet", urlPatterns = "/logginn")
 public class LogginnServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -52,7 +52,7 @@ System.out.println("ssss");
 //			request.setAttribute("loginMessage", loginMessage);
 //			request.getRequestDispatcher("WEB-INF/logginn.jsp").forward(request, response);
 
-		if (bruker.equals(brukerHardKodet) && passord.equals(passordHardKodet)) {
+		if (bruker != brukerHardKodet || passord != passordHardKodet) {
 			String loginMessage = "Ugyldig brukernavn og/eller passord";
 			request.setAttribute("loginMessage", loginMessage);
 			request.getRequestDispatcher("WEB-INF/logginn.jsp").forward(request, response);

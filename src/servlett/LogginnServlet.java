@@ -52,7 +52,7 @@ System.out.println("ssss");
 //			request.setAttribute("loginMessage", loginMessage);
 //			request.getRequestDispatcher("WEB-INF/logginn.jsp").forward(request, response);
 
-		if (bruker != brukerHardKodet || passord != passordHardKodet) {
+		if (!bruker.equals(brukerHardKodet) || !passord.equals(passordHardKodet)) {
 			String loginMessage = "Ugyldig brukernavn og/eller passord";
 			request.setAttribute("loginMessage", loginMessage);
 			request.getRequestDispatcher("WEB-INF/logginn.jsp").forward(request, response);

@@ -7,7 +7,7 @@
 <title>Vurder Prosjekt</title>
 </head>
 <body>
-    <h1>(her skal prosjektet info være)</h1>
+    <h1>(her skal prosjektet info være) </h1>
 <form action="StemmeServlet" method="POST">
 
 <div class="pure-control-group">

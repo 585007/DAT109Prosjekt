@@ -28,7 +28,6 @@ public class LogginnServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-System.out.println("ssss");
 		request.getRequestDispatcher("WEB-INF/logginn.jsp").forward(request, response);
 	}
 
@@ -39,12 +38,8 @@ System.out.println("ssss");
 
 		String passord = request.getParameter("passord");
 		String bruker = request.getParameter("bruker");
-		System.out.println(bruker);
-		System.out.println(passord);
 		String brukerHardKodet = "adm";
 		String passordHardKodet = "pass";
-		System.out.println(brukerHardKodet);
-		System.out.println(passordHardKodet);
 
 //		if (!bruker.equals(admDAO.hentBrukernavn())
 //				|| PassordHjelp.validerMedSalt(passord, admDAO.hentSalt() , admDAO.hentPassord())) {

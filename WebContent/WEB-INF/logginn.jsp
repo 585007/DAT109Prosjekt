@@ -6,12 +6,12 @@
 <meta charset="ISO-8859-1">
 <!-- Fra https://purecss.io/ -->
 <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
-<title>Logg inn</title>
+<title>Logg inn </title>
 </head>
 <body>
   <h2>Logg inn</h2>
   <p>
-    <font color="red">${loginMessage}</font>
+    <font color="red">${loginMessage} </font>
   </p>
   <form action="logginn" method="post" class="pure-form pure-form-aligned">
     <fieldset>

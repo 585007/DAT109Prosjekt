@@ -8,7 +8,7 @@
 <title>Admin</title>
 </head>
 <body>
-  <h2>Admin</h2>
+  <h2>Admin </h2>
 
   <form action="leggTil" method="get" class="pure-form pure-form-aligned">
     <fieldset>

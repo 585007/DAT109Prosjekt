@@ -30,7 +30,7 @@ input {
 <title>Kvittering</title>
 </head>
 <body>
-  <h1>${prosjektNavn}</h1>
+  <h1>${prosjektNavn} </h1>
 
   <form action="kvittering" method="post">
     <div id=id>

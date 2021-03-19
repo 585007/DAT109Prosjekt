@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import DAO.ProsjektDAO;
 import DAO.StemmeDAO;
 import entiteter.Prosjekt;
-import hjelpeKlasser.StemmeHjelp;
 
 /**
  * Servlet implementation class SletteServlet

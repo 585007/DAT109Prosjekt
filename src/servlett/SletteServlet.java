@@ -1,29 +1,31 @@
 package servlett;
 
 import java.io.IOException;
+
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import DAO.ProsjektDAO;
 import DAO.StemmeDAO;
+import entiteter.Prosjekt;
 import hjelpeKlasser.StemmeHjelp;
 
 /**
  * Servlet implementation class SletteServlet
  */
 
-@EJB
-StemmeDAO stemmeDAO;
-@EJB
-StandDAO standDAO;
-@EJB
-TilskuerDAO tilskuerDAO;
-Expo expo;
+
 
 @WebServlet("/SletteServlet")
 public class SletteServlet extends HttpServlet {
+	@EJB
+	StemmeDAO stemmeDAO;
+	@EJB
+	ProsjektDAO prosjektDAO;
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -41,7 +43,7 @@ public class SletteServlet extends HttpServlet {
 
 		String standId = request.getParameter("stemmeGitt");
 		if(standId != null) {
-			Stand stand = standDAO.findStand(standId);
+			Prosjekt stand = prosjektDAO.hentProsjekt(Integer.parseInt(standId));
 			
 			request.setAttribute("stand", stand);
 			request.getRequestDispatcher("WEB-INF/FerdigSlettet.jsp").forward(request, response);
@@ -56,17 +58,17 @@ public class SletteServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		Expo expo = (Expo) request.getServletContext().getAttribute("expo");
+		//Expo expo = (Expo) request.getServletContext().getAttribute("expo");
 		String standId = request.getParameter("standId");
 		
 		
 		if(standId != null) {
 			
-			Stand stand = standDAO.findStand(standId);
+			Prosjekt stand = prosjektDAO.hentProsjekt(Integer.parseInt(standId));
 			
 			if(stand != null) {
-				String redirect = StemmeHjelp.slettVote(standId, request, stand, stemmeDAO, expo);
-				response.sendRedirect(redirect);
+				//String redirect = StemmeHjelp.slettVote(standId, request, stand, stemmeDAO);
+				response.sendRedirect("SletteServlet");
 			} else {
 				
 				request.setAttribute("errorMessage", "Denne standen finnes ikke!");

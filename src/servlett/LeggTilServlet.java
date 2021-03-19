@@ -1,6 +1,8 @@
 package servlett;
 
 import java.io.IOException;
+
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,6 +17,9 @@ import entiteter.Prosjekt;
  */
 @WebServlet("/LeggTilProsjekt")
 public class LeggTilServlet extends HttpServlet {
+	@EJB
+	ProsjektDAO prosjektDAO;
+	
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -44,7 +49,7 @@ public class LeggTilServlet extends HttpServlet {
 		
 		String navn = request.getParameter("navn");
 		Prosjekt p = new Prosjekt(nr, navn);
-		ProsjektDAO.lagreNyttProsjekt(p);
+		prosjektDAO.lagreNyttProsjekt(p);
 		
 		response.sendRedirect("WEB-INF/LeggTilKvittering.jsp");
 	}

@@ -4,7 +4,6 @@
     <list default="true" id="48dba4f4-74a7-4d39-b8ab-e4a6575392b1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/hjelpeKlasser/PoengHjelp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/hjelpeKlasser/PoengHjelp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hjelpeKlasser/PoengHjelpTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +38,7 @@
       <option name="presentableId" value="Default" />
       <updated>1616085881317</updated>
       <workItem from="1616085883860" duration="61000" />
-      <workItem from="1616244790007" duration="413000" />
+      <workItem from="1616244790007" duration="482000" />
     </task>
     <servers />
   </component>

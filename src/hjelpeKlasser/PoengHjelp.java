@@ -11,6 +11,10 @@ import java.util.List;
  */
 public class PoengHjelp {
 
+	/***
+	 * @param stemmer
+	 * @return Sum av poeng
+	 */
 	public int tellPoengTilProsjekt(List<Stemme> stemmer) {
 		int poeng = 0;
 

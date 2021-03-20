@@ -12,7 +12,7 @@ import javax.persistence.PersistenceContext;
 import entiteter.Prosjekt;
 
 /**
- * @author Håkon Herrevold/ Svein Ove Surdal
+ * @author Håkon Herrevold
  *
  */
 @Stateless

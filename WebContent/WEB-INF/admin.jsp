@@ -10,11 +10,11 @@
 <body>
   <h2>Admin </h2>
 
-  <form action="leggTil" method="get" class="pure-form pure-form-aligned">
+  <form action="LeggTilProsjekt" method="get" class="pure-form pure-form-aligned">
     <fieldset>
       <div class="pure-control-group">
         <p>
-          <button type="submit" name="leggTil" class="pure-button pure-button-primary">Legg til et prosjekt</button>
+          <button type="submit" name="LeggTilProsjekt" class="pure-button pure-button-primary">Legg til et prosjekt</button>
         </p>
       </div>
     </fieldset>

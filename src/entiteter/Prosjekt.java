@@ -28,9 +28,8 @@ public class Prosjekt {
 	public Prosjekt() {
 	}
 
-	public Prosjekt(int prosjektNr, String prosjektNavn) {
+	public Prosjekt(String prosjektNavn) {
 		super();
-		this.prosjektNr = prosjektNr;
 		this.prosjektNavn = prosjektNavn;
 		adresse = "http://localhost:8041/dat109-prosjekt-gr5/ProsjektListe/"+prosjektNr;
 		this.stemmer = new Stemmer();

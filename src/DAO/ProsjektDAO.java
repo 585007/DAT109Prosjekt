@@ -5,24 +5,24 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 
 import entiteter.Prosjekt;
 
 /**
- * @author Håkon Herrevold
+ * @author Håkon Herrevold/ Svein Ove Surdal
  *
  */
 @Stateless
 public class ProsjektDAO {
 
-	
-	
-	@PersistenceContext(name = "ProsjektDAO")
+	@PersistenceContext(name = "dat109prosjekt")
 	private EntityManager em;
 	
 	public List<Prosjekt> hentAlleProsjekter() {
-		return em.createQuery("SELECT p from Prosjekt p", Prosjekt.class).getResultList();
+		return em.createQuery("SELECT p FROM Prosjekt p", Prosjekt.class).getResultList();
 	}
 	
 	public Prosjekt hentProsjekt(int prosjektID) {

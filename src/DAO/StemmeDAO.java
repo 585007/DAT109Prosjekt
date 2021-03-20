@@ -8,13 +8,13 @@ import javax.persistence.PersistenceContext;
 
 import entiteter.Stemme;
 /**
- * @author Håkon Herrevold
+ * @author Håkon Herrevold/ Svein Ove Surdal
  *
  */
 @Stateless
 public class StemmeDAO {
 
-	@PersistenceContext(name = "StemmeDAO")
+	@PersistenceContext(name = "dat109prosjekt")
 	private EntityManager em;
 
 	public List<Stemme> hentAlleStemmer() {

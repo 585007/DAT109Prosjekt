@@ -3,14 +3,16 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
 	version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
-	<persistence-unit name="brukerPU"
-		transaction-type="JTA">
+	<persistence-unit name="dat109prosjekt" transaction-type="RESOURCE_LOCAL">
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-		<jta-data-source>DAT108LocalDS</jta-data-source>
-		<class>no.hvl.dat108.Bruker</class>
-		<class>no.hvl.dat108.Passord</class>
+		<class>entiteter.Prosjekt</class>
+		<class>entiteter.Stemme</class>
 		<properties>
 			<property name="eclipselink.weaving" value="false" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://data1.hib.no:5434/h116914?currentSchema=dat109prosjekt"/>
+			<property name="javax.persistence.jdbc.user" value="h116914"/>
+			<property name="javax.persistence.jdbc.password" value="pass"/>
+			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
 		</properties>
 	</persistence-unit>
 </persistence>

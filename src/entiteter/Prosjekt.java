@@ -15,7 +15,7 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table(schema = "public", name = "prosjekt")
+@Table(name = "prosjekt")
 public class Prosjekt {
 
 	// dette er bare middlertidig, endres om det trengs flere attributter

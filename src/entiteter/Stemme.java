@@ -12,7 +12,7 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table(schema = "dat109prosjekt", name = "stemme")
+@Table(name = "stemme")
 public class Stemme {
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)

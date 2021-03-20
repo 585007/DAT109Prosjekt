@@ -44,7 +44,7 @@ public class LeggTilServlet extends HttpServlet {
 		if (sesjon == null) {
 			response.sendRedirect("logginn");
 		}
-		
+		prosjektDAO = new ProsjektDAO();
 		String navn = request.getParameter("navn");
 		Prosjekt p = new Prosjekt(navn);
 		prosjektDAO.lagreNyttProsjekt(p);

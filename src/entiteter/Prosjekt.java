@@ -3,6 +3,7 @@ package entiteter;
 import java.awt.List;
 import java.util.HashMap;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,7 +15,7 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table(schema = "dat109prosjekt", name = "prosjekt")
+@Table(schema = "public", name = "prosjekt")
 public class Prosjekt {
 
 	// dette er bare middlertidig, endres om det trengs flere attributter
@@ -23,17 +24,16 @@ public class Prosjekt {
 	int prosjektNr;
 	String prosjektNavn;
 	String adresse;
-	Stemmer stemmer;
+
 	
 	public Prosjekt() {
 	}
 
 	public Prosjekt(String prosjektNavn) {
-		super();
+		synchronized(this) {
 		this.prosjektNavn = prosjektNavn;
 		adresse = "http://localhost:8041/dat109-prosjekt-gr5/ProsjektListe/"+prosjektNr;
-		this.stemmer = new Stemmer();
-		
+		}
 	}
 
 	public int getProsjektNr() {
@@ -50,14 +50,6 @@ public class Prosjekt {
 
 	public void setProsjektNavn(String prosjektNavn) {
 		this.prosjektNavn = prosjektNavn;
-	}
-
-	public Stemmer getStemmer() {
-		return stemmer;
-	}
-
-	public void setStemmer(Stemmer stemmer) {
-		this.stemmer = stemmer;
 	}
 
 

@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
 
 import entiteter.Prosjekt;
 
@@ -18,9 +19,10 @@ import entiteter.Prosjekt;
 @Stateless
 public class ProsjektDAO {
 
+	
 	@PersistenceContext(name = "dat109prosjekt")
 	private EntityManager em;
-	
+
 	public List<Prosjekt> hentAlleProsjekter() {
 		return em.createQuery("SELECT p FROM Prosjekt p", Prosjekt.class).getResultList();
 	}
@@ -30,7 +32,7 @@ public class ProsjektDAO {
     }
 
     public synchronized void lagreNyttProsjekt(Prosjekt nyttprosjekt) {
-        em.persist(nyttprosjekt);
+		em.persist(nyttprosjekt);
     }
 
 }

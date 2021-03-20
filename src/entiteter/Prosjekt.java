@@ -21,8 +21,8 @@ public class Prosjekt {
 	// dette er bare middlertidig, endres om det trengs flere attributter
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	int prosjektNr;
-	String prosjektNavn;
+	int prosjektnr;
+	String prosjektnavn;
 	String adresse;
 
 	
@@ -31,25 +31,25 @@ public class Prosjekt {
 
 	public Prosjekt(String prosjektNavn) {
 		synchronized(this) {
-		this.prosjektNavn = prosjektNavn;
-		adresse = "http://localhost:8041/dat109-prosjekt-gr5/ProsjektListe/"+prosjektNr;
+		this.prosjektnavn = prosjektNavn;
+		adresse = "http://localhost:8041/dat109-prosjekt-gr5/ProsjektListe/"+prosjektnr;
 		}
 	}
 
 	public int getProsjektNr() {
-		return prosjektNr;
+		return prosjektnr;
 	}
 
 	public void setProsjektNr(int prosjektNr) {
-		this.prosjektNr = prosjektNr;
+		this.prosjektnr = prosjektNr;
 	}
 
 	public String getProsjektNavn() {
-		return prosjektNavn;
+		return prosjektnavn;
 	}
 
 	public void setProsjektNavn(String prosjektNavn) {
-		this.prosjektNavn = prosjektNavn;
+		this.prosjektnavn = prosjektNavn;
 	}
 
 

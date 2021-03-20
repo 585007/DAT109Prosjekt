@@ -1,34 +1,25 @@
 package hjelpeKlasser;
 
-import java.util.HashMap;
-import java.util.Map;
+import entiteter.Stemme;
+
+import java.util.List;
+
 
 /**
- * @author Håkon Herrevold
+ * @author Hï¿½kon Herrevold
  *
  */
 public class PoengHjelp {
 
-	
-	
-	
-	
-	// Denne klassen er utdatert siden vi byttet vekk fra hashmap.
-	
-	
-	
-	
-	/**
-	 * @param map
-	 * @return TotalPoeng
+	/***
+	 * @param stemmer
+	 * @return Sum av poeng
 	 */
-	public float tellPoengTilProsjekt(HashMap map) {
-		float poeng = 0;
+	public int tellPoengTilProsjekt(List<Stemme> stemmer) {
+		int poeng = 0;
 
-		HashMap<String, Float> hashmap = map;
-
-		for (float p : hashmap.values()) {
-			poeng += p;
+		for (Stemme s : stemmer){
+			poeng += s.getRating();
 		}
 		return poeng;
 	}

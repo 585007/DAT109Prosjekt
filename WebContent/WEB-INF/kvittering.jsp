@@ -1,5 +1,6 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 
 
 
@@ -31,15 +32,16 @@ input {
 <title>Kvittering</title>
 </head>
 <body>
-  <h1>${prosjekter.getProsjektNavn()} </h1>
+	<h1>${prosjekter.getProsjektNavn()}</h1>
 
-  <form action="kvittering" method="post">
-    <div id=id>
-      <h2>http://localhost:8080/dat109-prosjekt-gr5/StemmeServlet?prosjektId=${prosjekter.getProsjektNr()}</h2>
-      <canvas id="qr-code"></canvas>
+	<form action="kvittering" method="post">
+		<div id=id>
+			<h2>http://localhost:8080/dat109-prosjekt-gr5/StemmeServlet?prosjektId=${prosjekter.getProsjektNr()}</h2>
+			<canvas id="qr-code"></canvas>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
-        <script>
+			<script
+				src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+			<script>
 			var qr;
 			(function() {
 				qr = new QRious(
@@ -50,10 +52,12 @@ input {
 					});
 				})();
 		</script>
-      <p>
-        <button type="submit" name="button" value="Ferdig">Ferdig</button>
-      </p>
-    </div>
-  </form>
+			<div class="pure-control-group">
+				<p>
+					<button type="submit" name="Ferdig"
+						class="pure-button pure-button-primary">Ferdig</button>
+				</p>
+			</div>
+	</form>
 </body>
 </html>

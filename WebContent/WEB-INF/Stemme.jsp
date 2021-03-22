@@ -4,11 +4,18 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Vurder Prosjekt</title>
+<title>Vurder Prosjekt ${prosjektNavn}</title>
 </head>
 <body>
+<<<<<<< HEAD
+    <h1>${prosjektNavn}</h1>
+<form action="StemmeServlet" method="POST">
+     <input type="hidden" name="prosjektNavn" value=${prosjektNavn}>
+     <input type="hidden" name="prosjektId" value=${prosjektId}>
+=======
     <h1>(her skal prosjektet info være) </h1>
 <form action="AlternativStemmeServlet" method="POST">
+>>>>>>> branch 'main' of https://github.com/585007/DAT109Prosjekt.git
 
 <div class="pure-control-group">
     <label for="mobil">Telefonnummer:</label> <input type="text" name="tlf" />

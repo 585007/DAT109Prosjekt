@@ -34,7 +34,12 @@ public class PoengHjelp {
 		
 		int poeng = tellPoengTilProsjekt(stemmer);
 		
-		return (double) (poeng/antallStemmer);
+		double score = 0;
+		if(antallStemmer != 0) {
+			score = (double) (poeng/antallStemmer);
+		}
+		
+		return score;
 	}
 
 }

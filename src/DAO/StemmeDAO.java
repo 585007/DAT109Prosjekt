@@ -1,5 +1,6 @@
 package DAO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -8,7 +9,7 @@ import javax.persistence.PersistenceContext;
 
 import entiteter.Stemme;
 /**
- * @author Håkon Herrevold/ Svein Ove Surdal
+ * @author Håkon Herrevold/ Svein Ove Surdal / Ruben Aadland
  *
  */
 @Stateless
@@ -18,7 +19,13 @@ public class StemmeDAO {
 	private EntityManager em;
 
 	public List<Stemme> hentAlleStemmer() {
-		return em.createQuery("SELECT v from Stemme v", Stemme.class).getResultList();
+		List<Stemme> stemmer =  em.createQuery("SELECT v from Stemme v", Stemme.class).getResultList();
+		
+		if(stemmer == null) {
+			stemmer = new ArrayList<Stemme>();
+		}
+		
+		return stemmer;
 	}
 	
 	public Stemme hentStemme(int mobil) {

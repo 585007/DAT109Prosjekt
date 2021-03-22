@@ -58,7 +58,8 @@ public class StemmeServlet extends HttpServlet {
 		if (prosjektId != null) {
 			Stemme stemme = new Stemme(prosjektId,tlf, rating );
 			stemmeDAO.lagreNyStemme(stemme);
-			response.sendRedirect("kvittering");}
+			response.sendRedirect("kvittering");
+			}
 //		 else {
 //			request.setAttribute("errorMessage", "Denne standen finnes ikke!");
 //			request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);

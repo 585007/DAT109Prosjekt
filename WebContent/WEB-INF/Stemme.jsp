@@ -13,28 +13,28 @@
      <input type="hidden" name="prosjektId" value=${prosjektId}>
 
 <div class="pure-control-group">
-    <label for="mobil">Telefonnummer:</label> <input type="text" name="tlf" />
+    <label for="mobil">Telefonnummer:</label> <input type="text" name="tlf" required/>
   </div>
 
   <p>Hvor bra fra 0-5 er prosjektet (5 best, 0 verst)</p>
 <div>
 
-    <input type="radio" id="0" name="rating" value="0">
+    <input type="radio" id="0" name="rating" value="0" required>
     <label for="0">0</label><br>
 
-    <input type="radio" id="1" name="rating" value="1">
+    <input type="radio" id="1" name="rating" value="1" required>
     <label for="1">1</label><br>
 
-    <input type="radio" id="2" name="rating" value="2">
+    <input type="radio" id="2" name="rating" value="2" required>
     <label for="2">2</label><br>
 
-    <input type="radio" id="3" name="rating" value="3">
+    <input type="radio" id="3" name="rating" value="3" required>
     <label for="3">3</label><br>
 
-    <input type="radio" id="4" name="rating" value="4">
+    <input type="radio" id="4" name="rating" value="4" required>
     <label for="4">4</label><br>
 
-    <input type="radio" id="5" name="rating" value="5">
+    <input type="radio" id="5" name="rating" value="5" required>
     <label for="5">5</label><br>
 
     <div class="pure-controls">

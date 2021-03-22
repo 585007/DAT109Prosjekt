@@ -12,10 +12,11 @@ import javax.servlet.http.HttpSession;
 
 import DAO.ProsjektDAO;
 import entiteter.Prosjekt;
+import hjelpeKlasser.GyldigSesjon;
 
 /**
  * 
- * @author ??? / Svein Ove Surdal / Håkon Herrevold
+ * @author ??? / Svein Ove Surdal / Håkon Herrevold / Ruben Aadland
  *
  */
 
@@ -23,37 +24,44 @@ import entiteter.Prosjekt;
 public class LeggTilServlet extends HttpServlet {
 
 	@EJB
-	ProsjektDAO prosjektDAO = new ProsjektDAO();
+	ProsjektDAO prosjektDAO;
 
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 //		int prosjektNr = prosjektDAO.hentAlleProsjekter().size() +1;
 //		request.setAttribute("loginMessage", loginMessage);
-		request.getRequestDispatcher("WEB-INF/LeggTilProsjekt.jsp").forward(request, response);
+		
+		HttpSession sesjon = request.getSession(false);
+		
+		if(GyldigSesjon.innlogget(sesjon)) {
+			request.getRequestDispatcher("WEB-INF/LeggTilProsjekt.jsp").forward(request, response);
+		}else {
+			response.sendRedirect("logginn");
+		}
+		
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 //		String prosjektNr = request.getParameter("prosjektnr");
 //		int nr = Integer.parseInt(prosjektNr);
 
 		HttpSession sesjon = request.getSession(false);
 
-		if (sesjon == null) {
+		if(GyldigSesjon.innlogget(sesjon)) {
+			String navn = request.getParameter("navn");
+			Prosjekt p = new Prosjekt(navn);
+	
+			prosjektDAO.lagreNyttProsjekt(p);
+	
+			sesjon.setAttribute("prosjekter", p);
+			response.sendRedirect("kvittering");
+		}else {
 			response.sendRedirect("logginn");
 		}
-
-		String navn = request.getParameter("navn");
-		Prosjekt p = new Prosjekt(navn);
-
-		prosjektDAO.lagreNyttProsjekt(p);
-
-		sesjon.setAttribute("prosjekter", p);
-		response.sendRedirect("WEB-INF/kvittering.jsp");
 	}
 
 }

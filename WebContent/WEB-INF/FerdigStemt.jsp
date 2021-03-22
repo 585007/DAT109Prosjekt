@@ -9,7 +9,7 @@
 </head>
 <body>
 <p>
-Takk for din stemme på ${stand.standName}!
+Takk for din stemme på ${prosjektNavn}!
 </p>
 </body>
 </html>

@@ -21,7 +21,7 @@
       <div class="pure-control-group">
         <label for="passord">Passord:</label> <input type="password" name="passord" />
       </div>
-      <div class="pure-controls">
+      <div class="pure-controls-group">
         <button type="submit" class="pure-button pure-button-primary">Logg inn</button>
       </div>
     </fieldset>

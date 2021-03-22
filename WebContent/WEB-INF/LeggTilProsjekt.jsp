@@ -7,12 +7,11 @@
 <title>admin legg til prosjekt</title>
 </head>
 <body>
-	<form action="LeggTilProsjekt" method="post"
-		class="pure-form pure-form-aligned">
+	<form action="LeggTilProsjekt" method="post" class="pure-form pure-form-aligned">
 		<div class="pure-control-group">
 			<label>Navn:</label> <input type="text" name="navn" />
 		</div>
-		<div class="pure-controls">
+		<div class="pure-control-group">
         <button type="submit" class="pure-button pure-button-primary">Legg til</button>
       </div>
 	</form>

@@ -50,7 +50,6 @@ input {
 					});
 				})();
 		</script>
- 
       <p>
         <button type="submit" name="button" value="Ferdig">Ferdig</button>
       </p>

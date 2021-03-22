@@ -13,7 +13,7 @@ import javax.persistence.PersistenceContextType;
 import entiteter.Prosjekt;
 
 /**
- * @author Håkon Herrevold
+ * @author Håkon Herrevold / Ruben Aadland
  *
  */
 @Stateless
@@ -27,12 +27,17 @@ public class ProsjektDAO {
 		return em.createQuery("SELECT p FROM Prosjekt p", Prosjekt.class).getResultList();
 	}
 	
-	public Prosjekt hentProsjekt(int prosjektID) {
-        return em.find(Prosjekt.class, prosjektID);
+	public Prosjekt hentProsjekt(int prosjektNr) {
+        return em.find(Prosjekt.class, prosjektNr);
     }
 
     public synchronized void lagreNyttProsjekt(Prosjekt nyttprosjekt) {
 		em.persist(nyttprosjekt);
+    }
+    
+    public void slettProsjekt(String prosjektNr) {
+    	Prosjekt prosjekt = hentProsjekt(Integer.parseInt(prosjektNr));
+    	em.remove(prosjekt);
     }
 
 }

@@ -19,8 +19,8 @@ public class KvitteringServlet extends HttpServlet {
 //		if (sesjon == null) {
 //			response.sendRedirect("logginn");
 //		}
-//		String prosjektNavn = request.getParameter("prosjektNavn");
-//		request.setAttribute("prosjektNavn", prosjektNavn);
+		String prosjektNavn = request.getParameter("prosjektNavn");
+		request.setAttribute("prosjektNavn", prosjektNavn);
 		request.getRequestDispatcher("WEB-INF/kvittering.jsp").forward(request, response);
 	}
 

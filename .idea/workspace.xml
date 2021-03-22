@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="48dba4f4-74a7-4d39-b8ab-e4a6575392b1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hjelpeKlasser/PoengHjelp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/hjelpeKlasser/PoengHjelp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/META-INF/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/servlett/LeggTilServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servlett/LeggTilServlet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +39,7 @@
       <updated>1616085881317</updated>
       <workItem from="1616085883860" duration="61000" />
       <workItem from="1616244790007" duration="482000" />
+      <workItem from="1616419406992" duration="25000" />
     </task>
     <servers />
   </component>
@@ -55,5 +56,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

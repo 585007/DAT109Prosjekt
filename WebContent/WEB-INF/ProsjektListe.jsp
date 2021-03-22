@@ -18,11 +18,11 @@
 		<th>Antall stemmer</th>
 		<th>Score</th>
 	</tr>
-	<c:forEach var="prosjekt" items="prosjekter">
+	<c:forEach var="prosjekt" items="${prosjekter}">
 		<tr>
 			<td> <c:out value="${prosjekt.prosjektNavn}"/> </td>
-			<td> <c:out value="${prosjekt.stemmer.antall}"/> </td>
-			<td> <c:out value="${prosjekt.stemmer.score}"/> </td>
+
+
 			<td> <form>
 				<input type="hidden" value="${prosjekt.prosjektNavn}">
 				<input type="submit"value="utskriftside">

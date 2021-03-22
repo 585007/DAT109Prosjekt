@@ -15,12 +15,11 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table(name = "prosjekt")
+@Table(name = "prosjekt", schema="dat109")
 public class Prosjekt {
 
-	// dette er bare middlertidig, endres om det trengs flere attributter
-	
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id 
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int prosjektnr;
 	String prosjektnavn;
 	String adresse;
@@ -51,7 +50,4 @@ public class Prosjekt {
 	public void setProsjektNavn(String prosjektNavn) {
 		this.prosjektnavn = prosjektNavn;
 	}
-
-
-
 }

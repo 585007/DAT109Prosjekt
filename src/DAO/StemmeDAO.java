@@ -24,7 +24,11 @@ public class StemmeDAO {
 	public Stemme hentStemme(int mobil) {
         return em.find(Stemme.class, mobil);
     }
-
+	public synchronized int sjekkeOmStemmeFinnes(int tlf, int prosjektnr) {
+		int stemmeID;
+		stemmeID = em.createQuery("Select b.stemmeid FROM Stemme b WHERE b.tlf =" + tlf + "AND b.prosjektnr ="+ prosjektnr, Stemme.class).getFirstResult();
+		return stemmeID;
+	}
     public synchronized void lagreNyStemme(Stemme nystemme) {
         em.persist(nystemme);
     }

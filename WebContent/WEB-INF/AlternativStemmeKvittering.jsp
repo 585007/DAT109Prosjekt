@@ -3,10 +3,19 @@
 <!DOCTYPE html>
 <html>
 <head>
+<<<<<<< HEAD
 <style>
 body {
 	padding: 20px;
 }
+=======
+<meta charset="ISO-8859-1">
+<title>Takk for stemmen!</title>
+
+<h1>Her skal det komme opp rating, og ka du ratet</h1>
+</head>
+<body>
+>>>>>>> branch 'main' of https://github.com/585007/DAT109Prosjekt.git
 
 input {
 	padding: 5px;

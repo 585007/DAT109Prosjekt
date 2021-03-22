@@ -12,6 +12,9 @@
 		<div class="pure-control-group">
 			<label>Navn:</label> <input type="text" name="navn" />
 		</div>
+		<div class="pure-controls">
+        <button type="submit" class="pure-button pure-button-primary">Legg til</button>
+      </div>
 	</form>
 </body>
 </html>

@@ -13,7 +13,6 @@ import DAO.ProsjektDAO;
 import DAO.StemmeDAO;
 import entiteter.Prosjekt;
 import entiteter.Stemme;
-import hjelpeKlasser.StemmeHjelp;
 
 @WebServlet("/StemmeServlet")
 public class StemmeServlet extends HttpServlet {

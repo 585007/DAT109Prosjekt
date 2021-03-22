@@ -28,7 +28,7 @@
       </div>
     </fieldset>
   </form>
-  <form action="slett" method="get" class="pure-form pure-form-aligned">
+  <form action="slettProsjekt" method="get" class="pure-form pure-form-aligned">
     <fieldset>
       <div class="pure-control-group">
         <p>

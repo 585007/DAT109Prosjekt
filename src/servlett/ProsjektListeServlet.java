@@ -27,10 +27,8 @@ public class ProsjektListeServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession sesjon = request.getSession(false);
 		
-		System.out.println(proDAO.hentProsjekt(101));
-		
-		if(true){  //GyldigSesjon.innlogget(sesjon)) {
-			//sesjon.setAttribute("prosjekter", proDAO.hentAlleProsjekter());
+		if(GyldigSesjon.innlogget(sesjon)) {
+			sesjon.setAttribute("prosjekter", proDAO.hentAlleProsjekter());
 			request.getRequestDispatcher("WEB-INF/ProsjektListe.jsp").forward(request, response);
 		}else {
 			response.sendRedirect("logginn");

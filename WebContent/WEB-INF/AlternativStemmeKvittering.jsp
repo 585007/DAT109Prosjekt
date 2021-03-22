@@ -6,7 +6,7 @@
 <meta charset="ISO-8859-1">
 <title>Takk for stemmen!</title>
 
-<h1>Du ga ${prosjekt.navn} vurderingen ${stemme.rating}</h1>
+<h1>Her skal det komme opp rating, og ka du ratet</h1>
 </head>
 <body>
 

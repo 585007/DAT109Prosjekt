@@ -27,12 +27,10 @@ public class LogginnServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@EJB
-	StemmeDAO stemmeDAO = new StemmeDAO(); // tester ut stemme DB
 	// AdmDAO admDAO;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		stemmeDAO.hentAlleStemmer(); // tester ut stemme DB
 		request.getRequestDispatcher("WEB-INF/logginn.jsp").forward(request, response);
 	}
 

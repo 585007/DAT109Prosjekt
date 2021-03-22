@@ -4,7 +4,9 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here </title>
+<title>Takk for stemmen!</title>
+
+<h1>Du ga ${prosjekt.navn} vurderingen ${stemme.rating}</h1>
 </head>
 <body>
 

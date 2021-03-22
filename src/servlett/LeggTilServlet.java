@@ -15,14 +15,15 @@ import entiteter.Prosjekt;
 
  /**
   * 
-  * @author ??? / Svein Ove Surdal
+  * @author ??? / Svein Ove Surdal / Håkon Herrevold
   *
   */
 
 @WebServlet(name = "LeggTilProsjekt", urlPatterns = "/LeggTilProsjekt")
 public class LeggTilServlet extends HttpServlet {
+	
 	@EJB
-	ProsjektDAO prosjektDAO;
+	ProsjektDAO prosjektDAO = new ProsjektDAO();
 	
 	private static final long serialVersionUID = 1L;
        
@@ -41,10 +42,11 @@ public class LeggTilServlet extends HttpServlet {
 //		int nr = Integer.parseInt(prosjektNr);
 		
 		HttpSession sesjon = request.getSession(false);
+		
 		if (sesjon == null) {
 			response.sendRedirect("logginn");
 		}
-		prosjektDAO = new ProsjektDAO();
+		
 		String navn = request.getParameter("navn");
 		Prosjekt p = new Prosjekt(navn);
 		prosjektDAO.lagreNyttProsjekt(p);

@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>(her skal prosjektet info være) </h1>
-<form action="StemmeServlet" method="POST">
+<form action="AlternativStemmeServlet" method="POST">
 
 <div class="pure-control-group">
     <label for="mobil">Telefonnummer:</label> <input type="text" name="tlf" />

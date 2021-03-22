@@ -58,11 +58,7 @@ public class StemmeServlet extends HttpServlet {
 		if (prosjektId != null) {
 			Stemme stemme = new Stemme(prosjektId,tlf, rating);
 			stemmeDAO.lagreNyStemme(stemme);
-<<<<<<< HEAD
 			response.sendRedirect("kvittering?prosjektNavn="+prosjektNavn);
-=======
-			response.sendRedirect("kvittering");
->>>>>>> branch 'main' of https://github.com/585007/DAT109Prosjekt.git
 			}
 //		 else {
 //			request.setAttribute("errorMessage", "Denne standen finnes ikke!");

@@ -42,27 +42,38 @@ public class AlternativStemmeServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String mobilNrStr = request.getParameter("tlf");
-		int mobilNr = Integer.parseInt(mobilNrStr);
-		String ratingVerdiStr = request.getParameter("rating");
-		int ratingVerdi = Integer.parseInt(ratingVerdiStr);
-		String prosjektIDStr = request.getParameter("prosjektID"); // denne skal komme fra en hidden i jsp formen
-		int prosjektID = Integer.parseInt(prosjektIDStr);
-
-		Prosjekt pros = proDAO.hentProsjekt(prosjektID);
-
-		// Om det skulle skje et problem og prosjektID ikke er valid
-		if (pros == null) {
-			request.getSession().setAttribute("feil", "Prosjektet du prøver stemme på eksisterer ikke.");
-		}
-
-		Stemme nyStemme = new Stemme(mobilNr, ratingVerdi, prosjektID);
-
-		// steDAO.fjern(mobilNr); fjerner om det allerede eksisterer stemme fra det nr
-		// Nyeste teller.
-		steDAO.lagreNyStemme(nyStemme);
+//		String mobilNrStr = request.getParameter("tlf");
+//		int mobilNr = Integer.parseInt(mobilNrStr);
+//		String ratingVerdiStr = request.getParameter("rating");
+//		int ratingVerdi = Integer.parseInt(ratingVerdiStr);
+//		String prosjektIDStr = request.getParameter("prosjektID"); // denne skal komme fra en hidden i jsp formen
+//		int prosjektID = Integer.parseInt(prosjektIDStr);
+//
+//		Prosjekt pros = proDAO.hentProsjekt(prosjektID);
+//
+//		// Om det skulle skje et problem og prosjektID ikke er valid
+//		if (pros == null) {
+//			request.getSession().setAttribute("feil", "Prosjektet du prøver stemme på eksisterer ikke.");
+//		}
+//
+//		Stemme nyStemme = new Stemme(mobilNr, ratingVerdi, prosjektID);
+//
+//		// steDAO.fjern(mobilNr); fjerner om det allerede eksisterer stemme fra det nr
+//		// Nyeste teller.
+//		steDAO.lagreNyStemme(nyStemme);
+		
+		tester();
 
 		response.sendRedirect("AlternativStemmeServlet");
+	}
+	
+	void tester() {
+		// tester lagring
+		Stemme nyStemme = new Stemme(47348606, 5, 1);
+		steDAO.lagreNyStemme(nyStemme);
+		// tester henting
+		System.out.println(steDAO.hentStemme(47348606).getRating());
+		
 	}
 
 }

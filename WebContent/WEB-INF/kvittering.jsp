@@ -31,7 +31,30 @@ input {
 <title>Kvittering</title>
 </head>
 <body>
-  <h1>${prosjektNavn} </h1>
-<p>takk for din stemme på ${prosjektNavn}</p>
+  <h1>${prosjekter.getProsjektNavn()} </h1>
+
+  <form action="kvittering" method="post">
+    <div id=id>
+      <h2>www.${prosjekter.getProsjektNr()}.no</h2>
+      <canvas id="qr-code"></canvas>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+        <script>
+			var qr;
+			(function() {
+				qr = new QRious(
+					{
+					element : document.getElementById('qr-code'),
+					size : 200,
+					value : 'https://www.${prosjekter.getProsjektNr()}.no' <!-- må fikses til aktuell side -->
+					});
+				})();
+		</script>
+
+      <p>
+        <button type="submit" name="button" value="Ferdig">Ferdig</button>
+      </p>
+    </div>
+  </form>
 </body>
 </html>

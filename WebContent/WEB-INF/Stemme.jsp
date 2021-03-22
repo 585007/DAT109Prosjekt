@@ -13,7 +13,7 @@
      <input type="hidden" name="prosjektId" value=${prosjektId}>
 
 <div class="pure-control-group">
-    <label for="mobil">Telefonnummer:</label> <input type="text" name="tlf" />
+    <label for="mobil">Telefonnummer:</label> <input type="text" name="tlf" required />
   </div>
 
   <p>Hvor bra fra 0-5 er prosjektet (5 best, 0 verst)</p>

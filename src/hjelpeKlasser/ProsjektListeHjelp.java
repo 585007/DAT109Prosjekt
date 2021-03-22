@@ -3,9 +3,8 @@ package hjelpeKlasser;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.ejb.EJB;
-
 import DAO.ProsjektDAO;
+import DAO.StemmeDAO;
 import entiteter.Prosjekt;
 import entiteter.ProsjektScore;
 
@@ -19,20 +18,23 @@ import entiteter.ProsjektScore;
  */
 public class ProsjektListeHjelp {
 	
-	@EJB
-	private ProsjektDAO prosjektDAO;
-	
 	/**
+	 * @param prosjektDAO prosjektDAO for å hente ut prosjektene
+	 * 
+	 * @param stemmeDAO stemmeDAO for å hente ut stemmene til prosjektene
+	 * 
 	 * @return returnerer en liste med ProsjektScore som har hvert prosjekt
 	 * i DB sitt navn, id, score og antall stemmer
 	 * 
 	 */
-	public List<ProsjektScore> hentProsjektScoreListe(){
+
+	public static List<ProsjektScore> hentProsjektScoreListe(ProsjektDAO prosjektDAO, StemmeDAO stemmeDAO) {
 		List<Prosjekt> prosjekter = prosjektDAO.hentAlleProsjekter();
 		
 		List<ProsjektScore> prosjektScoreListe= new ArrayList<ProsjektScore>();
+		
 		for(Prosjekt p : prosjekter) {
-			prosjektScoreListe.add(new ProsjektScore(p));
+			prosjektScoreListe.add(new ProsjektScore(p, stemmeDAO));
 		}
 		
 		return prosjektScoreListe;

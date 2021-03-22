@@ -2,8 +2,6 @@ package entiteter;
 
 import java.util.List;
 
-import javax.ejb.EJB;
-
 import DAO.StemmeDAO;
 import hjelpeKlasser.PoengHjelp;
 
@@ -18,9 +16,6 @@ import hjelpeKlasser.PoengHjelp;
  */
 public class ProsjektScore {
 	
-	@EJB
-	private StemmeDAO stemmeDAO;
-	
 	private int prosjektNr;
 	private String prosjektNavn;
 	private Integer antallStemmer;
@@ -29,9 +24,10 @@ public class ProsjektScore {
 	
 	/** 
 	 * @param p er prosjektet som en ønsker å regne ut scoren til
+	 * @param stemmeDAO stemmeDAO-en til DB-en der vi skal hente stemmene fra
 	 *
 	 */
-	public ProsjektScore(Prosjekt p) {
+	public ProsjektScore(Prosjekt p, StemmeDAO stemmeDAO) {
 		this.prosjektNr = p.getProsjektNr();
 		this.prosjektNavn = p.getProsjektNavn();
 		
@@ -40,7 +36,7 @@ public class ProsjektScore {
 		this.score = PoengHjelp.regnUtProsjektScore(stemmer);
 	}
 
-	public int prosjektnr() {
+	public int prosjektNr() {
 		return prosjektNr;
 	}
 	
@@ -57,5 +53,13 @@ public class ProsjektScore {
 	public double getScore() {
 		return score;
 	}
+
+	@Override
+	public String toString() {
+		return "ProsjektScore [prosjektNr=" + prosjektNr + ", prosjektNavn=" + prosjektNavn + ", antallStemmer="
+				+ antallStemmer + ", score=" + score + "]";
+	}
+	
+	
 	
 }

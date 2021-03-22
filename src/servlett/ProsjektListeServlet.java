@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import DAO.ProsjektDAO;
 import hjelpeKlasser.GyldigSesjon;
+import hjelpeKlasser.ProsjektListeHjelp;
 
 /**
  * @author Ruben Aadland
@@ -28,7 +29,9 @@ public class ProsjektListeServlet extends HttpServlet {
 		HttpSession sesjon = request.getSession(false);
 		
 		if(GyldigSesjon.innlogget(sesjon)) {
-			sesjon.setAttribute("prosjekter", proDAO.hentAlleProsjekter());
+			ProsjektListeHjelp listeHjelp = new ProsjektListeHjelp();
+			
+			sesjon.setAttribute("prosjekter", listeHjelp.hentProsjektScoreListe());
 			request.getRequestDispatcher("WEB-INF/ProsjektListe.jsp").forward(request, response);
 		}else {
 			response.sendRedirect("logginn");

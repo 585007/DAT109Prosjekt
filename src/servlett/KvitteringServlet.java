@@ -15,10 +15,10 @@ public class KvitteringServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-//		HttpSession sesjon = request.getSession(false);
-//		if (sesjon == null) {
-//			response.sendRedirect("logginn");
-//		}
+		HttpSession sesjon = request.getSession(false);
+		if (sesjon == null) {
+			response.sendRedirect("logginn");
+		}
 		String prosjektNavn = request.getParameter("prosjektNavn");
 		request.setAttribute("prosjektNavn", prosjektNavn);
 		request.getRequestDispatcher("WEB-INF/kvittering.jsp").forward(request, response);

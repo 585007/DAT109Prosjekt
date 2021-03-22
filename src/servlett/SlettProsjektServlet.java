@@ -15,10 +15,6 @@ import DAO.StemmeDAO;
 import hjelpeKlasser.GyldigSesjon;
 
 /**
- * Servlet implementation class SletteServlet
- */
-
-/**
  * 
  * @author ??? / Ruben Aadland
  *	
@@ -30,12 +26,10 @@ import hjelpeKlasser.GyldigSesjon;
 public class SlettProsjektServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	@EJB
-	StemmeDAO stemmeDAO;
-	@EJB
 	ProsjektDAO prosjektDAO;
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * sender til SlettProsjekt.jsp hvis brukeren er logget inn
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession sesjon = request.getSession(false);
@@ -47,9 +41,11 @@ public class SlettProsjektServlet extends HttpServlet {
 		}
 		
 	}
-
+	
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * Sjekker om brukeren er logget inn og om den kommer fra SlettProsjekt.jsp
+	 * 
+	 * Sletter så prosjektet med prosjektNr fra attributten i request
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession sesjon = request.getSession(false);

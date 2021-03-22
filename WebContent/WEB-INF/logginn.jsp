@@ -4,7 +4,6 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<!-- Fra https://purecss.io/ -->
 <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
 <title>Logg inn </title>
 </head>
@@ -21,7 +20,7 @@
       <div class="pure-control-group">
         <label for="passord">Passord:</label> <input type="password" name="passord" />
       </div>
-      <div class="pure-controls">
+      <div class="pure-controls-group">
         <button type="submit" class="pure-button pure-button-primary">Logg inn</button>
       </div>
     </fieldset>

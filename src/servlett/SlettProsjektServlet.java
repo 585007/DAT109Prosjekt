@@ -12,7 +12,6 @@ import javax.servlet.http.HttpSession;
 
 import DAO.ProsjektDAO;
 import DAO.StemmeDAO;
-import entiteter.Prosjekt;
 import hjelpeKlasser.GyldigSesjon;
 
 /**
@@ -60,8 +59,6 @@ public class SlettProsjektServlet extends HttpServlet {
 			
 			if(prosjektNr != null) {
 				prosjektDAO.slettProsjekt(prosjektNr);
-				
-				stemmeDAO.fjernStemmerForProsjekt(prosjektNr);
 				
 				response.sendRedirect("admin");
 			}else {

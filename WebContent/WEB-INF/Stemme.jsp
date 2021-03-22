@@ -13,11 +13,9 @@
      <input type="hidden" name="prosjektId" value=${prosjektId}>
 
 <div class="pure-control-group">
-<<<<<<< HEAD
+
     <label for="mobil">Telefonnummer:</label> <input type="text" name="tlf" required />
-=======
-    <label for="mobil">Telefonnummer:</label> <input type="text" name="tlf" required/>
->>>>>>> branch 'main' of https://github.com/585007/DAT109Prosjekt.git
+
   </div>
 
   <p>Hvor bra fra 0-5 er prosjektet (5 best, 0 verst)</p>

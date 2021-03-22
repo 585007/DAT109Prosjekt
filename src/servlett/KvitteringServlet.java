@@ -26,7 +26,7 @@ public class KvitteringServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String prosjektNavn = request.getParameter("prosjektNavn");
-		response.sendRedirect("kvittering?prosjektNavn="+prosjektNavn);
+		response.sendRedirect("admin");
 	}
 
 }

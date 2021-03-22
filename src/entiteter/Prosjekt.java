@@ -51,7 +51,4 @@ public class Prosjekt {
 	public void setProsjektNavn(String prosjektNavn) {
 		this.prosjektnavn = prosjektNavn;
 	}
-
-
-
 }

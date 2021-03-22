@@ -12,10 +12,11 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table(name = "stemme")
+@Table(name = "stemme", schema="dat109")
 public class Stemme {
 	
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id 
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int stemmeid;
 	int tlf;
 	int rating;

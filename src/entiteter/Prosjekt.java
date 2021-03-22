@@ -15,10 +15,11 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table(name = "prosjekt")
+@Table(name = "prosjekt", schema="dat109")
 public class Prosjekt {
 
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id 
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int prosjektnr;
 	String prosjektnavn;
 	String adresse;

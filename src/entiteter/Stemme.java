@@ -16,20 +16,20 @@ import javax.persistence.Table;
 public class Stemme {
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	int stemmeID;
+	int stemmeid;
 	int tlf;
-	int rating;
-	int prosjektID;
+	int stemme;
+	int prosjektnr;
 	
 	public Stemme() {
 	}
 
 
-	public Stemme(int tlf, int rating, int prosjektID) {
+	public Stemme(int tlf, int stemme, int prosjektID) {
 		super();
 		this.tlf = tlf;
-		this.rating = rating;
-		this.prosjektID = prosjektID;
+		this.stemme = stemme;
+		this.prosjektnr = prosjektID;
 	}
 	
 	
@@ -40,16 +40,16 @@ public class Stemme {
 		this.tlf = tlf;
 	}
 	public int getRating() {
-		return rating;
+		return stemme;
 	}
 	public void setRating(int rating) {
-		this.rating = rating;
+		this.stemme = rating;
 	}
 	public int getProsjektID() {
-		return prosjektID;
+		return prosjektnr;
 	}
 	public void setProsjektID(int prosjektID) {
-		this.prosjektID = prosjektID;
+		this.prosjektnr = prosjektID;
 	}
 	
 	

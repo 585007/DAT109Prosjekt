@@ -18,7 +18,7 @@ public class Stemme {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	int stemmeid;
 	int tlf;
-	int stemme;
+	int rating;
 	int prosjektnr;
 	
 	public Stemme() {
@@ -28,7 +28,7 @@ public class Stemme {
 	public Stemme(int tlf, int stemme, int prosjektID) {
 		super();
 		this.tlf = tlf;
-		this.stemme = stemme;
+		this.rating = stemme;
 		this.prosjektnr = prosjektID;
 	}
 	
@@ -40,10 +40,10 @@ public class Stemme {
 		this.tlf = tlf;
 	}
 	public int getRating() {
-		return stemme;
+		return rating;
 	}
 	public void setRating(int rating) {
-		this.stemme = rating;
+		this.rating = rating;
 	}
 	public int getProsjektID() {
 		return prosjektnr;

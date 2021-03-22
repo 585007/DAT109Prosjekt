@@ -35,7 +35,7 @@ input {
 
   <form action="kvittering" method="post">
     <div id=id>
-      <h2>www.${prosjekter.getProsjektNr()}.no</h2>
+      <h2>http://localhost:8080/dat109-prosjekt-gr5/StemmeServlet?prosjektId=${prosjekter.getProsjektNr()}</h2>
       <canvas id="qr-code"></canvas>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
@@ -46,7 +46,7 @@ input {
 					{
 					element : document.getElementById('qr-code'),
 					size : 200,
-					value : 'https://www.${prosjekter.getProsjektNr()}.no' <!-- må fikses til aktuell side -->
+					value : 'http://localhost:8080/dat109-prosjekt-gr5/StemmeServlet?prosjektId=${prosjekter.getProsjektNr()}' <!-- må fikses til aktuell side -->
 					});
 				})();
 		</script>

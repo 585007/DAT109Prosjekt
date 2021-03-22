@@ -15,18 +15,18 @@ public class KvitteringServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		HttpSession sesjon = request.getSession(false);
-		if (sesjon == null) {
-			response.sendRedirect("logginn");
-		}
-		String prosjektNavn = request.getParameter("prosjektNavn");
-		request.setAttribute("prosjektNavn", prosjektNavn);
+//		HttpSession sesjon = request.getSession(false);
+//		if (sesjon == null) {
+//			response.sendRedirect("logginn");
+//		}
+//		String prosjektNavn = request.getParameter("prosjektNavn");
+//		request.setAttribute("prosjektNavn", prosjektNavn);
 		request.getRequestDispatcher("WEB-INF/kvittering.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		response.sendRedirect("admin");
+		String prosjektNavn = request.getParameter("prosjektNavn");
+		response.sendRedirect("kvittering?prosjektNavn="+prosjektNavn);
 	}
 
 }

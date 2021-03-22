@@ -18,8 +18,6 @@ import javax.persistence.Table;
 @Table(name = "prosjekt")
 public class Prosjekt {
 
-	// dette er bare middlertidig, endres om det trengs flere attributter
-	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	int prosjektnr;
 	String prosjektnavn;

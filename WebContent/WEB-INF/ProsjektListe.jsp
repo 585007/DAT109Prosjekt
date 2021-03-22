@@ -21,10 +21,10 @@
 	<c:forEach var="prosjekt" items="prosjekter">
 		<tr>
 			<td> <c:out value="${prosjekt.prosjektNavn}"/> </td>
-			<td> <c:out value="${prosjekt.stemmer.antall}"/> </td>
-			<td> <c:out value="${prosjekt.stemmer.score}"/> </td>
-			<td> <form>
-				<input type="hidden" value="${prosjekt.prosjektNavn}">
+			<td> <c:out value="${prosjekt.antallStemmer}"/> </td>
+			<td> <c:out value="${prosjekt.score}"/> </td>
+			<td> <form action="kvitering" method="get" >
+				<input type="hidden" value="${prosjekt.prosjektNr}">
 				<input type="submit"value="utskriftside">
 				</form></td>
 		</tr>

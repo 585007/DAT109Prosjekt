@@ -22,7 +22,7 @@ public class ProsjektListeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@EJB
-	ProsjektDAO proDAO;
+	ProsjektDAO proDAO = new ProsjektDAO();
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession sesjon = request.getSession(false);

@@ -8,7 +8,7 @@ import javax.persistence.Table;
 
 /**
  * 
- * @author Svein Ove Surdal
+ * @author Svein Ove Surdal / Håkon Herrevold
  *
  */
 @Entity
@@ -18,19 +18,24 @@ public class Stemme {
 	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int stemmeid;
+	int prosjektnr;
 	int tlf;
 	int rating;
-	int prosjektnr;
+	
+	
+	
 	
 	public Stemme() {
 	}
 
 
-	public Stemme(int tlf, int stemme, int prosjektID) {
+	public Stemme(int prosjektID, int tlf, int stemme ) {
 		super();
+		this.prosjektnr = prosjektID;	
 		this.tlf = tlf;
 		this.rating = stemme;
-		this.prosjektnr = prosjektID;
+		
+		
 	}
 	
 	

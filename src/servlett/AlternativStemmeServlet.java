@@ -70,8 +70,8 @@ public class AlternativStemmeServlet extends HttpServlet {
 	void tester() {
 		// tester lagring
 		// Må først sjekke om stemmen finnes, Overskrive dersom den finnes eventuelt lage ny dersom ikke.
-		int stemmeiden = steDAO.sjekkeOmStemmeFinnes(0, 0); // må paseres inn tlf og prosjektnr;
-		Stemme nyStemme = new Stemme(47348606, 5, 1);
+		//int stemmeiden = steDAO.sjekkeOmStemmeFinnes(0, 0); // må paseres inn tlf og prosjektnr;
+		Stemme nyStemme = new Stemme(1, 47348606, 5);
 		steDAO.lagreNyStemme(nyStemme);
 		// tester henting
 		System.out.println(steDAO.hentStemme(47348606).getRating());

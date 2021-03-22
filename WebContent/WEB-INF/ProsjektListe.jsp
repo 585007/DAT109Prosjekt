@@ -23,8 +23,9 @@
 			<td> <c:out value="${prosjekt.prosjektNavn}"/> </td>
 			<td> <c:out value="${prosjekt.antallStemmer}"/> </td>
 			<td> <c:out value="${prosjekt.score}"/> </td>
-			<td> <form action="kvitering" method="get" >
-				<input type="hidden" value="${prosjekt.prosjektNr}">
+			<td> <form action="kvittering" method="get" >
+				<input type="hidden" value="${prosjekt.prosjektNavn}">
+				<input type="submit" value="se kvitering">
 				</form></td>
 		</tr>
 	</c:forEach>

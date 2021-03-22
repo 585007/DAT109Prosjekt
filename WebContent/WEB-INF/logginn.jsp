@@ -15,10 +15,12 @@
   <form action="logginn" method="post" class="pure-form pure-form-aligned">
     <fieldset>
       <div class="pure-control-group">
-        <label for="bruker">Brukernavn:</label> <input type="text" name="bruker" />
+        <label for="bruker">Brukernavn:</label> 
+        <input type="text" name="bruker" value="adm"/>
       </div>
       <div class="pure-control-group">
-        <label for="passord">Passord:</label> <input type="password" name="passord" />
+        <label for="passord">Passord:</label> 
+        <input type="password" name="passord" value="pass"/>
       </div>
       <div class="pure-controls-group">
         <button type="submit" class="pure-button pure-button-primary">Logg inn</button>

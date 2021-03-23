@@ -35,12 +35,12 @@ public class ProsjektScore {
 		this.prosjektNavn = p.getProsjektnavn();
 		
 		List<Stemme> stemmer = stemmeDAO.hentProsjektStemmer(prosjektNr);
-		this.antallStemmer = stemmer.size();
+		this.antallStemmer = PoengHjelp.gyldigeStemmer(stemmer);
 		
 		this.totalScore = PoengHjelp.tellPoengTilProsjekt(stemmer);
 		this.gjScore = PoengHjelp.regnUtGjScore(stemmer);
 		this.vektetScore = PoengHjelp.regnUtVektetScore(stemmer);
-		this.score = PoengHjelp.regnUtGjScore(totalScore, gjScore, vektetScore);
+		this.score = PoengHjelp.regnUtGjScore(totalScore, gjScore, vektetScore, antallStemmer);
 	}
 
 	public int getProsjektNr() {
@@ -73,12 +73,18 @@ public class ProsjektScore {
 		return score;
 	}
 
-	@Override
-	public String toString() {
-		return "ProsjektScore [prosjektNr=" + prosjektNr + ", prosjektNavn=" + prosjektNavn + ", antallStemmer="
-				+ antallStemmer + ", score=" + score + "]";
+	public int compareTo(ProsjektScore b) {
+		int sammenlignet;
+		
+		if(score == b.getScore()) {
+			sammenlignet = 0;
+		}else if(score >= b.getScore()) {
+			sammenlignet = -1;
+		}else {
+			sammenlignet = 1;
+		}
+		
+		return sammenlignet;
 	}
-	
-	
 	
 }

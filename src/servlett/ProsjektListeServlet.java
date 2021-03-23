@@ -19,7 +19,7 @@ import hjelpeKlasser.GyldigSesjon;
 import hjelpeKlasser.ProsjektListeHjelp;
 
 /**
- * @author Ruben Aadland
+ * @author Ruben Aadland / Svein Ove Surdal
  *
  */
 @WebServlet(name = "ProsjektListe", urlPatterns = "/ProsjektListe")

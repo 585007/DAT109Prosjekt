@@ -14,6 +14,11 @@ import DAO.StemmeDAO;
 import entiteter.Prosjekt;
 import entiteter.Stemme;
 
+/**
+ * 
+ * @author ??? / Svein Ove Surdal
+ *
+ */
 @WebServlet("/StemmeServlet")
 public class StemmeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

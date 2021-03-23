@@ -13,7 +13,11 @@ import javax.servlet.http.HttpSession;
 import DAO.ProsjektDAO;
 import entiteter.Prosjekt;
 
-
+/**
+ * 
+ * @author Svein Ove Surdal
+ *
+ */
 @WebServlet(name = "kvittering", urlPatterns = "/kvittering")
 public class KvitteringServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

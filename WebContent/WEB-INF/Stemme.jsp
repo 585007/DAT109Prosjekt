@@ -18,12 +18,12 @@
     
       </div>
     
-      <p>Hvor bra fra 0-5 er prosjektet</p>
-      <p>(5 best, 0 verst)</p>
+      <p>Hvor bra fra 1-5 er prosjektet</p>
+      <p>(5 best, 1 verst)</p>
     <div>
     
         <input type="radio" id="0" name="rating" value="0" required>
-        <label for="0">0 (ingen formening)</label><br>
+        <label for="0">(ingen formening)</label><br>
     
         <input type="radio" id="1" name="rating" value="1" required>
         <label for="1">1</label><br>

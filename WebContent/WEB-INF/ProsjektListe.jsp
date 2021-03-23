@@ -16,12 +16,18 @@
 	<tr>
 		<th>Prosjekt navn</th>
 		<th>Antall stemmer</th>
+		<th>Total score</th>
+		<th>Gjennomsnittlig score</th>
+		<th>Vektet score</th>
 		<th>Score</th>
 	</tr>
 	<c:forEach var="prosjekt" items="${prosjekter}">
 		<tr>
 			<td> <c:out value="${prosjekt.prosjektNavn}"/> </td>
 			<td> <c:out value="${prosjekt.antallStemmer}"/> </td>
+			<td> <c:out value="${prosjekt.totalScore}"/> </td>
+			<td> <c:out value="${prosjekt.gjScore}"/> </td>
+			<td> <c:out value="${prosjekt.vektetScore}"/> </td>
 			<td> <c:out value="${prosjekt.score}"/> </td>
 			<td> <form action="kvittering" method="get" >
 				<input type="hidden" name=prosjektnr value="${prosjekt.prosjektNr}">

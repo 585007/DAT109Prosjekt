@@ -32,7 +32,7 @@ input {
 <title>Kvittering</title>
 </head>
 <body>
-	<h1>${prosjekter.getProsjektNavn()}</h1>
+	<h1>${prosjekter.prosjektnavn}</h1>
 
 	<form action="kvittering" method="post">
 		<div id=id>

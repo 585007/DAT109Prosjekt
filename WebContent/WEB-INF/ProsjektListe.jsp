@@ -30,7 +30,7 @@
 			<td> <c:out value="${prosjekt.vektetScore}"/> </td>
 			<td> <c:out value="${prosjekt.score}"/> </td>
 			<td> <form action="kvittering" method="get" >
-				<input type="hidden" name=prosjektnr value="${prosjekt.prosjektNr}">
+				<input type="hidden" name="prosjektnr" value="${prosjekt.prosjektNr}">
 				<input type="submit" value="se kvitering">
 				</form></td>
 		</tr>

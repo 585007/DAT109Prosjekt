@@ -16,9 +16,9 @@ import hjelpeKlasser.PoengHjelp;
  */
 public class ProsjektScore {
 	
-	private Integer prosjektNr;
+	private int prosjektNr;
 	private String prosjektNavn;
-	private Integer antallStemmer;
+	private int antallStemmer;
 	private double score;
 
 	
@@ -32,10 +32,11 @@ public class ProsjektScore {
 		this.prosjektNavn = p.getProsjektNavn();
 		
 		List<Stemme> stemmer = stemmeDAO.hentAlleStemmer();
+		this.antallStemmer = stemmer.size();
 		this.score = PoengHjelp.regnUtProsjektScore(stemmer);
 	}
 
-	public int prosjektNr() {
+	public int getProsjektNr() {
 		return prosjektNr;
 	}
 	
@@ -44,7 +45,7 @@ public class ProsjektScore {
 	}
 
 
-	public Integer getAntallStemmer() {
+	public int getAntallStemmer() {
 		return antallStemmer;
 	}
 

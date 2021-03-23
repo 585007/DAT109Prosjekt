@@ -27,7 +27,6 @@ public class ProsjektListeHjelp {
 	 * i DB sitt navn, id, score og antall stemmer
 	 * 
 	 */
-
 	public static List<ProsjektScore> hentProsjektScoreListe(ProsjektDAO prosjektDAO, StemmeDAO stemmeDAO) {
 		List<Prosjekt> prosjekter = prosjektDAO.hentAlleProsjekter();
 		

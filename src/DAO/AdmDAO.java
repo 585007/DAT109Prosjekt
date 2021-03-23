@@ -4,6 +4,11 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+/**
+ * 
+ * @author Svein Ove Surdal
+ *
+ */
 @Stateless
 public class AdmDAO {
 	

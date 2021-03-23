@@ -6,13 +6,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import DAO.DBconfig;
+
 /**
  * 
- * @author Svein Ove Surdal / Håkon Herrevold
+ * @author Svein Ove Surdal / Håkon Herrevold / Ruben Aadland
  *
  */
 @Entity
-@Table(name = "stemme", schema = "public")
+@Table(name = "stemme", schema = DBconfig.schema)
 public class Stemme {
 
 	@Id
@@ -32,6 +34,13 @@ public class Stemme {
 		this.rating = stemme;
 
 	}
+	public int getStemmeid() {
+		return stemmeid;
+	}
+
+	public void setStemmeid(int stemmeid) {
+		this.stemmeid = stemmeid;
+	}
 
 	public int getTlf() {
 		return tlf;
@@ -45,7 +54,7 @@ public class Stemme {
 		return rating;
 	}
 
-	public void setRating(int rating) {
+	public void setrating(int rating) {
 		this.rating = rating;
 	}
 

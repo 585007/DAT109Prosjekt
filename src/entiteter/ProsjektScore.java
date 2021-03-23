@@ -18,9 +18,12 @@ public class ProsjektScore {
 	
 	private int prosjektNr;
 	private String prosjektNavn;
-	private Integer antallStemmer;
+	private int antallStemmer;
+	
+	private int totalScore;
+	private double gjScore;
+	private double vektetScore;
 	private double score;
-
 	
 	/** 
 	 * @param p er prosjektet som en ønsker å regne ut scoren til
@@ -29,14 +32,18 @@ public class ProsjektScore {
 	 */
 	public ProsjektScore(Prosjekt p, StemmeDAO stemmeDAO) {
 		this.prosjektNr = p.getProsjektNr();
-		this.prosjektNavn = p.getProsjektNavn();
+		this.prosjektNavn = p.getProsjektnavn();
 		
-		List<Stemme> stemmer = stemmeDAO.hentAlleStemmer();
-		this.antallStemmer = stemmer.size();
-		this.score = PoengHjelp.regnUtProsjektScore(stemmer);
+		List<Stemme> stemmer = stemmeDAO.hentProsjektStemmer(prosjektNr);
+		this.antallStemmer = PoengHjelp.gyldigeStemmer(stemmer);
+		
+		this.totalScore = PoengHjelp.tellPoengTilProsjekt(stemmer);
+		this.gjScore = PoengHjelp.regnUtGjScore(stemmer);
+		this.vektetScore = PoengHjelp.regnUtVektetScore(stemmer);
+		this.score = PoengHjelp.regnUtGjScore(totalScore, gjScore, vektetScore, antallStemmer);
 	}
 
-	public int prosjektNr() {
+	public int getProsjektNr() {
 		return prosjektNr;
 	}
 	
@@ -45,21 +52,39 @@ public class ProsjektScore {
 	}
 
 
-	public Integer getAntallStemmer() {
+	public int getAntallStemmer() {
 		return antallStemmer;
 	}
 
+
+	public double getGjScore() {
+		return gjScore;
+	}
+
+	public int getTotalScore() {
+		return totalScore;
+	}
+
+	public double getVektetScore() {
+		return vektetScore;
+	}
 
 	public double getScore() {
 		return score;
 	}
 
-	@Override
-	public String toString() {
-		return "ProsjektScore [prosjektNr=" + prosjektNr + ", prosjektNavn=" + prosjektNavn + ", antallStemmer="
-				+ antallStemmer + ", score=" + score + "]";
+	public int compareTo(ProsjektScore b) {
+		int sammenlignet;
+		
+		if(score == b.getScore()) {
+			sammenlignet = 0;
+		}else if(score >= b.getScore()) {
+			sammenlignet = -1;
+		}else {
+			sammenlignet = 1;
+		}
+		
+		return sammenlignet;
 	}
-	
-	
 	
 }

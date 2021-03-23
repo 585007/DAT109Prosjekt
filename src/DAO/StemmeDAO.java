@@ -28,29 +28,30 @@ public class StemmeDAO {
 		return stemmer;
 	}
 	
-	public Stemme hentStemme(int mobil) {
-        return em.find(Stemme.class, mobil);
+	public Stemme hentStemme(int stemmeId) {
+        return em.find(Stemme.class, stemmeId);
     }
+	
 	public synchronized int sjekkeOmStemmeFinnes(int tlf, int prosjektnr) {
-		int stemmeID;
-		stemmeID = em.createQuery("Select b.stemmeid FROM Stemme b WHERE b.tlf =" + tlf + "AND b.prosjektnr ="+ prosjektnr, Stemme.class).getFirstResult();
+		int stemmeID = 0;
+		List<Stemme> stemme = em.createQuery("Select s FROM Stemme s WHERE s.tlf = " + tlf + " AND s.prosjektnr = " +prosjektnr, Stemme.class).getResultList();
+		if (stemme.size() > 0) {
+			stemmeID =stemme.get(0).getStemmeid();
+		}
+		System.out.println(stemmeID);
 		return stemmeID;
 	}
     public synchronized void lagreNyStemme(Stemme nystemme) {
         em.persist(nystemme);
     }
-
+    public synchronized void updateStemme(int stemmeId, int rating) {
+    	Stemme s = hentStemme(stemmeId);
+    	s.setrating(rating);
+    	em.persist(s);
+    	
+    }
     
-    // fjerner stemme
-	public void fjern(int mobilNr) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void fjernStemmerForProsjekt(String prosjektNr) {
-		em.createQuery("DELETE FROM Stemme s WHERE s.prosjektnr = " + prosjektNr);
-		
-	}
-
-
+    public List<Stemme> hentProsjektStemmer(int prosjektNr){
+    	return em.createQuery("SELECT s from Stemme s WHERE s.prosjektnr = " + prosjektNr, Stemme.class).getResultList();
+    }
 }

@@ -1,21 +1,19 @@
 package entiteter;
 
-import java.awt.List;
-import java.util.HashMap;
-
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import DAO.DBconfig;
+
 /**
- * @author Håkon Herrevold/ Svein Ove Surdal
+ * @author Håkon Herrevold / Svein Ove Surdal / Ruben Aadland
  *
  */
 @Entity
-@Table(name = "prosjekt", schema="public")
+@Table(name = "prosjekt", schema=DBconfig.schema)
 public class Prosjekt {
 
 	@Id 
@@ -43,7 +41,7 @@ public class Prosjekt {
 		this.prosjektnr = prosjektNr;
 	}
 
-	public String getProsjektNavn() {
+	public String getProsjektnavn() {
 		return prosjektnavn;
 	}
 

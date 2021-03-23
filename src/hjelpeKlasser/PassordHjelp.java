@@ -8,6 +8,11 @@ import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 import javax.xml.bind.DatatypeConverter;
 
+/**
+ * 
+ * @author Svein Ove Surdal
+ *
+ */
 public class PassordHjelp {
 	
 	public synchronized static String genererTilfeldigSalt() {

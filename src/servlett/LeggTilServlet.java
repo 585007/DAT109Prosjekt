@@ -30,18 +30,21 @@ public class LeggTilServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		String loginMessage = "";
+		if(request.getParameter("invalidProsjekt")!=null) {
+			loginMessage="Ugyldig prosjekt!";
+		}
 //		int prosjektNr = prosjektDAO.hentAlleProsjekter().size() +1;
-//		request.setAttribute("loginMessage", loginMessage);
-		
+		request.setAttribute("loginMessage", loginMessage);
+
 		HttpSession sesjon = request.getSession(false);
-		
-		if(GyldigSesjon.innlogget(sesjon)) {
+
+		if (GyldigSesjon.innlogget(sesjon)) {
 			request.getRequestDispatcher("WEB-INF/LeggTilProsjekt.jsp").forward(request, response);
-		}else {
+		} else {
 			response.sendRedirect("logginn");
 		}
-		
-		
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -51,15 +54,18 @@ public class LeggTilServlet extends HttpServlet {
 
 		HttpSession sesjon = request.getSession(false);
 
-		if(GyldigSesjon.innlogget(sesjon)) {
+		if (GyldigSesjon.innlogget(sesjon)) {
 			String navn = request.getParameter("navn");
+			if (!hjelpeKlasser.GyldigInput.isValidProsjektNavn(navn)) {
+				response.sendRedirect("LeggTilProsjekt?invalidProsjekt");
+			}
 			Prosjekt p = new Prosjekt(navn);
-	
+
 			prosjektDAO.lagreNyttProsjekt(p);
-	
+
 			sesjon.setAttribute("prosjekter", p);
 			response.sendRedirect("kvittering");
-		}else {
+		} else {
 			response.sendRedirect("logginn");
 		}
 	}

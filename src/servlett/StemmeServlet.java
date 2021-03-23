@@ -42,7 +42,7 @@ public class StemmeServlet extends HttpServlet {
 		}
 		Integer prosjektId = Integer.parseInt(request.getParameter("prosjektId"));
 		Prosjekt prosjekt = ProsjektDAO.hentProsjekt(prosjektId);
-		String prosjektNavn = prosjekt.getProsjektNavn();
+		String prosjektNavn = prosjekt.getProsjektnavn();
 		request.setAttribute("prosjektNavn", prosjektNavn);
 		request.setAttribute("prosjektId", prosjektId);
 

@@ -29,7 +29,6 @@ public class ProsjektScore {
 	 */
 	public ProsjektScore(Prosjekt p, StemmeDAO stemmeDAO) {
 		this.prosjektNr = p.getProsjektNr();
-		System.out.println(prosjektNr);
 		this.prosjektNavn = p.getProsjektNavn();
 		
 		List<Stemme> stemmer = stemmeDAO.hentAlleStemmer();

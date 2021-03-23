@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import DAO.ProsjektDAO;
 import DAO.StemmeDAO;
+import entiteter.Prosjekt;
 import entiteter.ProsjektScore;
 import hjelpeKlasser.GyldigSesjon;
 import hjelpeKlasser.ProsjektListeHjelp;
@@ -59,10 +60,13 @@ public class ProsjektListeServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession sesjon = request.getSession(false);
 		
-		if(GyldigSesjon.innlogget(sesjon)) {
-			response.sendRedirect("ProsjektListe");
-		}else {
+		if(!GyldigSesjon.innlogget(sesjon)) {
 			response.sendRedirect("logginn");
+		}else {
+			
+			int prosjektNr = Integer.parseInt(request.getParameter("prosjektnr"));
+			Prosjekt p = prosjektDAO.hentProsjekt(prosjektNr);
+			response.sendRedirect("kvittering");
 		}
 	}
 

@@ -54,11 +54,4 @@ public class StemmeDAO {
 		// TODO Auto-generated method stub
 		
 	}
-
-	public void fjernStemmerForProsjekt(String prosjektNr) {
-		em.createQuery("DELETE FROM Stemme s WHERE s.prosjektnr = " + prosjektNr);
-		
-	}
-
-
 }

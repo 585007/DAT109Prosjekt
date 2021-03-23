@@ -34,8 +34,6 @@ public class ProsjektListeHjelp {
 		List<ProsjektScore> prosjektScoreListe= new ArrayList<ProsjektScore>();
 		
 		for(Prosjekt p : prosjekter) {
-			int a = p.getProsjektNr();
-			System.out.println(a);
 			prosjektScoreListe.add(new ProsjektScore(p, stemmeDAO));
 		}
 		

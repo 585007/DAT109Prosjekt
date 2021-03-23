@@ -29,15 +29,20 @@ public class StemmeServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		String loginMessage = "";
+		if (request.getParameter("invalidTlf") != null) {
+			loginMessage = "Ugylig telefonnummer!";
+		} else if (request.getParameter("invalidValg") != null) {
+			loginMessage = "Ugylig valg!";
+		}
 		Integer prosjektId = Integer.parseInt(request.getParameter("prosjektId"));
 		Prosjekt prosjekt = ProsjektDAO.hentProsjekt(prosjektId);
 		String prosjektNavn = prosjekt.getProsjektNavn();
 		request.setAttribute("prosjektNavn", prosjektNavn);
 		request.setAttribute("prosjektId", prosjektId);
 
+		request.setAttribute("loginMessage", loginMessage);
 		request.getRequestDispatcher("WEB-INF/Stemme.jsp").forward(request, response);
-
 	}
 
 	/**
@@ -51,14 +56,23 @@ public class StemmeServlet extends HttpServlet {
 		String prosjektNavn = request.getParameter("prosjektNavn");
 		request.setAttribute("prosjektNavn", prosjektNavn);
 
-		int tlf = Integer.parseInt(request.getParameter("tlf"));
+		String temptlf = request.getParameter("tlf");
+		if (!hjelpeKlasser.GyldigInput.isValidMobilnr(temptlf)) {
+			response.sendRedirect("StemmeServlet?invalidTlf");
+		}
+		int tlf = Integer.parseInt(temptlf);
 
+		String temprating = request.getParameter("rating");
+		if (temprating == null) {
+			response.sendRedirect("StemmeServlet?invalidValg");
+		}
 		int rating = Integer.parseInt(request.getParameter("rating"));
 
 		if (prosjektId != null) {
-			Stemme stemme = new Stemme(prosjektId,tlf, rating );
+			Stemme stemme = new Stemme(prosjektId, tlf, rating);
 			stemmeDAO.lagreNyStemme(stemme);
-			response.sendRedirect("stemmekvittering");}
+			response.sendRedirect("stemmekvittering");
+		}
 //		 else {
 //			request.setAttribute("errorMessage", "Denne standen finnes ikke!");
 //			request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);

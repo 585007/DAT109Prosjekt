@@ -31,6 +31,7 @@ public class StemmeDAO {
 	public Stemme hentStemme(int stemmeId) {
         return em.find(Stemme.class, stemmeId);
     }
+	
 	public synchronized int sjekkeOmStemmeFinnes(int tlf, int prosjektnr) {
 		int stemmeID = 0;
 		stemmeID = em.createQuery("Select b.stemmeid FROM Stemme b WHERE b.tlf =" + tlf + " AND b.prosjektnr ="+ prosjektnr, Stemme.class).getFirstResult();
@@ -49,9 +50,7 @@ public class StemmeDAO {
     	
     }
     
-    // fjerner stemme
-	public void fjern(int stemmeId) {
-		// TODO Auto-generated method stub
-		
-	}
+    public List<Stemme> hentProsjektStemmer(int prosjektNr){
+    	return em.createQuery("SELECT s from Stemme s WHERE s = " + prosjektNr, Stemme.class).getResultList();
+    }
 }

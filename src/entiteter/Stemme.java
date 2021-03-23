@@ -34,6 +34,13 @@ public class Stemme {
 		this.rating = stemme;
 
 	}
+	public int getStemmeid() {
+		return stemmeid;
+	}
+
+	public void setStemmeid(int stemmeid) {
+		this.stemmeid = stemmeid;
+	}
 
 	public int getTlf() {
 		return tlf;
@@ -47,7 +54,7 @@ public class Stemme {
 		return rating;
 	}
 
-	public void setRating(int rating) {
+	public void setrating(int rating) {
 		this.rating = rating;
 	}
 

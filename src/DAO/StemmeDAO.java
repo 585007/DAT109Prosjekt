@@ -34,7 +34,10 @@ public class StemmeDAO {
 	
 	public synchronized int sjekkeOmStemmeFinnes(int tlf, int prosjektnr) {
 		int stemmeID = 0;
-		stemmeID = em.createQuery("Select b.stemmeid FROM Stemme b WHERE b.tlf =" + tlf + " AND b.prosjektnr ="+ prosjektnr, Stemme.class).getFirstResult();
+		List<Stemme> stemme = em.createQuery("Select s FROM Stemme s WHERE s.tlf = " + tlf + " AND s.prosjektnr = " +prosjektnr, Stemme.class).getResultList();
+		if (stemme.size() > 0) {
+			stemmeID =stemme.get(0).getStemmeid();
+		}
 		System.out.println(stemmeID);
 		return stemmeID;
 	}
@@ -43,11 +46,8 @@ public class StemmeDAO {
     }
     public synchronized void updateStemme(int stemmeId, int rating) {
     	Stemme s = hentStemme(stemmeId);
-    	em.getTransaction().begin();
-    	s.setRating(rating);
+    	s.setrating(rating);
     	em.persist(s);
-    	em.getTransaction().commit();
-    	em.close();
     	
     }
     

@@ -52,6 +52,6 @@ public class StemmeDAO {
     }
     
     public List<Stemme> hentProsjektStemmer(int prosjektNr){
-    	return em.createQuery("SELECT s from Stemme s WHERE s = " + prosjektNr, Stemme.class).getResultList();
+    	return em.createQuery("SELECT s from Stemme s WHERE s.prosjektnr = " + prosjektNr, Stemme.class).getResultList();
     }
 }

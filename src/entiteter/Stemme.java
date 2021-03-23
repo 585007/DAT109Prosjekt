@@ -6,13 +6,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import DAO.DBconfig;
+
 /**
  * 
- * @author Svein Ove Surdal / Håkon Herrevold
+ * @author Svein Ove Surdal / Håkon Herrevold / Ruben Aadland
  *
  */
 @Entity
-@Table(name = "stemme", schema = "public")
+@Table(name = "stemme", schema = DBconfig.schema)
 public class Stemme {
 
 	@Id

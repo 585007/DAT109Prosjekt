@@ -23,8 +23,9 @@ public class ProsjektListeHjelp {
 	 * 
 	 * @param stemmeDAO stemmeDAO for å hente ut stemmene til prosjektene
 	 * 
-	 * @return returnerer en liste med ProsjektScore som har hvert prosjekt
-	 * i DB sitt navn, id, score og antall stemmer
+	 * @return returnerer en sortert liste med ProsjektScore som har hvert prosjekt
+	 * i DB sitt navn, id, score og antall stemmer.
+	 * Listen er sortert ut fra Score
 	 * 
 	 */
 	public static List<ProsjektScore> hentProsjektScoreListe(ProsjektDAO prosjektDAO, StemmeDAO stemmeDAO) {
@@ -35,6 +36,7 @@ public class ProsjektListeHjelp {
 		for(Prosjekt p : prosjekter) {
 			prosjektScoreListe.add(new ProsjektScore(p, stemmeDAO));
 		}
+		prosjektScoreListe.sort((a, b) -> a.compareTo(b));
 		
 		return prosjektScoreListe;
 	}

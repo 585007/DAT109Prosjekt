@@ -50,14 +50,20 @@ public class StemmeServlet extends HttpServlet {
 
 		String prosjektNavn = request.getParameter("prosjektNavn");
 		request.setAttribute("prosjektNavn", prosjektNavn);
-
+		int prosjektID = Integer.parseInt(request.getParameter("prosjektId"));
 		int tlf = Integer.parseInt(request.getParameter("tlf"));
 
 		int rating = Integer.parseInt(request.getParameter("rating"));
 
 		if (prosjektId != null) {
-			Stemme stemme = new Stemme(prosjektId,tlf, rating );
-			stemmeDAO.lagreNyStemme(stemme);
+			int stemmeID = stemmeDAO.sjekkeOmStemmeFinnes(tlf, prosjektID);
+			if(stemmeID > 0) {
+				stemmeDAO.updateStemme(stemmeID, rating);
+			}else {
+				Stemme stemme = new Stemme(prosjektId,tlf, rating);
+				stemmeDAO.lagreNyStemme(stemme);
+			}
+			
 			response.sendRedirect("stemmekvittering");}
 //		 else {
 //			request.setAttribute("errorMessage", "Denne standen finnes ikke!");

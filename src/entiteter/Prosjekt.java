@@ -41,7 +41,7 @@ public class Prosjekt {
 		this.prosjektnr = prosjektNr;
 	}
 
-	public String getProsjektNavn() {
+	public String getProsjektnavn() {
 		return prosjektnavn;
 	}
 

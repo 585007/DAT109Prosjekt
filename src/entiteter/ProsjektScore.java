@@ -29,7 +29,7 @@ public class ProsjektScore {
 	 */
 	public ProsjektScore(Prosjekt p, StemmeDAO stemmeDAO) {
 		this.prosjektNr = p.getProsjektNr();
-		this.prosjektNavn = p.getProsjektNavn();
+		this.prosjektNavn = p.getProsjektnavn();
 		
 		List<Stemme> stemmer = stemmeDAO.hentAlleStemmer();
 		this.antallStemmer = stemmer.size();

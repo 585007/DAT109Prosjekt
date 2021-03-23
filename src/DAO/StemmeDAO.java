@@ -34,6 +34,7 @@ public class StemmeDAO {
 	public synchronized int sjekkeOmStemmeFinnes(int tlf, int prosjektnr) {
 		int stemmeID = 0;
 		stemmeID = em.createQuery("Select b.stemmeid FROM Stemme b WHERE b.tlf =" + tlf + " AND b.prosjektnr ="+ prosjektnr, Stemme.class).getFirstResult();
+		System.out.println(stemmeID);
 		return stemmeID;
 	}
     public synchronized void lagreNyStemme(Stemme nystemme) {

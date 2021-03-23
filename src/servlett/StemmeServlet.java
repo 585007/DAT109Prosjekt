@@ -32,7 +32,7 @@ public class StemmeServlet extends HttpServlet {
 
 		Integer prosjektId = Integer.parseInt(request.getParameter("prosjektId"));
 		Prosjekt prosjekt = ProsjektDAO.hentProsjekt(prosjektId);
-		String prosjektNavn = prosjekt.getProsjektNavn();
+		String prosjektNavn = prosjekt.getProsjektnavn();
 		request.setAttribute("prosjektNavn", prosjektNavn);
 		request.setAttribute("prosjektId", prosjektId);
 
@@ -52,6 +52,8 @@ public class StemmeServlet extends HttpServlet {
 		request.setAttribute("prosjektNavn", prosjektNavn);
 		int prosjektID = Integer.parseInt(request.getParameter("prosjektId"));
 		int tlf = Integer.parseInt(request.getParameter("tlf"));
+		
+		System.out.println("ProsjektID = " + prosjektID + ", tlf = " + tlf);
 
 		int rating = Integer.parseInt(request.getParameter("rating"));
 

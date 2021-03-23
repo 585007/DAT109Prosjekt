@@ -28,21 +28,29 @@ public class StemmeDAO {
 		return stemmer;
 	}
 	
-	public Stemme hentStemme(int mobil) {
-        return em.find(Stemme.class, mobil);
+	public Stemme hentStemme(int stemmeId) {
+        return em.find(Stemme.class, stemmeId);
     }
 	public synchronized int sjekkeOmStemmeFinnes(int tlf, int prosjektnr) {
-		int stemmeID;
-		stemmeID = em.createQuery("Select b.stemmeid FROM Stemme b WHERE b.tlf =" + tlf + "AND b.prosjektnr ="+ prosjektnr, Stemme.class).getFirstResult();
+		int stemmeID = 0;
+		stemmeID = em.createQuery("Select b.stemmeid FROM Stemme b WHERE b.tlf =" + tlf + " AND b.prosjektnr ="+ prosjektnr, Stemme.class).getFirstResult();
 		return stemmeID;
 	}
     public synchronized void lagreNyStemme(Stemme nystemme) {
         em.persist(nystemme);
     }
-
+    public synchronized void updateStemme(int stemmeId, int rating) {
+    	Stemme s = hentStemme(stemmeId);
+    	em.getTransaction().begin();
+    	s.setRating(rating);
+    	em.persist(s);
+    	em.getTransaction().commit();
+    	em.close();
+    	
+    }
     
     // fjerner stemme
-	public void fjern(int mobilNr) {
+	public void fjern(int stemmeId) {
 		// TODO Auto-generated method stub
 		
 	}

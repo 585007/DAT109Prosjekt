@@ -20,6 +20,8 @@
 		<th>Gjennomsnittlig score</th>
 		<th>Vektet score</th>
 		<th>Score</th>
+		<th>Kvitering</th>
+		<th>Slett</th>
 	</tr>
 	<c:forEach var="prosjekt" items="${prosjekter}">
 		<tr>
@@ -32,6 +34,10 @@
 			<td> <form action="kvittering" method="get" >
 				<input type="hidden" name="prosjektnr" value="${prosjekt.prosjektNr}">
 				<input type="submit" value="se kvitering">
+				</form></td>
+			<td> <form action="slettProsjekt" method="post" class="pure-form pure-form-aligned">
+				<input type="hidden" name="prosjektNr" value="${prosjekt.prosjektNr}">
+				<input type="submit" class="pure-button pure-button-primary" value="Slett">
 				</form></td>
 		</tr>
 	</c:forEach>

@@ -28,15 +28,6 @@
       </div>
     </fieldset>
   </form>
-  <form action="slettProsjekt" method="get" class="pure-form pure-form-aligned">
-    <fieldset>
-      <div class="pure-control-group">
-        <p>
-          <button type="submit" name="slett" class="pure-button pure-button-primary">Slett prosjekt</button>
-        </p>
-      </div>
-    </fieldset>
-  </form>
 
 </body>
 </html>

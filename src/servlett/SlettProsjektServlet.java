@@ -56,7 +56,7 @@ public class SlettProsjektServlet extends HttpServlet {
 			if(prosjektNr != null) {
 				prosjektDAO.slettProsjekt(prosjektNr);
 				
-				response.sendRedirect("admin");
+				response.sendRedirect("ProsjektListe");
 			}else {
 				response.sendRedirect("slettProsjekt");
 			}

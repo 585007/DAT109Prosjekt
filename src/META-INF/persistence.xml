@@ -7,6 +7,7 @@
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		<class>entiteter.Prosjekt</class>
 		<class>entiteter.Stemme</class>
+		<class>entiteter.Admin</class>
 		<properties>
 			<property name="eclipselink.weaving" value="false" />
 		</properties>

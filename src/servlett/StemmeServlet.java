@@ -29,10 +29,6 @@ public class StemmeServlet extends HttpServlet {
 	@EJB
 	ProsjektDAO ProsjektDAO;
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String loginMessage = "";
@@ -49,13 +45,9 @@ public class StemmeServlet extends HttpServlet {
 		request.getRequestDispatcher("WEB-INF/Stemme.jsp").forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		
 		Integer prosjektId = Integer.parseInt(request.getParameter("prosjektId"));
 
 		String prosjektNavn = request.getParameter("prosjektNavn");

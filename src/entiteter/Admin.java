@@ -23,7 +23,13 @@ public class Admin {
 	
 	public Admin() {
 	}
-
+	
+	/**
+	 * 
+	 * @param brukernavn
+	 * @param passord lagres i hash tilstand med salt. Kan hashes sammen med salt i PassordHjelp
+	 * @param salt lagres i hash tilstand. Salt kan genereres i PassordHjelp
+	 */
 	public Admin(String brukernavn, String passord, String salt) {
 	
 		this.brukernavn = brukernavn;

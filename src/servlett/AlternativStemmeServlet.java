@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import DAO.ProsjektDAO;
 import DAO.StemmeDAO;
+import entiteter.Prosjekt;
 import entiteter.Stemme;
 
 /**
@@ -18,6 +19,7 @@ import entiteter.Stemme;
  *
  */
 @WebServlet("/AlternativStemmeServlet")
+@Deprecated
 public class AlternativStemmeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

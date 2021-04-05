@@ -29,39 +29,59 @@ public class GyldigInput {
 
 	static String sql = "SELECT * FROM admLogin.table";
 
+	/**
+	 * 
+	 * @param prosjektNavn
+	 * @return boolean om prosjektNavn er gyldig
+	 */
 	public static boolean isValidProsjektNavn(String prosjektNavn) {
-		return prosjektNavn!= null
+		return prosjektNavn != null 
 				&& prosjektNavn.matches("^" + ANY_CAPITAL_LETTER + ANY_LETTER_WITH_SPACE_HYPHEN + TWO_TO_20_TIMES + "$");
 	}
 
+	/**
+	 * 
+	 * @param brukernavn
+	 * @return boolean om brukernavn er gyldig
+	 */
 	public static boolean isValidAdminBrukernavn(String brukernavn) {
-		return brukernavn != null 
+		return brukernavn != null
 				&& brukernavn.matches("^" + ANY_LETTER_OR_DIGIT + THREE_TIMES + ANY_LETTER_OR_DIGIT + ZERO_OR_MORE_TIMES + "$");
 	}
 
+	/**
+	 * 
+	 * @param passord
+	 * @return boolean om passord er gyldig
+	 */
 	public static boolean isValidPassord(String passord) {
-		return passord != null
+		return passord != null 
 				&& passord.matches("^" + ANY_LETTER_OR_DIGIT + THREE_TIMES + ANY_LETTER_OR_DIGIT + ZERO_OR_MORE_TIMES + "$");
 	}
 
 	/**
 	 * @param telefonnr
-	 * @return om det er et gyldig nr med 8 siffer
+	 * @return boolean om det er et gyldig nr med 8 siffer
 	 */
-	public static boolean isValidMobilnr(String tlf) {
-		return tlf != null 
-				&& tlf.matches("^" + ANY_DIGIT + EIGHT_TIMES + "$");
+	public static boolean isValidMobilnummer(String mobilnummer) {
+		return mobilnummer != null 
+				&& mobilnummer.matches("^" + ANY_DIGIT + EIGHT_TIMES + "$");
 	}
 
-	public static boolean isValidEtternavn(String n) {
-		return n != null
-				&& n.matches("^" + ANY_CAPITAL_LETTER + ANY_LETTER_WITH_HYPHEN + TWO_TO_20_TIMES + "$");
+	/**
+	 * 
+	 * @param etternavn
+	 * @return boolean om etternavn er gyldig
+	 */
+	public static boolean isValidEtternavn(String etternavn) {
+		return etternavn != null
+				&& etternavn.matches("^" + ANY_CAPITAL_LETTER + ANY_LETTER_WITH_HYPHEN + TWO_TO_20_TIMES + "$");
 
 	}
 
 	/**
 	 * @param n telefonnr
-	 * @return bool om telefonnr ikke har stemt på prosjektet før
+	 * @return boolean om telefonnr ikke har stemt på prosjektet før
 	 */
 	@Deprecated
 	// Bruk stemmeDAO sin metode istedenfor
@@ -105,12 +125,12 @@ public class GyldigInput {
 
 	/**
 	 * @param brukernavn brukernavn som blir sendt inn
-	 * @param passord passord som blir sendt inn
+	 * @param passord    passord som blir sendt inn
 	 * @return boolean om brukernavn/passord matcher i login-db
 	 */
 	public static boolean isValidAdmLogin(Admin bruker, String passord) {
 		boolean gyldigLoggInn = true;
-		
+
 		if (!bruker.gyldigPassord(passord)) {
 			gyldigLoggInn = false;
 		}
@@ -123,28 +143,32 @@ public class GyldigInput {
 	 * @param prosjektId
 	 * @param tlf
 	 * @param rating
-	 * @return om prosjektId, tlf og rating er gyldig input
+	 * @return boolean om prosjektId, tlf og rating er gyldig input
 	 */
 	public static boolean stemmeInput(int prosjektId, int tlf, int rating) {
-		return isValidMobilnr("" + tlf) && isValidProsjektId("" + prosjektId) && isValidRating(rating);
+		return isValidMobilnummer("" + tlf) 
+				&& isValidProsjektId("" + prosjektId) && isValidRating(rating);
 	}
 
 	/**
 	 * 
 	 * @param rating
-	 * @return
+	 * @return boolean om rating er gyldig
+	 * 
 	 */
 	private static boolean isValidRating(int rating) {
-		return rating <= 5 && rating >= 0;
+		return rating <= 5 
+				&& rating >= 0;
 	}
 
 	/**
 	 * 
 	 * @param prosjektId
-	 * @return
+	 * @return boolean om prosjektId er gyldig
 	 */
 	private static boolean isValidProsjektId(String prosjektId) {
-		return prosjektId != null && prosjektId.matches(ANY_DIGIT + "+");
+		return prosjektId != null 
+				&& prosjektId.matches(ANY_DIGIT + "+");
 
 	}
 }

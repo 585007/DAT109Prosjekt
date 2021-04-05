@@ -3,7 +3,6 @@ package hjelpeKlasser;
 import java.util.ArrayList;
 import java.util.List;
 
-import DAO.ProsjektDAO;
 import DAO.StemmeDAO;
 import entiteter.Prosjekt;
 import entiteter.ProsjektScore;
@@ -19,7 +18,7 @@ import entiteter.ProsjektScore;
 public class ProsjektListeHjelp {
 	
 	/**
-	 * @param prosjektDAO prosjektDAO for å hente ut prosjektene
+	 * @param prosjekter som skal inn i ProsjektScore listen
 	 * 
 	 * @param stemmeDAO stemmeDAO for å hente ut stemmene til prosjektene
 	 * 
@@ -28,9 +27,7 @@ public class ProsjektListeHjelp {
 	 * Listen er sortert ut fra Score
 	 * 
 	 */
-	public static List<ProsjektScore> hentProsjektScoreListe(ProsjektDAO prosjektDAO, StemmeDAO stemmeDAO) {
-		List<Prosjekt> prosjekter = prosjektDAO.hentAlleProsjekter();
-		
+	public static List<ProsjektScore> hentProsjektScoreListe(List<Prosjekt> prosjekter, StemmeDAO stemmeDAO) {
 		List<ProsjektScore> prosjektScoreListe= new ArrayList<ProsjektScore>();
 		
 		for(Prosjekt p : prosjekter) {

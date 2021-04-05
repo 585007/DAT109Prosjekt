@@ -31,18 +31,13 @@ public class ProsjektListeServlet extends HttpServlet {
 	@EJB
 	StemmeDAO stemmeDAO;
 	
-	/**
-	 * Hvis brukeren ikke er logget blir den sendt til logginn siden
-	 * 
-	 * Hvis den er logget inn vil servleten hente frem scorListen til prosjektene
-	 * og sette den inn i sesjonen som en "prosjekter" attributt
-	 * 
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession sesjon = request.getSession(false);
 		
 		if(GyldigSesjon.innlogget(sesjon)) {
-			List<ProsjektScore> scoreListe = ProsjektListeHjelp.hentProsjektScoreListe(prosjektDAO, stemmeDAO);
+			List<Prosjekt> prosjekter = prosjektDAO.hentAlleProsjekter();
+			
+			List<ProsjektScore> scoreListe = ProsjektListeHjelp.hentProsjektScoreListe(prosjekter, stemmeDAO);
 			
 			sesjon.setAttribute("prosjekter", scoreListe);
 			request.getRequestDispatcher("WEB-INF/ProsjektListe.jsp").forward(request, response);
@@ -52,20 +47,17 @@ public class ProsjektListeServlet extends HttpServlet {
 	}
 
 	
-	/**
-	 * Hvis brukeren ikke er logget blir den sendt til logginn siden
-	 * 
-	 * Hvis den er logget inn vil servleten redirecte til doGet på denne servleten
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession sesjon = request.getSession(false);
 		
 		if(!GyldigSesjon.innlogget(sesjon)) {
 			response.sendRedirect("logginn");
 		}else {
+
+			//ikke nødvendig?
+//			int prosjektNr = Integer.parseInt(request.getParameter("prosjektnr"));
+//			Prosjekt prosjekt = prosjektDAO.hentProsjekt(prosjektNr);
 			
-			int prosjektNr = Integer.parseInt(request.getParameter("prosjektnr"));
-			Prosjekt p = prosjektDAO.hentProsjekt(prosjektNr);
 			response.sendRedirect("kvittering");
 		}
 	}

@@ -45,7 +45,7 @@ public class LogginnServlet extends HttpServlet {
 		Admin admin = adminDAO.getAdmin(bruker);
 		
 		if(admin != null){
-			if(GyldigInput.isValidAdmLogin(admin, passord)) {
+			if(admin.gyldigPassord(passord)) {
 				HttpSession sesjon = request.getSession(false);
 				if (sesjon != null) {
 						sesjon.invalidate();

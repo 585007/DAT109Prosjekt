@@ -11,7 +11,8 @@ import hjelpeKlasser.PoengHjelp;
  * Brukes i forbindelse med å vise prosjektet, scoren og antall stemmer
  * i ProsjektListeServlet.
  * 
- * Konstruktøren til klassen tar inn prosjektet og genererer objektet selv
+ * Konstruktøren til klassen tar inn prosjektet 
+ * og StemmeDAO for så å generere objektet selv
  *
  */
 public class ProsjektScore {
@@ -72,7 +73,12 @@ public class ProsjektScore {
 	public double getScore() {
 		return score;
 	}
-
+	
+	/**
+	 * 
+	 * @param b er scoren som skal sammenlignes
+	 * @return om ProsjetkScore er høyere eller lavere enn b
+	 */
 	public int compareTo(ProsjektScore b) {
 		int sammenlignet;
 		

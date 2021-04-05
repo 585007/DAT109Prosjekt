@@ -11,30 +11,27 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import DAO.AdmDAO;
-import hjelpeKlasser.PassordHjelp;
+import entiteter.Admin;
+import hjelpeKlasser.GyldigInput;
 
 /**
  * Innlogging med verifisering av brukernavn og passord
  * 
- * @author Svein Ove Surdal
+ * @author Svein Ove Surdal / ??? / Ruben Aadland
  *
  */
 @WebServlet(name = "LogginnServlet", urlPatterns = "/logginn")
 public class LogginnServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	
 	@EJB
-	AdmDAO admDAO;
+	AdmDAO adminDAO;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String loginMessage = "";
-		if (request.getParameter("invalidLogin") != null) {
-			loginMessage = "Feil login!";
-		} else if (request.getParameter("invalidBrukernavn") != null) {
-			loginMessage = "Ikke gyldig brukernavn";
-		} else if (request.getParameter("invalidPassord") != null) {
-			loginMessage = "Ikke gyldig passord";
+		if (request.getParameter("invalidLogginn") != null) {
+			loginMessage = "Feil brukernavn/passord";
 		}
 		request.setAttribute("loginMessage", loginMessage);
 		request.getRequestDispatcher("WEB-INF/logginn.jsp").forward(request, response);
@@ -42,34 +39,56 @@ public class LogginnServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
 		String bruker = request.getParameter("bruker");
-		if (!hjelpeKlasser.GyldigInput.isValidAdmBrukernavn(bruker)) {
-			response.sendRedirect("logginn?invalidBrukernavn");
-		}
 		String passord = request.getParameter("passord");
-		if (!hjelpeKlasser.GyldigInput.isValidPass(passord)) {
-			response.sendRedirect("logginn?invalidPassord");
-		}
 		
-/*		if (!hjelpeKlasser.GyldigInput.isValidAdmLogin(bruker, passord)) {
-			response.sendRedirect("logginn?invalidLogin");
-		}
-*/		
-		if (!bruker.equals(admDAO.hentBrukernavn())
-						|| !PassordHjelp.validerMedSalt(passord, admDAO.hentSalt() , admDAO.hentPassord())) {
-				String loginMessage = "Ugyldig brukernavn og/eller passord";
-				request.setAttribute("loginMessage", loginMessage);
-				request.getRequestDispatcher("WEB-INF/logginn.jsp").forward(request, response);
-		} else {
+		Admin admin = adminDAO.getAdmin(bruker);
+		
+		if(admin != null){
+			if(GyldigInput.isValidAdmLogin(admin, passord)) {
 				HttpSession sesjon = request.getSession(false);
 				if (sesjon != null) {
 						sesjon.invalidate();
 				}
 				sesjon = request.getSession(true);
-				
+			
 				response.sendRedirect("admin");
+			}else {
+				response.sendRedirect("logginn?invalidLogginn=true");
 			}
+		}else {
+			response.sendRedirect("logginn?invalidLogginn=true");
+		}
+		
+		
+		
+		
+//		if (!hjelpeKlasser.GyldigInput.isValidAdmBrukernavn(bruker)) {
+//			response.sendRedirect("logginn?invalidBrukernavn");
+//		}
+//		
+//		if (!hjelpeKlasser.GyldigInput.isValidPass(passord)) {
+//			response.sendRedirect("logginn?invalidPassord");
+//		}
+//		
+///*		if (!hjelpeKlasser.GyldigInput.isValidAdmLogin(bruker, passord)) {
+//			response.sendRedirect("logginn?invalidLogin");
+//		}
+//*/		
+//		if (!bruker.equals(admDAO.hentBrukernavn())
+//						|| !PassordHjelp.validerMedSalt(passord, admDAO.hentSalt() , admDAO.hentPassord())) {
+//				String loginMessage = "Ugyldig brukernavn og/eller passord";
+//				request.setAttribute("loginMessage", loginMessage);
+//				request.getRequestDispatcher("WEB-INF/logginn.jsp").forward(request, response);
+//		} else {
+//				HttpSession sesjon = request.getSession(false);
+//				if (sesjon != null) {
+//						sesjon.invalidate();
+//				}
+//				sesjon = request.getSession(true);
+//				
+//				response.sendRedirect("admin");
+//			}
 		}	
 		
 /*

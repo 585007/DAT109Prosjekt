@@ -5,10 +5,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import DAO.DBconfig;
+import hjelpeKlasser.PassordHjelp;
 
 /**
  * 
- * @author Tomas Mardal
+ * @author Tomas Mardal / Ruben Aadland
  *
  */
 @Entity
@@ -16,9 +17,9 @@ import DAO.DBconfig;
 public class Admin {
 
 	@Id
-	String brukernavn;
-	String passord;
-	String salt;
+	private String brukernavn;
+	private String passord;
+	private String salt;
 	
 	public Admin() {
 	}
@@ -31,7 +32,7 @@ public class Admin {
 	}
 	
 	
-	public String brukernavn() {
+	public String getBrukernavn() {
 		return brukernavn;
 	}
 
@@ -39,7 +40,7 @@ public class Admin {
 		this.brukernavn = brukernavn;
 	}
 
-	public String passord() {
+	public String getPassord() {
 		return passord;
 	}
 
@@ -47,12 +48,17 @@ public class Admin {
 		this.passord = passord;
 	}	
 	
-	public String salt() {
+	public String getSalt() {
 		return salt;
 	}
 
-	public void setsalt(String salt) {
+	public void setSalt(String salt) {
 		this.salt = salt;
 	}	
+	
+	public boolean gyldigPassord(String passord) {
+		return this.passord
+				.equals(PassordHjelp.hashMedSalt(passord, getSalt()));
+	}
 }
 

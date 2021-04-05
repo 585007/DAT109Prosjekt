@@ -25,7 +25,10 @@ public class Prosjekt {
 	
 	public Prosjekt() {
 	}
-
+	/**
+	 * 
+	 * @param prosjektNavn er navnet på prosjektet
+	 */
 	public Prosjekt(String prosjektNavn) {
 		synchronized(this) {
 		this.prosjektnavn = prosjektNavn;

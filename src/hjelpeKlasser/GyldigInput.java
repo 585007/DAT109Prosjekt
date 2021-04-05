@@ -124,21 +124,6 @@ public class GyldigInput {
 	}
 
 	/**
-	 * @param brukernavn brukernavn som blir sendt inn
-	 * @param passord    passord som blir sendt inn
-	 * @return boolean om brukernavn/passord matcher i login-db
-	 */
-	public static boolean isValidAdmLogin(Admin bruker, String passord) {
-		boolean gyldigLoggInn = true;
-
-		if (!bruker.gyldigPassord(passord)) {
-			gyldigLoggInn = false;
-		}
-
-		return gyldigLoggInn;
-	}
-
-	/**
 	 * 
 	 * @param prosjektId
 	 * @param tlf

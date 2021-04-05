@@ -62,6 +62,11 @@ public class Admin {
 		this.salt = salt;
 	}	
 	
+	/**
+	 * 
+	 * @param passord som skal sammenlignes med brukerens passord
+	 * @return bool om passord matcher passord til brukeren.
+	 */
 	public boolean gyldigPassord(String passord) {
 		return this.passord
 				.equals(PassordHjelp.hashMedSalt(passord, getSalt()));

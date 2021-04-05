@@ -26,7 +26,13 @@ public class Stemme {
 
 	public Stemme() {
 	}
-
+	
+	/**
+	 * 
+	 * @param prosjektID som stemmen hører til
+	 * @param tlf til den som stemte
+	 * @param stemme stemme verdien som ble gitt
+	 */
 	public Stemme(int prosjektID, int tlf, int stemme) {
 		super();
 		this.prosjektnr = prosjektID;

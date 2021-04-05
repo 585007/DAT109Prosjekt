@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import DAO.ProsjektDAO;
 import entiteter.Prosjekt;
+import hjelpeKlasser.GyldigSesjon;
 
 /**
  * 
@@ -26,23 +27,27 @@ public class KvitteringServlet extends HttpServlet {
 	ProsjektDAO prosjektDAO;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		HttpSession sesjon = request.getSession(false);
-		if (sesjon == null) {
+		
+		if (GyldigSesjon.innlogget(sesjon)) {
+			if (request.getParameter("prosjektnr") != null) {
+				int prosjektNr = Integer.parseInt(request.getParameter("prosjektnr"));
+				Prosjekt p = prosjektDAO.hentProsjekt(prosjektNr);
+				request.setAttribute("prosjekter", p);
+			}else {
+				response.sendRedirect("logginn");
+			}
+		}else {
 			response.sendRedirect("logginn");
 		}
-		if (request.getParameter("prosjektnr") != null) {
-			int prosjektNr = Integer.parseInt(request.getParameter("prosjektnr"));
-			Prosjekt p = prosjektDAO.hentProsjekt(prosjektNr);
-			request.setAttribute("prosjekter", p);
-		}else {}
+		
 			
 		
 		request.getRequestDispatcher("WEB-INF/kvittering.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		String prosjektNavn = request.getParameter("prosjektNavn");
+		
 		response.sendRedirect("admin");
 	}
 

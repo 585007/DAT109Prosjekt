@@ -78,35 +78,6 @@ public class StemmeServlet extends HttpServlet {
 		}else {
 			response.sendRedirect("StemmeServlet?prosjektId="+prosjektId+"&invalidInput=true");
 		}
-		
-		
-//		Integer prosjektId = Integer.parseInt(request.getParameter("prosjektId"));
-//
-//		String prosjektNavn = request.getParameter("prosjektNavn");
-//		request.setAttribute("prosjektNavn", prosjektNavn);
-//
-//		String temptlf = request.getParameter("tlf");
-//		if (!hjelpeKlasser.GyldigInput.isValidMobilnr(temptlf)) {
-//			response.sendRedirect("StemmeServlet?invalidTlf");
-//		}
-//		int tlf = Integer.parseInt(temptlf);
-//
-//		String temprating = request.getParameter("rating");
-//		if (temprating == null) {
-//			response.sendRedirect("StemmeServlet?invalidValg");
-//		}
-//		int rating = Integer.parseInt(request.getParameter("rating"));
-//
-//		if (prosjektId != null) {
-//			Stemme stemme = new Stemme(prosjektId, tlf, rating);
-//			stemmeDAO.lagreNyStemme(stemme);
-//			response.sendRedirect("stemmekvittering");
-//		}
-////		 else {
-////			request.setAttribute("errorMessage", "Denne standen finnes ikke!");
-////			request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
-////
-////		}
 	}
 
 }

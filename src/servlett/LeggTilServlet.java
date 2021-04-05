@@ -58,13 +58,15 @@ public class LeggTilServlet extends HttpServlet {
 			String navn = request.getParameter("navn");
 			if (!hjelpeKlasser.GyldigInput.isValidProsjektNavn(navn)) {
 				response.sendRedirect("LeggTilProsjekt?invalidProsjekt");
+			}else {
+				Prosjekt p = new Prosjekt(navn);
+
+				prosjektDAO.lagreNyttProsjekt(p);
+
+				sesjon.setAttribute("prosjekter", p);
+				response.sendRedirect("kvittering");
 			}
-			Prosjekt p = new Prosjekt(navn);
-
-			prosjektDAO.lagreNyttProsjekt(p);
-
-			sesjon.setAttribute("prosjekter", p);
-			response.sendRedirect("kvittering");
+			
 		} else {
 			response.sendRedirect("logginn");
 		}

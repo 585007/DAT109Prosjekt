@@ -6,6 +6,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+
+/**
+ * 
+ * @author ??? / Ruben Aadland
+ *
+ */
 public class GyldigInput {
 
 	public static final String ANY_LETTER = "[a-zA-ZæøåÆØÅ]";
@@ -46,37 +52,50 @@ public class GyldigInput {
 		}
 		return n.matches("^" + ANY_LETTER_OR_DIGIT + THREE_TIMES + ANY_LETTER_OR_DIGIT + ZERO_OR_MORE_TIMES + "$");
 	}
-	/**@param telefonnr
+
+	/**
+	 * @param telefonnr
 	 * @return om det er et gyldig nr med 8 siffer
-	 * */
-	public static boolean isValidMobilnr(String n) {
-
-			if (n == null || !n.matches("^" + ANY_DIGIT + EIGHT_TIMES + "$")) {
-				return false;
-			}
-			return true;
+	 */
+	public static boolean isValidMobilnr(String tlf) {
+		return tlf != null
+				&& tlf.matches("^" + ANY_DIGIT + EIGHT_TIMES + "$");
 	}
-	
-		public static boolean isValidEtternavn(String n) {
 
-			if (n == null) {
-				return false;
-			}
-			return n.matches("^" + ANY_CAPITAL_LETTER + ANY_LETTER_WITH_HYPHEN + TWO_TO_20_TIMES + "$");
+	public static boolean isValidEtternavn(String n) {
 
+		if (n == null) {
+			return false;
 		}
-		/**@param n telefonnr
-		 * @return bool om telefonnr ikke har stemt på prosjektet før
-		 * */
-		public static boolean isNyStemme(String n) {
-			sql = "SELECT * FROM public.stemme";
-			if (n == null || !n.matches("^" + ANY_DIGIT + EIGHT_TIMES + "$")) {
-				return false;
+		return n.matches("^" + ANY_CAPITAL_LETTER + ANY_LETTER_WITH_HYPHEN + TWO_TO_20_TIMES + "$");
+
+	}
+
+	/**
+	 * @param n telefonnr
+	 * @return bool om telefonnr ikke har stemt på prosjektet før
+	 */
+	public static boolean isNyStemme(String n) {
+		sql = "SELECT * FROM public.stemme";
+		if (n == null || !n.matches("^" + ANY_DIGIT + EIGHT_TIMES + "$")) {
+			return false;
+		}
+		Connection connection;
+		try {
+			connection = DriverManager.getConnection("jdbc:postgresql://data1.hib.no:5434/hdat109_v21_prosjekt05",
+					"h590791", "pass");
+			PreparedStatement pst = connection.prepareStatement(sql);
+			ResultSet rs = pst.executeQuery();
+			while (rs.next()) {
+				if (rs.getString("mobil").matches(n)) {
+					System.out.println("allerede stemme på mobilnr");
+					return false;
+				}
 			}
-			Connection connection;
+		} catch (SQLException e) {
 			try {
-				connection = DriverManager.getConnection("jdbc:postgresql://data1.hib.no:5434/hdat109_v21_prosjekt05", "h590791",
-						"pass");
+				connection = DriverManager.getConnection("jdbc:postgresql://data1.hib.no:5434/hdat109_v21_prosjekt05",
+						"h590791", "pass");
 				PreparedStatement pst = connection.prepareStatement(sql);
 				ResultSet rs = pst.executeQuery();
 				while (rs.next()) {
@@ -85,79 +104,97 @@ public class GyldigInput {
 						return false;
 					}
 				}
-			} catch (SQLException e) {
-				try {
-					connection = DriverManager.getConnection("jdbc:postgresql://data1.hib.no:5434/hdat109_v21_prosjekt05", "h590791",
-							"pass");
-					PreparedStatement pst = connection.prepareStatement(sql);
-					ResultSet rs = pst.executeQuery();
-					while (rs.next()) {
-						if (rs.getString("mobil").matches(n)) {
-							System.out.println("allerede stemme på mobilnr");
-							return false;
-						}
-					}
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-					return false;
-				}
-			}
-			return true;
-		}
-
-
-/**@param n brukernavn til adm
- * @param p passord
- * @return bool om brukernavn/pass matcher i login-db
- * */
-		public static boolean isValidAdmLogin(String n, String p) {
-
-			if (n == null || p == null) {
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
 				return false;
 			}
-			try {
-				Connection connection = DriverManager.getConnection("jdbc:postgresql://data1.hib.no:5434/h590791",
-						"h590791", "pass");
-
-				PreparedStatement pst = connection.prepareStatement(sql);
-				ResultSet rs = pst.executeQuery();
-				while (rs.next()) {
-					if (rs.getString("brukernavn").matches(n)) {
-						if (rs.getString("passord").matches(SHA.shaEnc(p, rs.getString("salt")))) {
-							return true;
-						}
-					}
-				}
-
-			} catch (SQLException e) {
-				//hadde problemer med sqlexception men som løste seg ved å prøve en gang ting o_O
-				Connection connection;
-				try {
-					System.out.println("sqlexeption catch nr 1");
-					connection = DriverManager.getConnection("jdbc:postgresql://data1.hib.no:5434/h590791",
-							"h590791", "pass");
-
-
-				PreparedStatement pst = connection.prepareStatement(sql);
-				ResultSet rs = pst.executeQuery();
-				while (rs.next()) {
-					if (rs.getString("brukernavn").matches(n)) {
-						if (rs.getString("passord").matches(SHA.shaEnc(p, rs.getString("salt")))) {
-							return true;
-						}
-					}
-				}
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					System.out.println("sqlexeption catch nr 2");
-					e1.printStackTrace();
-					return false;
-				}
-			
-
-			}
-			return false;
 		}
+		return true;
 	}
 
+	/**
+	 * @param n brukernavn til adm
+	 * @param p passord
+	 * @return bool om brukernavn/pass matcher i login-db
+	 */
+	public static boolean isValidAdmLogin(String n, String p) {
+
+		if (n == null || p == null) {
+			return false;
+		}
+		try {
+			Connection connection = DriverManager.getConnection("jdbc:postgresql://data1.hib.no:5434/h590791",
+					"h590791", "pass");
+
+			PreparedStatement pst = connection.prepareStatement(sql);
+			ResultSet rs = pst.executeQuery();
+			while (rs.next()) {
+				if (rs.getString("brukernavn").matches(n)) {
+					if (rs.getString("passord").matches(SHA.shaEnc(p, rs.getString("salt")))) {
+						return true;
+					}
+				}
+			}
+
+		} catch (SQLException e) {
+			// hadde problemer med sqlexception men som løste seg ved å prøve en gang ting
+			// o_O
+			Connection connection;
+			try {
+				System.out.println("sqlexeption catch nr 1");
+				connection = DriverManager.getConnection("jdbc:postgresql://data1.hib.no:5434/h590791", "h590791",
+						"pass");
+
+				PreparedStatement pst = connection.prepareStatement(sql);
+				ResultSet rs = pst.executeQuery();
+				while (rs.next()) {
+					if (rs.getString("brukernavn").matches(n)) {
+						if (rs.getString("passord").matches(SHA.shaEnc(p, rs.getString("salt")))) {
+							return true;
+						}
+					}
+				}
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				System.out.println("sqlexeption catch nr 2");
+				e1.printStackTrace();
+				return false;
+			}
+
+		}
+		return false;
+	}
+	/**
+	 * 
+	 * @param prosjektId
+	 * @param tlf
+	 * @param rating
+	 * @return om prosjektId, tlf og rating er gyldig input
+	 */
+	public static boolean stemmeInput(int prosjektId, int tlf, int rating) {
+		return isValidMobilnr(""+tlf)
+				&& isValidProsjektId(""+prosjektId)
+				&& isValidRating(rating);
+	}
+	
+	/**
+	 * 
+	 * @param rating
+	 * @return
+	 */
+	private static boolean isValidRating(int rating) {
+		return rating <= 5
+				&& rating >= 0;
+	}
+	/**
+	 * 
+	 * @param prosjektId
+	 * @return
+	 */
+	private static boolean isValidProsjektId(String prosjektId) {
+		return prosjektId != null
+				&& prosjektId.matches(ANY_DIGIT + "+");
+				
+	}
+}

@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h1>${prosjektNavn}</h1>
-	<form action="StemmeServlet" method="POST">
+	<form action="StemmeServlet" method="post">
 		<input type="hidden" name="prosjektNavn" value=${prosjektNavn}>
 		<input type="hidden" name="prosjektId" value=${prosjektId}>
 
@@ -37,7 +37,7 @@
 			<div class="pure-controls">
 				<button type="submit" class="pure-button pure-button-primary">Send
 					inn</button>
-				<font color="red">${loginMessage}</font>
+				<font color="red">${invalidMessage}</font>
 			</div>
 
 		</div>

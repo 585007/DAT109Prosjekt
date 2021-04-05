@@ -13,10 +13,11 @@ import DAO.ProsjektDAO;
 import DAO.StemmeDAO;
 import entiteter.Prosjekt;
 import entiteter.Stemme;
+import hjelpeKlasser.GyldigInput;
 
 /**
  * 
- * @author Halvor / Svein Ove Surdal
+ * @author Halvor / Svein Ove Surdal / Ruben Aadland
  *
  */
 @WebServlet("/StemmeServlet")
@@ -35,10 +36,8 @@ public class StemmeServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String loginMessage = "";
-		if (request.getParameter("invalidTlf") != null) {
-			loginMessage = "Ugylig telefonnummer!";
-		} else if (request.getParameter("invalidValg") != null) {
-			loginMessage = "Ugylig valg!";
+		if (request.getParameter("invalidInput") != null) {
+			loginMessage = "Ugylig input";
 		}
 		Integer prosjektId = Integer.parseInt(request.getParameter("prosjektId"));
 		Prosjekt prosjekt = ProsjektDAO.hentProsjekt(prosjektId);
@@ -46,7 +45,7 @@ public class StemmeServlet extends HttpServlet {
 		request.setAttribute("prosjektNavn", prosjektNavn);
 		request.setAttribute("prosjektId", prosjektId);
 
-		request.setAttribute("loginMessage", loginMessage);
+		request.setAttribute("invalidMessage", loginMessage);
 		request.getRequestDispatcher("WEB-INF/Stemme.jsp").forward(request, response);
 	}
 
@@ -56,33 +55,58 @@ public class StemmeServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
 		Integer prosjektId = Integer.parseInt(request.getParameter("prosjektId"));
 
 		String prosjektNavn = request.getParameter("prosjektNavn");
 		request.setAttribute("prosjektNavn", prosjektNavn);
-
-		String temptlf = request.getParameter("tlf");
-		if (!hjelpeKlasser.GyldigInput.isValidMobilnr(temptlf)) {
-			response.sendRedirect("StemmeServlet?invalidTlf");
-		}
-		int tlf = Integer.parseInt(temptlf);
-
-		String temprating = request.getParameter("rating");
-		if (temprating == null) {
-			response.sendRedirect("StemmeServlet?invalidValg");
-		}
+		
+		int prosjektID = Integer.parseInt(request.getParameter("prosjektId"));
+		int tlf = Integer.parseInt(request.getParameter("tlf"));
 		int rating = Integer.parseInt(request.getParameter("rating"));
 
-		if (prosjektId != null) {
-			Stemme stemme = new Stemme(prosjektId, tlf, rating);
-			stemmeDAO.lagreNyStemme(stemme);
+		if (GyldigInput.stemmeInput(prosjektID, tlf, rating)) {
+			int stemmeID = stemmeDAO.sjekkeOmStemmeFinnes(tlf, prosjektID);
+			if(stemmeID > 0) {
+				stemmeDAO.updateStemme(stemmeID, rating);
+			}else {
+				Stemme stemme = new Stemme(prosjektId,tlf, rating);
+				stemmeDAO.lagreNyStemme(stemme);
+			}
+			
 			response.sendRedirect("stemmekvittering");
+		}else {
+			response.sendRedirect("StemmeServlet?prosjektId="+prosjektId+"&invalidInput=true");
 		}
-//		 else {
-//			request.setAttribute("errorMessage", "Denne standen finnes ikke!");
-//			request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
+		
+		
+//		Integer prosjektId = Integer.parseInt(request.getParameter("prosjektId"));
 //
+//		String prosjektNavn = request.getParameter("prosjektNavn");
+//		request.setAttribute("prosjektNavn", prosjektNavn);
+//
+//		String temptlf = request.getParameter("tlf");
+//		if (!hjelpeKlasser.GyldigInput.isValidMobilnr(temptlf)) {
+//			response.sendRedirect("StemmeServlet?invalidTlf");
 //		}
+//		int tlf = Integer.parseInt(temptlf);
+//
+//		String temprating = request.getParameter("rating");
+//		if (temprating == null) {
+//			response.sendRedirect("StemmeServlet?invalidValg");
+//		}
+//		int rating = Integer.parseInt(request.getParameter("rating"));
+//
+//		if (prosjektId != null) {
+//			Stemme stemme = new Stemme(prosjektId, tlf, rating);
+//			stemmeDAO.lagreNyStemme(stemme);
+//			response.sendRedirect("stemmekvittering");
+//		}
+////		 else {
+////			request.setAttribute("errorMessage", "Denne standen finnes ikke!");
+////			request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
+////
+////		}
 	}
 
 }

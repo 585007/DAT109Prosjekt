@@ -9,6 +9,11 @@ import javax.servlet.http.HttpSession;
  */
 public class GyldigSesjon {
 	
+	/**
+	 * 
+	 * @param sesjon som skal testes
+	 * @return om sjesjon er gyldig
+	 */
 	public static boolean innlogget(HttpSession sesjon) {
 		return sesjon != null;
 	}

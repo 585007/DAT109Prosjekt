@@ -15,6 +15,10 @@ import javax.xml.bind.DatatypeConverter;
  */
 public class PassordHjelp {
 	
+	/**
+	 * 
+	 * @return returnerer en String med tilfeldig salt
+	 */
 	public synchronized static String genererTilfeldigSalt() {
 	    SecureRandom sr;
 	    byte[] salt = new byte[16];
@@ -27,6 +31,12 @@ public class PassordHjelp {
 	    return DatatypeConverter.printHexBinary(salt);
 	}
 	
+	/**
+	 * 
+	 * @param passord i String format
+	 * @param salt til passordet
+	 * @return returnerer hashet og saltet passord
+	 */
 	public synchronized static String hashMedSalt(String passord, String salt) { 
 		
 		char[] passchar = passord.toCharArray();
@@ -43,7 +53,15 @@ public class PassordHjelp {
 		}
 		return DatatypeConverter.printHexBinary(keyhash);
 	}
-	public static boolean validerMedSalt(String passord, String salt, String passordhash) {
-		return passordhash.equals(hashMedSalt(passord, salt));
+	
+	/**
+	 * 
+	 * @param passord som skal valideres
+	 * @param salt salt til originale passord
+	 * @param passordhash originale passord
+	 * @return om passord er det samme som passordHash
+	 */
+	public static boolean validerMedSalt(String passord, String salt, String passordHash) {
+		return passordHash.equals(hashMedSalt(passord, salt));
 	}
 }

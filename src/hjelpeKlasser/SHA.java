@@ -3,6 +3,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 
+@Deprecated
 public class SHA {
 	
 	public static String shaEnc(String pass, String s){

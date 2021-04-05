@@ -29,29 +29,19 @@ public class GyldigInput {
 
 	static String sql = "SELECT * FROM admLogin.table";
 
-	public static boolean isValidProsjektNavn(String n) {
-
-		if (n == null) {
-			return false;
-		}
-		return n.matches("^" + ANY_CAPITAL_LETTER + ANY_LETTER_WITH_SPACE_HYPHEN + TWO_TO_20_TIMES + "$");
-	}
-	/**/
-
-	public static boolean isValidAdmBrukernavn(String n) {
-
-		if (n == null) {
-			return false;
-		}
-		return n.matches("^" + ANY_LETTER_OR_DIGIT + THREE_TIMES + ANY_LETTER_OR_DIGIT + ZERO_OR_MORE_TIMES + "$");
+	public static boolean isValidProsjektNavn(String prosjektNavn) {
+		return prosjektNavn!= null
+				&& prosjektNavn.matches("^" + ANY_CAPITAL_LETTER + ANY_LETTER_WITH_SPACE_HYPHEN + TWO_TO_20_TIMES + "$");
 	}
 
-	public static boolean isValidPass(String n) {
+	public static boolean isValidAdminBrukernavn(String brukernavn) {
+		return brukernavn != null 
+				&& brukernavn.matches("^" + ANY_LETTER_OR_DIGIT + THREE_TIMES + ANY_LETTER_OR_DIGIT + ZERO_OR_MORE_TIMES + "$");
+	}
 
-		if (n == null) {
-			return false;
-		}
-		return n.matches("^" + ANY_LETTER_OR_DIGIT + THREE_TIMES + ANY_LETTER_OR_DIGIT + ZERO_OR_MORE_TIMES + "$");
+	public static boolean isValidPassord(String passord) {
+		return passord != null
+				&& passord.matches("^" + ANY_LETTER_OR_DIGIT + THREE_TIMES + ANY_LETTER_OR_DIGIT + ZERO_OR_MORE_TIMES + "$");
 	}
 
 	/**
@@ -59,15 +49,13 @@ public class GyldigInput {
 	 * @return om det er et gyldig nr med 8 siffer
 	 */
 	public static boolean isValidMobilnr(String tlf) {
-		return tlf != null && tlf.matches("^" + ANY_DIGIT + EIGHT_TIMES + "$");
+		return tlf != null 
+				&& tlf.matches("^" + ANY_DIGIT + EIGHT_TIMES + "$");
 	}
 
 	public static boolean isValidEtternavn(String n) {
-
-		if (n == null) {
-			return false;
-		}
-		return n.matches("^" + ANY_CAPITAL_LETTER + ANY_LETTER_WITH_HYPHEN + TWO_TO_20_TIMES + "$");
+		return n != null
+				&& n.matches("^" + ANY_CAPITAL_LETTER + ANY_LETTER_WITH_HYPHEN + TWO_TO_20_TIMES + "$");
 
 	}
 
@@ -75,6 +63,8 @@ public class GyldigInput {
 	 * @param n telefonnr
 	 * @return bool om telefonnr ikke har stemt på prosjektet før
 	 */
+	@Deprecated
+	// Bruk stemmeDAO sin metode istedenfor
 	public static boolean isNyStemme(String n) {
 		sql = "SELECT * FROM public.stemme";
 		if (n == null || !n.matches("^" + ANY_DIGIT + EIGHT_TIMES + "$")) {

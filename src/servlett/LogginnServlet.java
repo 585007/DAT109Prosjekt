@@ -58,56 +58,6 @@ public class LogginnServlet extends HttpServlet {
 			}
 		}else {
 			response.sendRedirect("logginn?invalidLogginn=true");
-		}
-		
-		
-		
-		
-//		if (!hjelpeKlasser.GyldigInput.isValidAdmBrukernavn(bruker)) {
-//			response.sendRedirect("logginn?invalidBrukernavn");
-//		}
-//		
-//		if (!hjelpeKlasser.GyldigInput.isValidPass(passord)) {
-//			response.sendRedirect("logginn?invalidPassord");
-//		}
-//		
-///*		if (!hjelpeKlasser.GyldigInput.isValidAdmLogin(bruker, passord)) {
-//			response.sendRedirect("logginn?invalidLogin");
-//		}
-//*/		
-//		if (!bruker.equals(admDAO.hentBrukernavn())
-//						|| !PassordHjelp.validerMedSalt(passord, admDAO.hentSalt() , admDAO.hentPassord())) {
-//				String loginMessage = "Ugyldig brukernavn og/eller passord";
-//				request.setAttribute("loginMessage", loginMessage);
-//				request.getRequestDispatcher("WEB-INF/logginn.jsp").forward(request, response);
-//		} else {
-//				HttpSession sesjon = request.getSession(false);
-//				if (sesjon != null) {
-//						sesjon.invalidate();
-//				}
-//				sesjon = request.getSession(true);
-//				
-//				response.sendRedirect("admin");
-//			}
 		}	
-		
-/*
- 		String brukerHardKodet = "adm";			
-		String passordHardKodet = "pass";
- 
-		if (!bruker.equals(brukerHardKodet) || !passord.equals(passordHardKodet)) {
-				String loginMessage = "Ugyldig brukernavn og/eller passord";
-				request.setAttribute("loginMessage", loginMessage);
-				request.getRequestDispatcher("WEB-INF/logginn.jsp").forward(request, response);
-		} else {
-				HttpSession sesjon = request.getSession(false);
-				if (sesjon != null) {
-						sesjon.invalidate();
-				}
-				sesjon = request.getSession(true);
-			
-				response.sendRedirect("admin");
-		}	
-*/		
-		
+	}
 }

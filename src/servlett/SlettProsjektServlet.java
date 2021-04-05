@@ -21,15 +21,14 @@ import hjelpeKlasser.GyldigSesjon;
  * Sender brukeren tilbake til adminsiden
  */
 
+@Deprecated
+//Skal slettes fra prosjekt liste, og ikke fra egen side
 @WebServlet(name = "SlettProsjektServlet", urlPatterns = "/slettProsjekt")
 public class SlettProsjektServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	@EJB
 	ProsjektDAO prosjektDAO;
 
-	/**
-	 * sender til SlettProsjekt.jsp hvis brukeren er logget inn
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession sesjon = request.getSession(false);
 		
@@ -41,11 +40,6 @@ public class SlettProsjektServlet extends HttpServlet {
 		
 	}
 	
-	/**
-	 * Sjekker om brukeren er logget inn og om den kommer fra SlettProsjekt.jsp
-	 * 
-	 * Sletter så prosjektet med prosjektNr fra attributten i request
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession sesjon = request.getSession(false);
 		

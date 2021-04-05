@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import DAO.ProsjektDAO;
-import DAO.StemmeDAO;
 import hjelpeKlasser.GyldigSesjon;
 
 /**

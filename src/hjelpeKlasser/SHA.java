@@ -2,7 +2,6 @@ package hjelpeKlasser;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
-
 @Deprecated
 public class SHA {
 	
@@ -27,6 +26,7 @@ public class SHA {
         String generatedPassword = sb.toString();
 		return generatedPassword;
 	}
+	
     public static String makeSalt(){   
     SecureRandom sr;
     byte[] salt = new byte[16];

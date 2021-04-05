@@ -13,7 +13,7 @@ import hjelpeKlasser.GyldigSesjon;
 /**
  * Har tre knapper som sender deg videre til en av tre destinasjoner legg til et posjekt, 
  * liste over prosjekter med poeng og slett et prosjekt
- * @author Svein Ove Surdal
+ * @author Svein Ove Surdal / Ruben Aadland
  *
  */
 @WebServlet(name = "admin", urlPatterns = "/admin")

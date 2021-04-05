@@ -16,7 +16,7 @@ import hjelpeKlasser.GyldigSesjon;
 
 /**
  * 
- * @author Svein Ove Surdal
+ * @author Svein Ove Surdal / Ruben Aadland
  *
  */
 @WebServlet(name = "kvittering", urlPatterns = "/kvittering")

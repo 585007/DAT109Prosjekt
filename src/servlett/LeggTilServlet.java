@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import DAO.ProsjektDAO;
 import entiteter.Prosjekt;
+import hjelpeKlasser.GyldigInput;
 import hjelpeKlasser.GyldigSesjon;
 
 /**
@@ -34,7 +35,6 @@ public class LeggTilServlet extends HttpServlet {
 		if(request.getParameter("invalidProsjekt")!=null) {
 			loginMessage="Ugyldig prosjekt!";
 		}
-//		int prosjektNr = prosjektDAO.hentAlleProsjekter().size() +1;
 		request.setAttribute("loginMessage", loginMessage);
 
 		HttpSession sesjon = request.getSession(false);
@@ -49,14 +49,11 @@ public class LeggTilServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-//		String prosjektNr = request.getParameter("prosjektnr");
-//		int nr = Integer.parseInt(prosjektNr);
-
 		HttpSession sesjon = request.getSession(false);
 
 		if (GyldigSesjon.innlogget(sesjon)) {
 			String navn = request.getParameter("navn");
-			if (!hjelpeKlasser.GyldigInput.isValidProsjektNavn(navn)) {
+			if (!GyldigInput.isValidProsjektNavn(navn)) {
 				response.sendRedirect("LeggTilProsjekt?invalidProsjekt");
 			}else {
 				Prosjekt p = new Prosjekt(navn);

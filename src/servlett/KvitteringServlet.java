@@ -34,16 +34,14 @@ public class KvitteringServlet extends HttpServlet {
 				int prosjektNr = Integer.parseInt(request.getParameter("prosjektnr"));
 				Prosjekt p = prosjektDAO.hentProsjekt(prosjektNr);
 				request.setAttribute("prosjekter", p);
+				
+				request.getRequestDispatcher("WEB-INF/kvittering.jsp").forward(request, response);
 			}else {
 				response.sendRedirect("logginn");
 			}
 		}else {
 			response.sendRedirect("logginn");
 		}
-		
-			
-		
-		request.getRequestDispatcher("WEB-INF/kvittering.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -7,9 +7,20 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link rel="stylesheet"
+	href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
 <title>Prosjektliste </title>
 </head>
 <body>
+<form action="admin" method="get" class="pure-form pure-form-aligned">
+    <fieldset>
+      <div class="pure-control-group">
+        <p>
+          <button type="submit" name="admin" class="pure-button pure-button-primary">Admin</button>
+        </p>
+      </div>
+    </fieldset>
+  </form>
 	<h1> Prosjektliste </h1>
 
 	<table>
@@ -37,7 +48,7 @@
 				</form></td>
 			<td> <form action="slettProsjekt" method="post" class="pure-form pure-form-aligned">
 				<input type="hidden" name="prosjektNr" value="${prosjekt.prosjektNr}">
-				<input type="submit" class="pure-button pure-button-primary" value="Slett">
+				<input type="submit" value="Slett">
 				</form></td>
 		</tr>
 	</c:forEach>

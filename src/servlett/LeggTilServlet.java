@@ -1,6 +1,7 @@
 package servlett;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -11,9 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import DAO.ProsjektDAO;
+import DAO.StemmeDAO;
 import entiteter.Prosjekt;
+import entiteter.ProsjektScore;
 import hjelpeKlasser.GyldigInput;
 import hjelpeKlasser.GyldigSesjon;
+import hjelpeKlasser.ProsjektListeHjelp;
 
 /**
  * 
@@ -26,7 +30,9 @@ public class LeggTilServlet extends HttpServlet {
 
 	@EJB
 	ProsjektDAO prosjektDAO;
-
+	@EJB
+	StemmeDAO stemmeDAO;
+	
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -40,6 +46,12 @@ public class LeggTilServlet extends HttpServlet {
 		HttpSession sesjon = request.getSession(false);
 
 		if (GyldigSesjon.innlogget(sesjon)) {
+			List<Prosjekt> prosjekter = prosjektDAO.hentAlleProsjekter();
+			
+			List<ProsjektScore> scoreListe = ProsjektListeHjelp.hentProsjektScoreListe(prosjekter, stemmeDAO);
+						
+			sesjon.setAttribute("prosjekter", scoreListe);
+			
 			request.getRequestDispatcher("WEB-INF/LeggTilProsjekt.jsp").forward(request, response);
 		} else {
 			response.sendRedirect("logginn");

@@ -60,8 +60,8 @@ public class LeggTilServlet extends HttpServlet {
 
 				prosjektDAO.lagreNyttProsjekt(p);
 
-				sesjon.setAttribute("prosjekter", p);
-				response.sendRedirect("kvittering");
+				request.setAttribute("prosjekter", p);
+				request.getRequestDispatcher("WEB-INF/kvittering.jsp").forward(request, response);
 			}
 			
 		} else {

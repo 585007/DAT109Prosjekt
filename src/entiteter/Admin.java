@@ -71,5 +71,8 @@ public class Admin {
 		return this.passord
 				.equals(PassordHjelp.hashMedSalt(passord, getSalt()));
 	}
+	public boolean gyldigBrukerNavn(String brukernavn) {
+		return this.brukernavn.equals(brukernavn);
+	}
 }
 

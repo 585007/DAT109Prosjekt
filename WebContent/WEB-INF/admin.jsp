@@ -28,6 +28,15 @@
       </div>
     </fieldset>
   </form>
+    <form action="EndreBrukerNavnogPassord" method="get" class="pure-form pure-form-aligned">
+    <fieldset>
+      <div class="pure-control-group">
+        <p>
+          <button type="submit" name="EndreBrukerNavnogPassord" class="pure-button pure-button-primary">Endre brukernavn og passord</button>
+        </p>
+      </div>
+    </fieldset>
+  </form>
 
 </body>
 </html>

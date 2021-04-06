@@ -1,10 +1,14 @@
 package DAO;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import entiteter.Admin;
+import entiteter.Prosjekt;
+import entiteter.Stemme;
 
 /**
  * 
@@ -38,6 +42,13 @@ public class AdmDAO {
 	public Admin getAdmin(String brukernavn) {
 		return em.find(Admin.class , brukernavn);
 	}
+	
+	public synchronized void EndreAdmin(String brukernavn, String passord) {
+	
+		Admin a = em.find(Admin.class , brukernavn);
+		a.setPassord(passord);
+		em.persist(a);
+    }
 
 //	mangler metode for å endre passord
 	

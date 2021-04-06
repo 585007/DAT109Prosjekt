@@ -35,7 +35,6 @@ input {
 	<h1>${prosjekter.prosjektnavn}</h1>
 
 	<form action="kvittering" method="post">
-		<div id=id>
 			<h2>http://localhost:8080/dat109-prosjekt-gr5/StemmeServlet?prosjektId=${prosjekter.getProsjektNr()}</h2>
 			<canvas id="qr-code"></canvas>
 
@@ -53,11 +52,14 @@ input {
 				})();
 		</script>
 			<div class="pure-control-group">
-				<p>
 					<button type="submit" name="Ferdig"
 						class="pure-button pure-button-primary">Ferdig</button>
-				</p>
 			</div>
 	</form>
+	<form action="LeggTilProsjekt" method="get" class="pure-form pure-form-aligned">
+      <div class="pure-control-group">
+          <button type="submit" name="LeggTilProsjekt" class="pure-button pure-button-primary">Leggtil nytt prosjekt</button>
+      </div>
+  </form>
 </body>
 </html>

@@ -21,5 +21,14 @@
 			</div>
 		</fieldset>
 	</form>
+	<form action="admin" method="get" class="pure-form pure-form-aligned">
+    <fieldset>
+      <div class="pure-control-group">
+        <p>
+          <button type="submit" name="admin" class="pure-button pure-button-primary">Admin</button>
+        </p>
+      </div>
+    </fieldset>
+  </form>
 </body>
 </html>

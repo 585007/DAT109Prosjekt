@@ -58,7 +58,7 @@ input {
 	</form>
 	<form action="LeggTilProsjekt" method="get" class="pure-form pure-form-aligned">
       <div class="pure-control-group">
-          <button type="submit" name="LeggTilProsjekt" class="pure-button pure-button-primary">Leggtil nytt prosjekt</button>
+          <button type="submit" name="LeggTilProsjekt" class="pure-button pure-button-primary">Legg til nytt prosjekt</button>
       </div>
   </form>
 </body>

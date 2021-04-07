@@ -5,12 +5,15 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 import entiteter.Prosjekt;
+import entiteter.Stemme;
 
 /**
- * @author Håkon Herrevold / Ruben Aadland
+ * @author Håkon Herrevold / Ruben Aadland / Svein Ove Surdal
  *
  */
 @Stateless
@@ -27,6 +30,21 @@ public class ProsjektDAO {
 	public List<Prosjekt> hentAlleProsjekter() {
 		return em.createQuery("SELECT p FROM Prosjekt p", Prosjekt.class).getResultList();
 	}
+	
+	public synchronized boolean prosjektnavnFinnes(String prosjektnavn){
+		
+		final String qstring = "SELECT p FROM Prosjekt p WHERE p.prosjektnavn = :prosjektnavn";
+		TypedQuery<Prosjekt> query = em.createQuery(qstring, Prosjekt.class);
+		query.setParameter("prosjektnavn", prosjektnavn);
+		
+		try{
+			query.getSingleResult();  
+	    }
+	    catch(NoResultException e){
+	        return false;
+	    }
+		return true;
+    }
 	
 	/**
 	 * 
@@ -54,5 +72,7 @@ public class ProsjektDAO {
     	Prosjekt prosjekt = hentProsjekt(Integer.parseInt(prosjektNr));
     	em.remove(prosjekt);
     }
+    
+    
 
 }

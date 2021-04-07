@@ -54,12 +54,9 @@ public class PoengHjelp {
 	public static double regnUtVektetScore(List<Stemme> stemmer) {
 		double vektetScore = 0;
 		if(!stemmer.isEmpty()) {
-			int antall = 0;
-			
 			for(Stemme s : stemmer) {
 				int rating = s.getRating();
 				if(rating != 0) {
-					antall++;
 					vektetScore += (rating - NULLPUNKT);
 				}
 			}
@@ -67,6 +64,8 @@ public class PoengHjelp {
 		return vektetScore;
 	}
 	
+	
+	//TODO - endre til å ta inn en liste med stemmer istedenfor
 	/**
 	 * 
 	 * @param totalScore
@@ -76,7 +75,7 @@ public class PoengHjelp {
 	 * @return returnerer (totalscore + gjScore * vektetScore)/antallStemmer
 	 * fjerner vektetScore fra utregningen hvis den er 0
 	 */
-	public static double regnUtGjScore(int totalScore, double gjScore, double vektetScore, int antallStemmer) {
+	public static double regnUtScore(int totalScore, double gjScore, double vektetScore, int antallStemmer) {
 		double score;
 		
 		if(vektetScore != 0) {

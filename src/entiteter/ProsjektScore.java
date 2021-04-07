@@ -41,7 +41,7 @@ public class ProsjektScore {
 		this.totalScore = PoengHjelp.tellPoengTilProsjekt(stemmer);
 		this.gjScore = PoengHjelp.regnUtGjScore(stemmer);
 		this.vektetScore = PoengHjelp.regnUtVektetScore(stemmer);
-		this.score = PoengHjelp.regnUtGjScore(totalScore, gjScore, vektetScore, antallStemmer);
+		this.score = PoengHjelp.regnUtScore(totalScore, gjScore, vektetScore, antallStemmer);
 	}
 
 	public int getProsjektNr() {

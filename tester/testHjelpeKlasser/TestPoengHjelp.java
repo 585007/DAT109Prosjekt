@@ -19,8 +19,9 @@ public class TestPoengHjelp {
 
 	private List<Stemme> stemmer;
 	private int poengFasit;
+	private double fasitGjPoeng;
 	private int antallNullStemmer;
-	private int fasitVektetScore;
+	private double fasitVektetScore;
 	
 	@Before
 	public void oppsett() {
@@ -40,6 +41,10 @@ public class TestPoengHjelp {
 				fasitVektetScore += (stemme - NULLPUNKT_FOR_VEKTETSCORE);
 			}
 		}
+		
+		fasitGjPoeng = poengFasit / (stemmer.size() - antallNullStemmer);
+		
+		
 	}
 	
 	
@@ -51,23 +56,35 @@ public class TestPoengHjelp {
 	
 	@Test
 	public void testRegnUtGjScore() {
-		double antallStemmer = stemmer.size() - antallNullStemmer;
-		
-		double fasitGj = poengFasit/antallStemmer;
-		
-		Assert.assertEquals(fasitGj,
+		Assert.assertEquals(fasitGjPoeng,
 				PoengHjelp.regnUtGjScore(stemmer), FEILTOLERANSE);
 	}
 	
 	@Test
 	public void testregnUtVektetScore() {
-		Assert.assertEquals(fasitVektetScore
-				, PoengHjelp.regnUtVektetScore(stemmer), FEILTOLERANSE);
+		Assert.assertEquals(fasitVektetScore,
+				PoengHjelp.regnUtVektetScore(stemmer), FEILTOLERANSE);
 	}
 	
 	@Test
 	public void testRegnUtScore() {
 		
+		int antallStemmer = PoengHjelp.gyldigeStemmer(stemmer);
+		int totalScore = PoengHjelp.tellPoengTilProsjekt(stemmer);
+		double gjScore = PoengHjelp.regnUtGjScore(stemmer);
+		double vektetScore = PoengHjelp.regnUtVektetScore(stemmer);
+		
+		double score;
+		
+		if(vektetScore != 0) {
+			score = antallStemmer / (totalScore + gjScore * vektetScore);
+		}else {
+			score = antallStemmer / (totalScore + gjScore) ;
+		}
+		
+		
+		Assert.assertEquals(score, 
+				PoengHjelp.regnUtScore(stemmer), FEILTOLERANSE);
 	}
 	
 	public void testGyldigeStemmer() {

@@ -75,7 +75,12 @@ public class PoengHjelp {
 	 * @return returnerer (totalscore + gjScore * vektetScore)/antallStemmer
 	 * fjerner vektetScore fra utregningen hvis den er 0
 	 */
-	public static double regnUtScore(int totalScore, double gjScore, double vektetScore, int antallStemmer) {
+	public static double regnUtScore(List<Stemme> stemmer) {
+		int antallStemmer = gyldigeStemmer(stemmer);
+		int totalScore = tellPoengTilProsjekt(stemmer);
+		double gjScore = regnUtGjScore(stemmer);
+		double vektetScore = regnUtVektetScore(stemmer);
+		
 		double score;
 		
 		if(vektetScore != 0) {

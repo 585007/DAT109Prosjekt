@@ -39,7 +39,7 @@ public class LeggTilServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String loginMessage = "";
 		if(request.getParameter("invalidProsjekt")!=null) {
-			loginMessage="Ugyldig prosjekt!";
+			loginMessage="Ugyldig prosjektnavn!";
 		}
 		request.setAttribute("loginMessage", loginMessage);
 
@@ -65,7 +65,7 @@ public class LeggTilServlet extends HttpServlet {
 
 		if (GyldigSesjon.innlogget(sesjon)) {
 			String navn = request.getParameter("navn");
-			if (!GyldigInput.isValidProsjektNavn(navn)) {
+			if (!GyldigInput.isValidProsjektNavn(navn) || prosjektDAO.prosjektnavnFinnes(navn)) {
 				response.sendRedirect("LeggTilProsjekt?invalidProsjekt");
 			}else {
 				Prosjekt p = new Prosjekt(navn);

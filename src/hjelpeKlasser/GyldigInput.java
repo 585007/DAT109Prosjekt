@@ -6,6 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.ejb.EJB;
+
+import DAO.ProsjektDAO;
 import entiteter.Admin;
 
 /**
@@ -28,6 +31,8 @@ public class GyldigInput {
 	public static final String ZERO_OR_ONE_TIME = "?";
 
 	static String sql = "SELECT * FROM admLogin.table";
+	@EJB
+	ProsjektDAO prosjektDAO;
 
 	/**
 	 * 

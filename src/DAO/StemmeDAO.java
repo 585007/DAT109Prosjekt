@@ -38,7 +38,7 @@ public class StemmeDAO {
 		if (stemme.size() > 0) {
 			stemmeID =stemme.get(0).getStemmeid();
 		}
-		System.out.println(stemmeID);
+		//System.out.println(stemmeID);
 		return stemmeID;
 	}
     public synchronized void lagreNyStemme(Stemme nystemme) {

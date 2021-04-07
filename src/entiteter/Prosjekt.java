@@ -20,7 +20,7 @@ public class Prosjekt {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int prosjektnr;
 	String prosjektnavn;
-	String adresse;
+	
 
 	
 	public Prosjekt() {
@@ -32,7 +32,6 @@ public class Prosjekt {
 	public Prosjekt(String prosjektNavn) {
 		synchronized(this) {
 		this.prosjektnavn = prosjektNavn;
-		adresse = "http://localhost:8041/dat109-prosjekt-gr5/ProsjektListe/"+prosjektnr;
 		}
 	}
 

@@ -1,0 +1,18 @@
+
+.header{
+    font-size:10vw;
+}
+.main {
+    float: left;
+    width: 60%; /* The width is 60%, by default */
+  }
+
+.height{
+    height: 16px;
+}
+
+.background{
+    background-color: white;
+}
+
+

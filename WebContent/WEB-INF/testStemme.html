@@ -3,22 +3,21 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Vurder Prosjekt ${prosjektNavn}</title>
+<link rel="stylesheet" href="style.css">
 </head>
-<body>
-	<h1>${prosjektNavn}</h1>
+<body class = "background">
+	<h1 >${prosjektNavn}</h1>
 	<form action="StemmeServlet" method="post">
 		<input type="hidden" name="prosjektNavn" value=${prosjektNavn}>
 		<input type="hidden" name="prosjektId" value=${prosjektId}>
 
 		<div class="pure-control-group">
-
 			<label for="mobil">Telefonnummer:</label> <input type="text"
 				name="tlf" required />
-
 		</div>
 
-		<p>Hvor bra fra 0-5 er prosjektet (5 best, 0 verst)</p>
-		<div>
+		<div class = "height">
+            <p>Hvor bra fra 0-5 er prosjektet (5 best, 0 verst)</p>
 
 			<input type="radio" id="0" name="rating" value="0" required>
 			<label for="0">0</label><br> <input type="radio" id="1"
@@ -37,7 +36,6 @@
 					inn</button>
 				<font color="red">${invalidMessage}</font>
 			</div>
-
 		</div>
 
 	</form>

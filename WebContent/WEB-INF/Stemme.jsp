@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="js/gyldigstemme.js" defer></script>
+
 <meta charset="ISO-8859-1">
 <link rel="stylesheet"
 	href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
@@ -22,11 +22,11 @@
 					name="tlf" pattern="\d*" title = "Bare tall er akseptert" required />
 			</div>
 
-			<p>Hvor bra fra 0-5 er prosjektet (5 best, 0 verst)</p>
+			<p>Hvor bra fra 1-5 er prosjektet (5 best, 1 verst)</p>
 			<div>
 
 				<input type="radio" id="0" name="rating" value="0" required>
-				<label for="0">0</label><br> <input type="radio" id="1"
+				<label for="0">Ikke stem</label><br> <input type="radio" id="1"
 					name="rating" value="1" required> <label for="1">1</label><br>
 
 				<input type="radio" id="2" name="rating" value="2" required>

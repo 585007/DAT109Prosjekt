@@ -10,6 +10,7 @@ import entiteter.Admin;
  * 
  * @author Svein Ove Surdal / Tomas Mardal / Ruben Aadland
  * 
+ * Data access objekt for å aksessere admin data
  */
 @Stateless
 public class AdmDAO {

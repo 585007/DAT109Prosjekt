@@ -39,9 +39,9 @@ public class ProsjektScore {
 		this.antallStemmer = PoengHjelp.gyldigeStemmer(stemmer);
 		
 		this.totalScore = PoengHjelp.tellPoengTilProsjekt(stemmer);
-		this.gjScore = PoengHjelp.regnUtGjScore(stemmer);
-		this.vektetScore = PoengHjelp.regnUtVektetScore(stemmer);
-		this.score = PoengHjelp.regnUtScore(stemmer);
+		this.gjScore = trimAntallDesimaler(PoengHjelp.regnUtGjScore(stemmer));
+		this.vektetScore = trimAntallDesimaler(PoengHjelp.regnUtVektetScore(stemmer));
+		this.score = trimAntallDesimaler(PoengHjelp.regnUtScore(stemmer));
 	}
 
 	public int getProsjektNr() {
@@ -91,6 +91,11 @@ public class ProsjektScore {
 		}
 		
 		return sammenlignet;
+	}
+	
+	private double trimAntallDesimaler(double tall) {
+		int temp = (int)(tall*100.0);
+	    return ((double)temp)/100.0;
 	}
 	
 }

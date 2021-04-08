@@ -68,10 +68,7 @@ public class PoengHjelp {
 	//TODO - endre til å ta inn en liste med stemmer istedenfor
 	/**
 	 * 
-	 * @param totalScore
-	 * @param gjScore
-	 * @param vektetScore
-	 * @param antallStemmer
+	 * @param stemmer som skal brukes til å regne ut stemmer
 	 * @return returnerer (totalscore + gjScore * vektetScore)/antallStemmer
 	 * fjerner vektetScore fra utregningen hvis den er 0
 	 */
@@ -86,7 +83,7 @@ public class PoengHjelp {
 		if(vektetScore != 0) {
 			score = antallStemmer / (totalScore + gjScore * vektetScore);
 		}else {
-			score = antallStemmer / (totalScore + gjScore) ;
+			score = antallStemmer / (totalScore + gjScore);
 		}
 		return score;
 	}

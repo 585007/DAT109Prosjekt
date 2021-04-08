@@ -9,11 +9,10 @@ import java.sql.SQLException;
 import javax.ejb.EJB;
 
 import DAO.ProsjektDAO;
-import entiteter.Admin;
 
 /**
  * 
- * @author ??? / Ruben Aadland
+ * @author Halvor / Ruben Aadland
  *
  */
 public class GyldigInput {

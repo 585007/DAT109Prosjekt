@@ -3,7 +3,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="js/gyldigstemme.js" defer></script>
 <meta charset="ISO-8859-1">
 <link rel="stylesheet"
 	href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">

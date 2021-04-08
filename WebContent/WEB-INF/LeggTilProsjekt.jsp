@@ -50,7 +50,7 @@
 					<td>
 						<form action="kvittering" method="get">
 							<input type="hidden" name="prosjektnr"
-								value="${prosjekt.prosjektnr}"> <input type="submit"
+								value="${prosjekt.getProsjektNr()}"> <input type="submit"
 								value="se kvitering">
 						</form>
 					</td>

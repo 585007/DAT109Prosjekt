@@ -14,7 +14,8 @@ import entiteter.Stemme;
 
 /**
  * @author Håkon Herrevold / Ruben Aadland / Svein Ove Surdal
- *
+ * 
+ * Data access objekt for å aksessere prosjekt data
  */
 @Stateless
 public class ProsjektDAO {

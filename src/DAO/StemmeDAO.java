@@ -10,6 +10,8 @@ import javax.persistence.PersistenceContext;
 import entiteter.Stemme;
 /**
  * @author Håkon Herrevold/ Svein Ove Surdal / Ruben Aadland
+ * 
+ * Data access objekt for å aksessere stemme data
  *
  */
 @Stateless

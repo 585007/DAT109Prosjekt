@@ -92,7 +92,6 @@ public class TestPoengHjelp {
 				PoengHjelp.regnUtGjScore(statiskStemmer), FEILTOLERANSE);
 	}
 	
-	//TODO - endret utregningsmetode
 	@Test
 	public void testStatiskRegnUtVektetScore() {
 		double vektetScore = 0.98;
@@ -101,7 +100,6 @@ public class TestPoengHjelp {
 				PoengHjelp.regnUtVektetScore(statiskStemmer), FEILTOLERANSE);
 	}
 	
-	//TODO - endret utregningsmetode
 	@Test
 	public void testStatiskRegnUtScore() {
 		double score = 9.8;
@@ -124,14 +122,12 @@ public class TestPoengHjelp {
 				PoengHjelp.regnUtGjScore(dynamiskStemmer), FEILTOLERANSE);
 	}
 	
-	//TODO - endret utregningsmetode
 	@Test
 	public void testDynamiskRegnUtVektetScore() {
 		Assert.assertEquals(fasitVektetScore,
 				PoengHjelp.regnUtVektetScore(dynamiskStemmer), FEILTOLERANSE);
 	}
 	
-	//TODO - endret utregningsmetode
 	@Test
 	public void testDynamiskRegnUtScore() {
 		int antallStemmer = PoengHjelp.gyldigeStemmer(dynamiskStemmer);

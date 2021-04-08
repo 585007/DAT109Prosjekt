@@ -45,7 +45,6 @@ public class PoengHjelp {
 		return score;
 	}
 	
-	//TODO - oppdater JavaDoc
 	/**
 	 * @param stemmer for prosjektet
 	 * 
@@ -77,8 +76,6 @@ public class PoengHjelp {
 		
 	}
 	
-	
-	//TODO - endre til å ta inn en liste med stemmer istedenfor
 	/**
 	 * 
 	 * @param stemmer som skal brukes til å regne ut stemmer

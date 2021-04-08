@@ -65,8 +65,8 @@ public class StemmeServlet extends HttpServlet {
 				Stemme stemme = new Stemme(prosjektId,tlf, rating);
 				stemmeDAO.lagreNyStemme(stemme);
 			}
-			
-			response.sendRedirect("stemmekvittering");
+
+			request.getRequestDispatcher("WEB-INF/StemmeKvittering.jsp").forward(request, response);
 		}else {
 			response.sendRedirect("StemmeServlet?prosjektId="+prosjektId+"&invalidInput=true");
 		}

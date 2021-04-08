@@ -41,6 +41,7 @@
 						name="rating" value="5" required> <label for="5">5</label><br><br>
 					</fieldset>
 					
+					
 					<div>
 						<button type="submit" class="pure-button pure-button-primary">Send
 							inn</button>

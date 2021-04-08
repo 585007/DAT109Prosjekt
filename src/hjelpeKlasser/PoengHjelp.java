@@ -45,23 +45,36 @@ public class PoengHjelp {
 		return score;
 	}
 	
+	//TODO - oppdater JavaDoc
 	/**
 	 * @param stemmer for prosjektet
 	 * 
 	 * @return returnerer total vektede stemmene delt på antall stemmer (utenom 0)
 	 */
 	private final static int NULLPUNKT = 3;
+	private final static double STANDARDSCORE = 1.00;
 	public static double regnUtVektetScore(List<Stemme> stemmer) {
-		double vektetScore = 0;
+		double positivScore = 0.0;
+		double negativScore = 0.0;
+		
 		if(!stemmer.isEmpty()) {
 			for(Stemme s : stemmer) {
 				int rating = s.getRating();
 				if(rating != 0) {
-					vektetScore += (rating - NULLPUNKT);
+					if(rating > NULLPUNKT) {
+						positivScore += (rating - NULLPUNKT);
+					}else {
+						negativScore += (rating - NULLPUNKT);
+					}
 				}
 			}
 		}
-		return vektetScore;
+		
+		positivScore = (positivScore / 100.0);
+		negativScore = (negativScore / 100.0);
+		
+		return STANDARDSCORE + positivScore + negativScore;
+		
 	}
 	
 	
@@ -78,14 +91,7 @@ public class PoengHjelp {
 		double gjScore = regnUtGjScore(stemmer);
 		double vektetScore = regnUtVektetScore(stemmer);
 		
-		double score;
-		
-		if(vektetScore != 0) {
-			score = antallStemmer / (totalScore + gjScore * vektetScore);
-		}else {
-			score = antallStemmer / (totalScore + gjScore);
-		}
-		return score;
+		return gjScore * antallStemmer * vektetScore;
 	}
 	/**
 	 * 

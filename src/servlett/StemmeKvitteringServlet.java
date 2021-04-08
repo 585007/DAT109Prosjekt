@@ -6,7 +6,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+/**
+ * Skriver ut kvittering som bekrefter at du har stemt på et prosjekt.
+ * 
+ * @author Halvor Edvard Eid
+ *
+ */
 
 @WebServlet("/stemmekvittering")
 public class StemmeKvitteringServlet extends HttpServlet {

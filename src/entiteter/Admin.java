@@ -9,7 +9,7 @@ import hjelpeKlasser.PassordHjelp;
 
 /**
  * 
- * @author Tomas Mardal / Ruben Aadland
+ * @author Svein Ove Surdal/ Tomas Mardal/ Ruben Aadland
  *
  */
 @Entity

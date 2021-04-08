@@ -31,6 +31,11 @@ public class ProsjektDAO {
 		return em.createQuery("SELECT p FROM Prosjekt p", Prosjekt.class).getResultList();
 	}
 	
+	/**
+	 * ser om Prosjekt med aktuelt prosjektnavn finnes 
+	 * @param prosjektnavn
+	 * @return boolean true om den finnes. false om den ikke finnes
+	 */
 	public synchronized boolean prosjektnavnFinnes(String prosjektnavn){
 		
 		final String qstring = "SELECT p FROM Prosjekt p WHERE p.prosjektnavn = :prosjektnavn";

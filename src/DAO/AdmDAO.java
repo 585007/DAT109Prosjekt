@@ -43,13 +43,16 @@ public class AdmDAO {
 		return em.find(Admin.class , brukernavn);
 	}
 	
+	/**
+	 * endrer passord på adm bruker
+	 * @param brukernavn
+	 * @param passord
+	 */
 	public synchronized void EndreAdmin(String brukernavn, String passord) {
 	
 		Admin a = em.find(Admin.class , brukernavn);
 		a.setPassord(passord);
 		em.persist(a);
     }
-
-//	mangler metode for å endre passord
 	
 }

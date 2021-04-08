@@ -15,7 +15,7 @@ import entiteter.Admin;
 import hjelpeKlasser.GyldigInput;
 
 /**
- * Innlogging med verifisering av brukernavn og passord
+ * Innlogging for admin bruker med verifisering av brukernavn og passord
  * 
  * @author Svein Ove Surdal / ??? / Ruben Aadland
  *

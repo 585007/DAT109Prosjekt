@@ -16,7 +16,7 @@ import entiteter.Stemme;
 import hjelpeKlasser.GyldigInput;
 
 /**
- * 
+ * brukes for å registrere stemmer
  * @author Halvor / Svein Ove Surdal / Ruben Aadland
  *
  */

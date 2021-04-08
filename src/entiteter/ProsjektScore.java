@@ -32,7 +32,7 @@ public class ProsjektScore {
 	 *
 	 */
 	public ProsjektScore(Prosjekt p, StemmeDAO stemmeDAO) {
-		this.prosjektNr = p.getProsjektnr();
+		this.prosjektNr = p.getProsjektNr();
 		this.prosjektNavn = p.getProsjektnavn();
 		
 		List<Stemme> stemmer = stemmeDAO.hentProsjektStemmer(prosjektNr);

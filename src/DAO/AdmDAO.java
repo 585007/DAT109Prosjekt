@@ -13,45 +13,42 @@ import entiteter.Admin;
  */
 @Stateless
 public class AdmDAO {
-
+	
 	@PersistenceContext(name = "dat109prosjekt")
-	private EntityManager em;
-
-	// Bruk heller getAdmin for så å hente ut de forskjellige verdien derfra
+    private EntityManager em;
+	
+	//Bruk heller getAdmin for så å hente ut de forskjellige verdien derfra
 	@Deprecated
 	public String hentBrukernavn() {
 		return em.createQuery("SELECT a FROM Admin a ", Admin.class).getSingleResult().getBrukernavn();
 	}
-
 	@Deprecated
 	public String hentPassord() {
-		return em.createQuery("SELECT a FROM Admin a ", Admin.class).getSingleResult().getPassord();
+		return em.createQuery("SELECT a FROM Admin a ", Admin.class).getSingleResult().getPassord(); 
 	}
-
 	@Deprecated
 	public String hentSalt() {
 		return em.createQuery("SELECT a FROM Admin a", Admin.class).getSingleResult().getSalt();
 	}
-
 	/**
 	 * 
 	 * @param brukernavn til admin brukeren som skal hentes
-	 * @return returnerer admin brukeren med brukernavnet. Hvis brukeren ikke finnes
-	 *         returneres null
+	 * @return returnerer admin brukeren med brukernavnet. Hvis brukeren ikke finnes returneres null
 	 */
 	public Admin getAdmin(String brukernavn) {
-		return em.find(Admin.class, brukernavn);
+		return em.find(Admin.class , brukernavn);
 	}
-
+	
 	/**
-	 * 
-	 * @param brukernavn til admin brukeren som skal hentes
-	 * @param nytt       passord som det skal endres til
+	 * endrer passord på adm bruker
+	 * @param brukernavn
+	 * @param passord
 	 */
 	public synchronized void EndreAdmin(String brukernavn, String passord) {
-
-		Admin a = em.find(Admin.class, brukernavn);
+	
+		Admin a = em.find(Admin.class , brukernavn);
 		a.setPassord(passord);
 		em.persist(a);
-	}
+    }
+	
 }

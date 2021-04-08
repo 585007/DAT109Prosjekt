@@ -19,6 +19,7 @@ import hjelpeKlasser.GyldigSesjon;
 import hjelpeKlasser.ProsjektListeHjelp;
 
 /**
+ * viser en liste over alle lagrede prosjekter
  * @author Ruben Aadland / Svein Ove Surdal
  *
  */

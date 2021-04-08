@@ -17,7 +17,7 @@ import hjelpeKlasser.GyldigSesjon;
 import hjelpeKlasser.PassordHjelp;
 
 /**
- * 
+ * Gjør det mulig å endre passord for adm bruker
  * @author Svein Ove Surdal
  *
  */

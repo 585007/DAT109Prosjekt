@@ -15,7 +15,7 @@ import entiteter.Prosjekt;
 import hjelpeKlasser.GyldigSesjon;
 
 /**
- * 
+ * Skriver ut en kvittering for lagret prosjekt med QR koden til det aktuelle prosjektets stemmeside
  * @author Svein Ove Surdal / Ruben Aadland
  *
  */

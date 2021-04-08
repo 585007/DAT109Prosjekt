@@ -20,8 +20,8 @@ import hjelpeKlasser.GyldigSesjon;
 import hjelpeKlasser.ProsjektListeHjelp;
 
 /**
- * 
- * @author ??? / Svein Ove Surdal / Håkon Herrevold / Ruben Aadland
+ * Legger til et prosjekt i databasen
+ * @author Halvor Edvard Eid / Svein Ove Surdal / Håkon Herrevold / Ruben Aadland
  *
  */
 

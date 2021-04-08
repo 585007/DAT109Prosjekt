@@ -24,16 +24,17 @@ public class ProsjektDAO {
 	private EntityManager em;
 	
 	/**
-	 *
+	 * 
 	 * @return returnerer liste med alle registrerte prosjekter.
 	 */
 	public List<Prosjekt> hentAlleProsjekter() {
 		return em.createQuery("SELECT p FROM Prosjekt p", Prosjekt.class).getResultList();
 	}
+	
 	/**
-	 * 
-	 * @param prosjektnavn som skal sjekkes
-	 * @return boolean om prosjektnavnet finnes fra før
+	 * ser om Prosjekt med aktuelt prosjektnavn finnes 
+	 * @param prosjektnavn
+	 * @return boolean true om den finnes. false om den ikke finnes
 	 */
 	public synchronized boolean prosjektnavnFinnes(String prosjektnavn){
 		

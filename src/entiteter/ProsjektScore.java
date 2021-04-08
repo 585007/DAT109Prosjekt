@@ -1,6 +1,5 @@
 package entiteter;
 
-import java.text.DecimalFormat;
 import java.util.List;
 
 import DAO.StemmeDAO;

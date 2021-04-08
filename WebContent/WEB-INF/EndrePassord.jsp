@@ -8,15 +8,15 @@
 <script src="js/gyldigendre.js" defer></script>
 <link rel="stylesheet"
 	href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
-<title>Endre brukernavn og passord</title>
+<title>Endre passord</title>
 </head>
 <body>
-	<h2>Endre brukernavn og passord</h2>
+	<h2>Endre passord</h2>
 	<p>
 		<font color="red">${Message} </font>
 	</p>
 	<div id="root">
-		<form action="EndreBrukerNavnogPassord" method="post"
+		<form action="EndrePassord" method="post"
 			class="pure-form pure-form-aligned" name="skjema">
 			<fieldset>
 				<div class="pure-control-group">

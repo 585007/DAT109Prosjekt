@@ -10,7 +10,12 @@ import DAO.DBconfig;
 
 /**
  * 
- * @author Svein Ove Surdal / Håkon Herrevold / Ruben Aadland
+ * @author Svein Ove Surdal / HÃ¥kon Herrevold / Ruben Aadland
+ *
+ * Klasse for stemmes entiteter
+ * 
+ * Brukes i forbindelse med StemmeDAO og StemmeServlet
+ * for Ã¥ opprette og oppdatere stemmer.
  *
  */
 @Entity
@@ -28,8 +33,9 @@ public class Stemme {
 	}
 	
 	/**
+	 * Oppretter en ny stemme
 	 * 
-	 * @param prosjektID som stemmen hører til
+	 * @param prosjektID som stemmen hÃ¸rer til
 	 * @param tlf til den som stemte
 	 * @param stemme stemme verdien som ble gitt
 	 */

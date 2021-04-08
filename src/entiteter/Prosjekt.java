@@ -35,11 +35,11 @@ public class Prosjekt {
 		}
 	}
 
-	public int getProsjektNr() {
+	public int getProsjektnr() {
 		return prosjektnr;
 	}
 
-	public void setProsjektNr(int prosjektNr) {
+	public void setProsjektnr(int prosjektNr) {
 		this.prosjektnr = prosjektNr;
 	}
 
@@ -47,7 +47,7 @@ public class Prosjekt {
 		return prosjektnavn;
 	}
 
-	public void setProsjektNavn(String prosjektNavn) {
+	public void setProsjektnavn(String prosjektNavn) {
 		this.prosjektnavn = prosjektNavn;
 	}
 }

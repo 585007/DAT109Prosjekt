@@ -47,10 +47,8 @@ public class LeggTilServlet extends HttpServlet {
 
 		if (GyldigSesjon.innlogget(sesjon)) {
 			List<Prosjekt> prosjekter = prosjektDAO.hentAlleProsjekter();
-			
-			List<ProsjektScore> scoreListe = ProsjektListeHjelp.hentProsjektScoreListe(prosjekter, stemmeDAO);
 						
-			sesjon.setAttribute("prosjekter", scoreListe);
+			sesjon.setAttribute("prosjekter", prosjekter);
 			
 			request.getRequestDispatcher("WEB-INF/LeggTilProsjekt.jsp").forward(request, response);
 		} else {

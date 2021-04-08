@@ -23,6 +23,7 @@ import hjelpeKlasser.GyldigInput;
 @WebServlet(name = "LogginnServlet", urlPatterns = "/logginn")
 public class LogginnServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final int SESJONLEVETID = 300; //sekunder
 	
 	@EJB
 	AdmDAO adminDAO;
@@ -51,6 +52,8 @@ public class LogginnServlet extends HttpServlet {
 						sesjon.invalidate();
 				}
 				sesjon = request.getSession(true);
+				sesjon.setMaxInactiveInterval(SESJONLEVETID);
+				
 			
 				response.sendRedirect("admin");
 			}else {

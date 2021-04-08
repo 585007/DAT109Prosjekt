@@ -3,12 +3,10 @@
 	<!DOCTYPE html>
 	<html>
 	<head>
-	<meta charset="ISO-8859-1">
-	<link rel="stylesheet"
-		href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
-	
-		<link rel="stylesheet"
-		href="style.css">
+	<meta charset="ISO-8859-1" name="viewport" content="device-width, initial-scale=1">
+
+
+		<link rel="stylesheet" href="css/style.css">
 	<title>Vurder Prosjekt ${prosjektNavn}</title>
 	</head>
 	<body class = "mid">
@@ -18,16 +16,15 @@
 				class="pure-form pure-form-aligned">
 				<input type="hidden" name="prosjektNavn" value=${prosjektNavn}>
 				<input type="hidden" name="prosjektId" value=${prosjektId}>
-	
-				<div class="pure-control-group">
+				<div>
 					 <input type="text"  placeholder = "Telefonnummer"
 						name="tlf" pattern="\d*" title = "Bare tall er akseptert" required />
 				</div>
 	
-				<p>Hvor bra fra 1-5 er prosjektet (5 best, 1 verst)</p>
+				<p>Hvor bra fra 1-5 er prosjektet <br> (5 best, 1 verst)</p>
 	
 				<div>
-				<fieldset>
+				
 					<input type="radio" id="0" name="rating" value="0" required>
 					<label for="0">Ikke stem</label><br> <input type="radio" id="1"
 						name="rating" value="1" required> <label for="1">1</label><br>
@@ -39,7 +36,7 @@
 					<input type="radio" id="4" name="rating" value="4" required>
 					<label for="4">4</label><br> <input type="radio" id="5"
 						name="rating" value="5" required> <label for="5">5</label><br><br>
-					</fieldset>
+					
 					
 					
 					<div>
@@ -48,7 +45,6 @@
 					</div>
 	
 				</div>
-	
 			</form>
 		</div>
 	</body>

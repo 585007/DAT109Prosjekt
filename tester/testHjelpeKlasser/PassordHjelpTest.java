@@ -1,8 +1,10 @@
-package hjelpeKlasser;
+package testHjelpeKlasser;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
+
+import hjelpeKlasser.PassordHjelp;
 
 class PassordHjelpTest {
 

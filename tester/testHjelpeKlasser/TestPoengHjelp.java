@@ -60,12 +60,14 @@ public class TestPoengHjelp {
 				PoengHjelp.regnUtGjScore(stemmer), FEILTOLERANSE);
 	}
 	
+	//TODO - endret utregningsmetode
 	@Test
 	public void testregnUtVektetScore() {
 		Assert.assertEquals(fasitVektetScore,
 				PoengHjelp.regnUtVektetScore(stemmer), FEILTOLERANSE);
 	}
 	
+	//TODO - endret utregningsmetode
 	@Test
 	public void testRegnUtScore() {
 		

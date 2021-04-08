@@ -3,7 +3,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+<<<<<<< HEAD
 
+=======
+>>>>>>> branch 'main' of https://github.com/585007/DAT109Prosjekt.git
 <meta charset="ISO-8859-1">
 <link rel="stylesheet"
 	href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">

@@ -21,8 +21,8 @@ import hjelpeKlasser.PassordHjelp;
  * @author Svein Ove Surdal
  *
  */
-@WebServlet(name = "EndreBrukerNavnogPassordServlet", urlPatterns = "/EndreBrukerNavnogPassord")
-public class EndreBrukerNavnogPassordServlet extends HttpServlet {
+@WebServlet(name = "EndrePassordServlet", urlPatterns = "/EndrePassord")
+public class EndrePassordServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@EJB
@@ -33,7 +33,7 @@ public class EndreBrukerNavnogPassordServlet extends HttpServlet {
 
 		HttpSession sesjon = request.getSession(false);
 		if (GyldigSesjon.innlogget(sesjon)) {
-			request.getRequestDispatcher("WEB-INF/EndreBrukerNavnogPassord.jsp").forward(request, response);
+			request.getRequestDispatcher("WEB-INF/EndrePassord.jsp").forward(request, response);
 		} else {
 			response.sendRedirect("logginn");
 		}
@@ -62,6 +62,6 @@ public class EndreBrukerNavnogPassordServlet extends HttpServlet {
 			}else {Message = "Feil brukernavn/passord";}
 		}else {Message = "Feil brukernavn/passord";}
 		
-		request.setAttribute("EndreBrukerNavnogPassord", Message);
+		request.setAttribute("EndrePassord", Message);
 	}
 }

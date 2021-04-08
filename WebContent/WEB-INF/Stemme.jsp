@@ -18,7 +18,7 @@
 			<input type="hidden" name="prosjektId" value=${prosjektId}>
 
 			<div class="pure-control-group">
-				<label for="mobil">Telefonnummer:</label> <input type="text"
+				 <input type="text"  placeholder = "Telefonnummer"
 					name="tlf" required />
 			</div>
 

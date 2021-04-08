@@ -14,6 +14,6 @@ function mobCheck() {
 		validMob = false;
 	}
 }
-mobElm.addEventListener('mouseout', mobCheck);
+mobElm.addEventListener('input', mobCheck);
 
 

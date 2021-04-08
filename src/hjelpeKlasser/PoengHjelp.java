@@ -87,7 +87,6 @@ public class PoengHjelp {
 	 */
 	public static double regnUtScore(List<Stemme> stemmer) {
 		int antallStemmer = gyldigeStemmer(stemmer);
-		int totalScore = tellPoengTilProsjekt(stemmer);
 		double gjScore = regnUtGjScore(stemmer);
 		double vektetScore = regnUtVektetScore(stemmer);
 		

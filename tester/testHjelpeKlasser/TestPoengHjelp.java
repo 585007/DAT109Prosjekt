@@ -16,8 +16,10 @@ public class TestPoengHjelp {
 	private final int MAX_STEMME_VERDI = 5;
 	private final double FEILTOLERANSE = 0.01;
 	private final static int NULLPUNKT_FOR_VEKTETSCORE = 3;
+	private final static double STANDARDVEKTETSCORE = 1.00;
 
-	private List<Stemme> stemmer;
+	private List<Stemme> statiskStemmer;
+	private List<Stemme> dynamiskStemmer;
 	private int poengFasit;
 	private double fasitGjPoeng;
 	private int antallNullStemmer;
@@ -25,73 +27,127 @@ public class TestPoengHjelp {
 	
 	@Before
 	public void oppsett() {
-		stemmer = new ArrayList<Stemme>();
-		Random rand = new Random();
-		
+		//Statisk test
+		statiskStemmer = new ArrayList<Stemme>();
 		int antallStemmer = 5;
+		
 		for(int i = 0; i < antallStemmer; i++) {
+			statiskStemmer.add(new Stemme(0, 0, i));
+		}
+		
+		//Dynamisk test
+		dynamiskStemmer = new ArrayList<Stemme>();
+		Random rand = new Random();
+		int dynamiskAntallStemmer = 1000;
+		double positivScore = 0.0;
+		double negativScore = 0.0;
+		
+		for(int i = 0; i < dynamiskAntallStemmer; i++) {
 			int stemme = rand.nextInt(MAX_STEMME_VERDI);
 			poengFasit += stemme;
 			
-			stemmer.add(new Stemme(0, 0, stemme));
+			dynamiskStemmer.add(new Stemme(0, 0, stemme));
 			
 			if(stemme == 0) {
 				antallNullStemmer++;
-			}else {
-				fasitVektetScore += (stemme - NULLPUNKT_FOR_VEKTETSCORE);
+			}else{
+				if(stemme > NULLPUNKT_FOR_VEKTETSCORE) {
+					positivScore += (stemme - NULLPUNKT_FOR_VEKTETSCORE);
+				}else {
+					negativScore += (stemme - NULLPUNKT_FOR_VEKTETSCORE);
+				}
 			}
+			
+			
 		}
 		
-		fasitGjPoeng = poengFasit / (stemmer.size() - antallNullStemmer);
-		
-		
+		fasitGjPoeng = (double)poengFasit / (dynamiskStemmer.size() - antallNullStemmer);
+	
+		fasitVektetScore = STANDARDVEKTETSCORE 
+				+ (positivScore / 100.0) + (negativScore / 100.0);
 	}
 	
+	//Statisk liste
+	@Test
+	public void testStatiskGyldigeStemmer() {
+		int antallStemmer = 4;
+		
+		Assert.assertEquals(antallStemmer,
+				PoengHjelp.gyldigeStemmer(statiskStemmer));
+	}
 	
 	@Test
-	public void testTellPoengTilProsjekt() {
+	public void testStatiskTellPoengTilProsjekt() {
+		int poengFasit = 10;
+		
 		Assert.assertEquals(poengFasit,
-				PoengHjelp.tellPoengTilProsjekt(stemmer));
+				PoengHjelp.tellPoengTilProsjekt(statiskStemmer));
 	}
 	
 	@Test
-	public void testRegnUtGjScore() {
-		Assert.assertEquals(fasitGjPoeng,
-				PoengHjelp.regnUtGjScore(stemmer), FEILTOLERANSE);
-	}
-	
-	//TODO - endret utregningsmetode
-	@Test
-	public void testregnUtVektetScore() {
-		Assert.assertEquals(fasitVektetScore,
-				PoengHjelp.regnUtVektetScore(stemmer), FEILTOLERANSE);
+	public void testStatiskRegnUtGjScore() {
+		double GjPoeng = 2.50;
+		
+		Assert.assertEquals(GjPoeng,
+				PoengHjelp.regnUtGjScore(statiskStemmer), FEILTOLERANSE);
 	}
 	
 	//TODO - endret utregningsmetode
 	@Test
-	public void testRegnUtScore() {
+	public void testStatiskRegnUtVektetScore() {
+		double vektetScore = 0.98;
 		
-		int antallStemmer = PoengHjelp.gyldigeStemmer(stemmer);
-		int totalScore = PoengHjelp.tellPoengTilProsjekt(stemmer);
-		double gjScore = PoengHjelp.regnUtGjScore(stemmer);
-		double vektetScore = PoengHjelp.regnUtVektetScore(stemmer);
-		
-		double score;
-		
-		if(vektetScore != 0) {
-			score = antallStemmer / (totalScore + gjScore * vektetScore);
-		}else {
-			score = antallStemmer / (totalScore + gjScore) ;
-		}
-		
+		Assert.assertEquals(vektetScore,
+				PoengHjelp.regnUtVektetScore(statiskStemmer), FEILTOLERANSE);
+	}
+	
+	//TODO - endret utregningsmetode
+	@Test
+	public void testStatiskRegnUtScore() {
+		double score = 9.8;
 		
 		Assert.assertEquals(score, 
-				PoengHjelp.regnUtScore(stemmer), FEILTOLERANSE);
+				PoengHjelp.regnUtScore(statiskStemmer), FEILTOLERANSE);
 	}
 	
-	public void testGyldigeStemmer() {
-		Assert.assertEquals(antallNullStemmer,
-				PoengHjelp.gyldigeStemmer(stemmer));
+	//Dynamisk liste
+	
+	@Test
+	public void testDynamiskTellPoengTilProsjekt() {
+		Assert.assertEquals(poengFasit,
+				PoengHjelp.tellPoengTilProsjekt(dynamiskStemmer));
+	}
+	
+	@Test
+	public void testDynamiskRegnUtGjScore() {
+		Assert.assertEquals(fasitGjPoeng,
+				PoengHjelp.regnUtGjScore(dynamiskStemmer), FEILTOLERANSE);
+	}
+	
+	//TODO - endret utregningsmetode
+	@Test
+	public void testDynamiskRegnUtVektetScore() {
+		Assert.assertEquals(fasitVektetScore,
+				PoengHjelp.regnUtVektetScore(dynamiskStemmer), FEILTOLERANSE);
+	}
+	
+	//TODO - endret utregningsmetode
+	@Test
+	public void testDynamiskRegnUtScore() {
+		int antallStemmer = PoengHjelp.gyldigeStemmer(dynamiskStemmer);
+		double gjScore = PoengHjelp.regnUtGjScore(dynamiskStemmer);
+		double vektetScore = PoengHjelp.regnUtVektetScore(dynamiskStemmer);
+		
+		double score = gjScore * antallStemmer * vektetScore;
+		
+		Assert.assertEquals(score, 
+				PoengHjelp.regnUtScore(dynamiskStemmer), FEILTOLERANSE);
+	}
+	
+	@Test
+	public void testDynamiskGyldigeStemmer() {
+		Assert.assertEquals(dynamiskStemmer.size() - antallNullStemmer,
+				PoengHjelp.gyldigeStemmer(dynamiskStemmer));
 	}
 	
 	

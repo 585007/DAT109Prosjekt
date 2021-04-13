@@ -32,7 +32,7 @@
     <fieldset>
       <div class="pure-control-group">
         <p>
-          <button type="submit" name="EndrePassord" class="pure-button pure-button-primary">Endre brukernavn og passord</button>
+          <button type="submit" name="EndrePassord" class="pure-button pure-button-primary">Endre passord</button>
         </p>
       </div>
     </fieldset>

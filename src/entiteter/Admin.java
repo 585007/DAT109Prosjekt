@@ -11,6 +11,12 @@ import hjelpeKlasser.PassordHjelp;
  * 
  * @author Svein Ove Surdal/ Tomas Mardal/ Ruben Aadland
  *
+ *
+ * Objekter for admin av prosjektet. 
+ * 
+ * Brukes i forbindelse med 
+ * å hente og endre admin i AdmDAO.
+ *
  */
 @Entity
 @Table(name = "admin", schema=DBconfig.schema)
@@ -25,8 +31,9 @@ public class Admin {
 	}
 	
 	/**
+	 * Oppretter en ny admin
 	 * 
-	 * @param brukernavn
+	 * @param brukernavn lagres
 	 * @param passord lagres i hash tilstand med salt. Kan hashes sammen med salt i PassordHjelp
 	 * @param salt lagres i hash tilstand. Salt kan genereres i PassordHjelp
 	 */
@@ -71,6 +78,12 @@ public class Admin {
 		return this.passord
 				.equals(PassordHjelp.hashMedSalt(passord, getSalt()));
 	}
+	
+	/**
+	 * 
+	 * @param brukernavn som skal sammenlignes med brukerens brukernavn
+	 * @return bool om brukernavn matcher brukernavnet til brukeren. 
+	 */
 	public boolean gyldigBrukerNavn(String brukernavn) {
 		return this.brukernavn.equals(brukernavn);
 	}

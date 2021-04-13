@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Skriver ut kvittering som bekrefter at du har stemt på et prosjekt.
  * 
- * @author Halvor Edvard Eid
+ * @author Halvor Edvard Eid/ Svein Ove Surdal
  *
  */
 

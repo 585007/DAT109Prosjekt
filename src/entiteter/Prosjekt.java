@@ -9,8 +9,13 @@ import javax.persistence.Table;
 import DAO.DBconfig;
 
 /**
- * @author Håkon Herrevold / Svein Ove Surdal / Ruben Aadland
+ * @author HÃ¥kon Herrevold / Svein Ove Surdal / Ruben Aadland
  *
+ * Klasse for prosjekters entiteter
+ *
+ * Brukes i forbindelse med Ã¥ vise prosjekter
+ * i ProsjektListeServlet.
+ * 
  */
 @Entity
 @Table(name = "prosjekt", schema=DBconfig.schema)
@@ -26,8 +31,9 @@ public class Prosjekt {
 	public Prosjekt() {
 	}
 	/**
+	 * Oppretter et nytt prosjekt
 	 * 
-	 * @param prosjektNavn er navnet på prosjektet
+	 * @param prosjektNavn er navnet pÃ¥ prosjektet
 	 */
 	public Prosjekt(String prosjektNavn) {
 		synchronized(this) {
@@ -47,7 +53,7 @@ public class Prosjekt {
 		return prosjektnavn;
 	}
 
-	public void setProsjektnavn(String prosjektNavn) {
+	public void setProsjektNavn(String prosjektNavn) {
 		this.prosjektnavn = prosjektNavn;
 	}
 }

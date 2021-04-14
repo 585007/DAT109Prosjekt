@@ -23,6 +23,7 @@ public class GyldigInput {
 	public static final String ANY_LETTER_WITH_HYPHEN = "[a-zA-ZÊ¯Â∆ÿ≈\\-]";
 	public static final String ANY_DIGIT = "[0-9]";
 	public static final String ANY_LETTER_OR_DIGIT = "[a-zA-ZÊ¯Â∆ÿ≈0-9]";
+	public static final String ANY_LETTER_OR_DIGIT_WITH_SPACE_HYPHEN = "[a-zA-ZÊ¯Â∆ÿ≈0-9 \\-]";
 	public static final String THREE_TIMES = "{3}";
 	public static final String EIGHT_TIMES = "{8}";
 	public static final String ZERO_OR_MORE_TIMES = "*";
@@ -40,7 +41,7 @@ public class GyldigInput {
 	 */
 	public static boolean isValidProsjektNavn(String prosjektNavn) {
 		return prosjektNavn != null 
-				&& prosjektNavn.matches("^" + ANY_CAPITAL_LETTER + ANY_LETTER_WITH_SPACE_HYPHEN + TWO_TO_20_TIMES + "$");
+				&& prosjektNavn.matches("^" + ANY_CAPITAL_LETTER + ANY_LETTER_OR_DIGIT_WITH_SPACE_HYPHEN + TWO_TO_20_TIMES + "$");
 	}
 
 	/**

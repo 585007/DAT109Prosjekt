@@ -19,6 +19,7 @@ function bruCheck() {
 		validBru = false;
 	}
 }
+bruElm.addEventListener('input', bruCheck);
 bruElm.addEventListener('mouseout', bruCheck);
 
 function passCheck() {
@@ -30,6 +31,7 @@ function passCheck() {
 		validPass = false;
 	}
 }
+bruElm.addEventListener('input', passCheck);
 passElm.addEventListener('mouseout', passCheck);
 
 buttElm.addEventListener('mouseover', function(event) {

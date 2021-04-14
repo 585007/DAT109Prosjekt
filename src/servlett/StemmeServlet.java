@@ -33,7 +33,7 @@ public class StemmeServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String loginMessage = "";
 		if (request.getParameter("invalidInput") != null) {
-			loginMessage = "Ugylig input";
+			loginMessage = "Ugylig mobilnummer";
 		}
 		Integer prosjektId = Integer.parseInt(request.getParameter("prosjektId"));
 		Prosjekt prosjekt = ProsjektDAO.hentProsjekt(prosjektId);
@@ -68,7 +68,7 @@ public class StemmeServlet extends HttpServlet {
 
 			request.getRequestDispatcher("WEB-INF/StemmeKvittering.jsp").forward(request, response);
 		}else {
-			response.sendRedirect("StemmeServlet?prosjektId="+prosjektId+"&invalidInput=true");
+			response.sendRedirect("StemmeServlet?prosjektId="+prosjektId+"&invalidInput");
 		}
 	}
 

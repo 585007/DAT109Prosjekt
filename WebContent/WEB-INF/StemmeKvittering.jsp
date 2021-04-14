@@ -7,6 +7,6 @@
 <title>Stemme kvittering</title>
 </head>
 <body>
-takk for stemme på ${prosjektNavn}
+Takk for stemme på ${prosjektNavn}
 </body>
 </html>

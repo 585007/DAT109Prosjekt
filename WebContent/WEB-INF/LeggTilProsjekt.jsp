@@ -12,17 +12,16 @@
 </head>
 <body>
 	<form action="admin" method="get" class="pure-form pure-form-aligned">
-			<fieldset>
-				<div class="pure-control-group">
-					<p>
-						<button type="submit" name="admin"
-							class="pure-button pure-button-primary">
-								Adminside</button>
-					</p>
-				</div>
-			</fieldset>
+		<fieldset>
+			<div class="pure-control-group">
+				<p>
+					<button type="submit" name="admin"
+						class="pure-button pure-button-primary">Adminside</button>
+				</p>
+			</div>
+		</fieldset>
 	</form>
-	<div id="root" >
+	<div id="root">
 		<h1>Nytt prosjekt</h1>
 		<form action="LeggTilProsjekt" method="post" name="skjema"
 			class="pure-form pure-form-aligned">
@@ -33,16 +32,24 @@
 				<div class="pure-control-group">
 					<button type="submit" class="pure-button pure-button-primary">Legg
 						til</button>
-						<font color="red">${loginMessage}</font>
+					<font color="red">${loginMessage}</font>
 				</div>
 			</fieldset>
 		</form>
 		<h1>Prosjekter i systemet</h1>
-
+	<style type="text/css">
+td {
+	padding-right: 15px
+}
+th {
+	text-align: left;
+	padding-right: 15px
+}
+</style>
 		<table>
 			<tr>
 				<th>Prosjekt navn</th>
-				<th>Kvitering</th>
+				<th>Kvittering</th>
 			</tr>
 			<c:forEach var="prosjekt" items="${prosjekter}">
 				<tr>
@@ -50,8 +57,8 @@
 					<td>
 						<form action="kvittering" method="get">
 							<input type="hidden" name="prosjektnr"
-								value="${prosjekt.getProsjektNr()}"> <input type="submit"
-								value="se kvitering">
+								value="${prosjekt.getProsjektNr()}"> <input
+								type="submit" value="se kvittering">
 						</form>
 					</td>
 				</tr>

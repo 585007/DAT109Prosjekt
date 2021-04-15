@@ -21,11 +21,11 @@
 			<fieldset>
 				<div class="pure-control-group">
 					<label for="bruker">Brukernavn:</label> <input type="text"
-						name="bruker" value="adm" required />
+						name="bruker" value="" required />
 				</div>
 				<div class="pure-control-group">
 					<label for="passord">Passord:</label> <input type="password"
-						name="passord" value="pass" required />
+						name="passord" value="" required />
 				</div>
 				<div class="pure-controls-group">
 					<button type="submit" class="pure-button pure-button-primary">Logg

@@ -79,15 +79,13 @@ public class PoengHjelp {
 	/**
 	 * 
 	 * @param stemmer som skal brukes til å regne ut stemmer
-	 * @return returnerer (totalscore + gjScore * vektetScore)/antallStemmer
-	 * fjerner vektetScore fra utregningen hvis den er 0
+	 * @return returnerer poengsum * vektetScore
 	 */
 	public static double regnUtScore(List<Stemme> stemmer) {
-		int antallStemmer = gyldigeStemmer(stemmer);
-		double gjScore = regnUtGjScore(stemmer);
+		double poengsum = tellPoengTilProsjekt(stemmer);
 		double vektetScore = regnUtVektetScore(stemmer);
 		
-		return gjScore * antallStemmer * vektetScore;
+		return poengsum * vektetScore;
 	}
 	/**
 	 * 

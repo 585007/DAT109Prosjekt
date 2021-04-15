@@ -54,11 +54,6 @@ public class ProsjektListeServlet extends HttpServlet {
 		if(!GyldigSesjon.innlogget(sesjon)) {
 			response.sendRedirect("logginn");
 		}else {
-
-			//ikke nødvendig? - AA
-//			int prosjektNr = Integer.parseInt(request.getParameter("prosjektnr"));
-//			Prosjekt prosjekt = prosjektDAO.hentProsjekt(prosjektNr);
-			
 			response.sendRedirect("kvittering");
 		}
 	}

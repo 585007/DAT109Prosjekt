@@ -9,7 +9,7 @@
 		<link rel="stylesheet" href="css/style.css">
 	<title>Vurder Prosjekt ${prosjektNavn}</title>
 	</head>
-	<body class = "mid">
+	<body class = "mid background">
 		<div id="root">
 			<h1 >${prosjektNavn}</h1>
 			<form action="StemmeServlet" method="post" name="skjema"

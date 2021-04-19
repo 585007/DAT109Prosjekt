@@ -35,31 +35,37 @@ input {
 	<h1>${prosjekter.prosjektnavn}</h1>
 
 	<form action="kvittering" method="post">
-			<h2>http://localhost:8080/dat109-prosjekt-gr5/StemmeServlet?prosjektId=${prosjekter.getProsjektNr()}</h2>
-			<canvas id="qr-code"></canvas>
+		<a
+			href="http://data1.hib.no:9090/dat109-prosjekt-gr5/StemmeServlet?prosjektId=${prosjekter.getProsjektNr()}">
+			<h2>http://data1.hib.no:9090/dat109-prosjekt-gr5/StemmeServlet?prosjektId=${prosjekter.getProsjektNr()}</h2>
+		</a>
+		<canvas id="qr-code"></canvas>
 
-			<script
-				src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
-			<script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+		<script>
 			var qr;
 			(function() {
 				qr = new QRious(
 					{
 					element : document.getElementById('qr-code'),
 					size : 200,
-					value : 'http://localhost:8080/dat109-prosjekt-gr5/StemmeServlet?prosjektId=${prosjekter.getProsjektNr()}' <!-- må fikses til aktuell side -->
+					value : 'http://data1.hib.no:9090/dat109-prosjekt-gr5/StemmeServlet?prosjektId=${prosjekter.getProsjektNr()}' <!-- må fikses til aktuell side -->
 					});
 				})();
 		</script>
-			<div class="pure-control-group">
-					<button type="submit" name="Ferdig"
-						class="pure-button pure-button-primary">Ferdig</button>
-			</div>
+		<div class="pure-control-group">
+			<button type="submit" name="Ferdig"
+				class="pure-button pure-button-primary">Ferdig</button>
+		</div>
 	</form>
-	<form action="LeggTilProsjekt" method="get" class="pure-form pure-form-aligned">
-      <div class="pure-control-group">
-          <button type="submit" name="LeggTilProsjekt" class="pure-button pure-button-primary">Legg til nytt prosjekt</button>
-      </div>
-  </form>
+	<form action="LeggTilProsjekt" method="get"
+		class="pure-form pure-form-aligned">
+		<div class="pure-control-group">
+			<button type="submit" name="LeggTilProsjekt"
+				class="pure-button pure-button-primary">Legg til nytt
+				prosjekt</button>
+		</div>
+	</form>
 </body>
 </html>

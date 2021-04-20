@@ -1,5 +1,4 @@
 "use strict";
-console.log("script på");
 
 let validFor;
 let ANY_CAPITAL_LETTER = "[A-ZÆØÅ]";

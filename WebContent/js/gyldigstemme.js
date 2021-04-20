@@ -1,5 +1,4 @@
 "use strict";
-console.log("script på");
 let validMob;
 
 const rootElm = document.getElementById('root');

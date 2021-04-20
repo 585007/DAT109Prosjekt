@@ -1,5 +1,4 @@
 "use strict";
-console.log("script på");
 
 let validBru;
 let validPass;
@@ -13,7 +12,8 @@ const bruElm = rootElm.querySelector('input[name="bruker"]');
 const passElm = rootElm.querySelector('input[name="passord"]');
 const npassElm = rootElm.querySelector('input[name="nyttPassord"]');
 const bpassElm = rootElm.querySelector('input[name="bekreftPassord"]');
-const buttElm = rootElm.querySelector('button[id="submit"]')
+const buttElm = rootElm.querySelector('button[id="submit"]');
+
 function bruCheck() {
 	if (bruElm.value.length >= 2) {
 		bruElm.style.borderColor = "green";
@@ -24,10 +24,11 @@ function bruCheck() {
 	}
 }
 bruElm.addEventListener('mouseout', bruCheck);
+bruElm.addEventListener('input', bruCheck);
 
 function passCheck() {
 	if (passElm.value.length >= 2) {
-		passElm.style.borderColor = "";
+		passElm.style.borderColor = "green";
 		validPass = true;
 	} else {
 		passElm.style.borderColor = "red";
@@ -47,6 +48,7 @@ function npassCheck() {
 	}
 }
 npassElm.addEventListener('mouseout', npassCheck);
+npassElm.addEventListener('input', npassCheck);
 
 function bpassCheck() {
 	if (bpassElm.value == npassElm.value) {
@@ -58,6 +60,8 @@ function bpassCheck() {
 	}
 }
 bpassElm.addEventListener('mouseout', bpassCheck);
+bpassElm.addEventListener('input', bpassCheck);
+
 function isValidFormData() {
 	return validPass && validBpass && validBru && validNpass;
 }

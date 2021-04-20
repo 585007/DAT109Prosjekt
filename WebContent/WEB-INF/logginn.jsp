@@ -28,7 +28,7 @@
 						name="passord" value="" required />
 				</div>
 				<div class="pure-controls-group">
-					<button type="submit" class="pure-button pure-button-primary">Logg
+					<button type="submit" id="submit" class="pure-button pure-button-primary">Logg
 						inn</button>
 				</div>
 			</fieldset>

@@ -1,5 +1,4 @@
 "use strict";
-console.log("script på");
 
 let validBru;
 let validPass;
@@ -9,6 +8,7 @@ const rootElm = document.getElementById('root');
 const formElm = rootElm.querySelector('form[name="skjema"]');
 const bruElm = rootElm.querySelector('input[name="bruker"]');
 const passElm = rootElm.querySelector('input[name="passord"]');
+const buttElm = rootElm.querySelector('button[id="submit"]');
 
 function bruCheck() {
 	if (bruElm.value.length >= 2) {
